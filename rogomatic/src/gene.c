@@ -52,7 +52,7 @@ main (argc, argv)
 int   argc;
 char *argv[];
 {
-  int m=10, init=0, seed=0, version=RV53A, full=0;
+  int m=10, init=0, seed=0, version=RV54A, full=0;
 
   /* Get the options */
   while (--argc > 0 && (*++argv)[0] == '-') {
