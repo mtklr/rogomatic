@@ -52,7 +52,7 @@
  *
  */
 
-# define DEFVER		"5.4"
+# define DEFVER		"5.4.4"
 
 /* 
  * This variable is the level at which we always start logging the game
