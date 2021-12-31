@@ -106,7 +106,7 @@ int ntrm;
 dumpscore (vers)
 char *vers;
 {
-  char  ch, scrfil[100], delfil[100], newfil[100], allfil[100], cmd[256];
+  char  ch, scrfil[100], delfil[100], newfil[100], allfil[100], cmd[1024];
   FILE *scoref, *deltaf;
   int   oldmask, intrupscore ();
 
