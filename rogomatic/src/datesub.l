@@ -42,12 +42,12 @@
 "Dec"				printf ("12"); 
 %%
 
-yywrap ()
+int yywrap (void)
 {
 ;
 }
 
-main ()
+int main (void)
 { while (yylex ())
     ; 
 }

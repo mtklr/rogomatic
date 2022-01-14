@@ -157,7 +157,7 @@ register statistic *s;
 double stdev (s)
 register statistic *s;
 {
-  register n = s->count;
+  register int n = s->count;
 
   if (n < 2)	return (0.0);
   else		return (sqrt ((n * s->sumsq - s->sum * s->sum) / (n * (n-1))));

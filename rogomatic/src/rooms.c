@@ -121,7 +121,7 @@ static struct {int top,bot,left,right;} bounds[9]=
 
 void markmissingrooms (void)
 {
-  register rm,i,j;
+  register int rm,i,j;
 
   for (rm=0; rm<9; ++rm) {
     room[rm]=0;
@@ -744,7 +744,7 @@ void teleport (void)
 
 void mapinfer(void)
 {
-  register r, c, inroom;
+  register int r, c, inroom;
 
   dwait (D_CONTROL, "Map read: inferring rooms.");
 

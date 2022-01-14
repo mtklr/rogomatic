@@ -1033,7 +1033,7 @@ int exploreroom (void)
 
 int doorexplore(void)
 {
-  static searchcount = 0;
+  static int searchcount = 0;
   int secretinit(), secretvalue();
 
   /* If no new squares or read map, dont bother */
@@ -1233,9 +1233,9 @@ int r, c, depth, *val, *avd, *cont;
  *   M O V E   T O   R E S T :  Find a safe square to rest up on.
  */
 
-static restinlight = 0;			/* True only in lit rooms */
-static restinroom = 0;			/* True only in a room */
-static restr = NONE, restc = NONE;	/* Square to rest on */
+static int restinlight = 0;		/* True only in lit rooms */
+static int restinroom = 0;		/* True only in a room */
+static int restr = NONE, restc = NONE;	/* Square to rest on */
 
 /* Set new resting goal */
 void unrest (void)

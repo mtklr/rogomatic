@@ -48,7 +48,7 @@ char genelock[100];
 char genelog[100];
 char genepool[100];
 
-main (argc, argv)
+int main (argc, argv)
 int   argc;
 char *argv[];
 {

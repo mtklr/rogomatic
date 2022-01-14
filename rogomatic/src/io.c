@@ -160,7 +160,7 @@ int   onat;                             /* 0 ==> Wait for waitstr
   register int i, j;
   char  ch, *s, *m, *q, *d, *call;
   int *doors;
-  static moved = 0;
+  static int moved = 0;
 
   newdoors = doorlist;			/* no new doors found yet */
   atrow0 = atrow; atcol0 = atcol;	/* Save our current posistion */
