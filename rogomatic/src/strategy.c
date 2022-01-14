@@ -34,6 +34,7 @@
 # include "types.h"
 # include "globals.h"
 # include "install.h"
+#include "strategy.h"
 
 /*
  * foughtmonster records whether we engaged in battle recently.  This
@@ -52,7 +53,7 @@ extern int genericinit(), sleepvalue();	/* From explore.c */
  * from the user).
  */
 
-int   strategize ()
+int   strategize (void)
 {
   dwait (D_CONTROL, "Strategizing...");
 
@@ -221,7 +222,7 @@ int   strategize ()
  *                 with this name.
  */
 
-int callitpending ()
+int callitpending (void)
 {
 
   if (pending_call_letter != ' ') {
@@ -239,7 +240,7 @@ int callitpending ()
  * weapon already in hand.
  */
 
-int   fightmonster ()
+int   fightmonster (void)
 {
   register int i, rr, cc, mdir = NONE, mbad  = NONE, danger = 0;
   int  melee = 0, adjacent = 0, alertmonster = 0;
@@ -366,7 +367,7 @@ int   fightmonster ()
  * charging after him. Special case for sitting on a door.
  */
 
-int   tomonster ()
+int   tomonster (void)
 {
   register int i, dist, rr, cc, mdir = NONE, mbad = NONE;
   int   closest, which, danger = 0, adj = 0, alert = 0;
@@ -461,7 +462,7 @@ int   tomonster ()
  * Some monsters are included here because we want to shoot arrows at them.
  */
 
-wanttowake(c)
+int wanttowake(c)
 char c;
 {
   char *monster = monname (c);
@@ -496,7 +497,7 @@ char c;
  *		Also rest if we are critically weak and have some food.
  */
 
-aftermelee ()
+int aftermelee (void)
 {
   if (foughtmonster > 0) {
     lyinginwait = 1;
@@ -525,7 +526,7 @@ aftermelee ()
 # define die_in(n)	(Hp/n < danger*50/(100-k_run))
 # define live_for(n)	(! die_in(n))
 
-battlestations (m, monster, mbad, danger, mdir, mdist, alert, adj)
+int battlestations (m, monster, mbad, danger, mdir, mdist, alert, adj)
 int m;			/* Monster index */
 char *monster;          /* What is it? */
 int mbad;               /* How bad is it? */
@@ -998,7 +999,7 @@ int adj;		/* How many attackers are there? */
  * try to drop our least useful item. If pack is still full, fail.
  */
 
-int tostuff ()
+int tostuff (void)
 {
   register int i, closest, dist, w, worst, worstval;
   int   which, wrow, wcol;
@@ -1075,7 +1076,7 @@ int tostuff ()
  * fightinvisible: being hounded by unseen beasties, try something clever.
  */
 
-fightinvisible ()
+int fightinvisible (void)
 {
   char cmd[20]; register int dir, liberties = 0, lastdir, obj;
 
@@ -1166,7 +1167,7 @@ fightinvisible ()
  * Note: some monsters are to wimpy archery, and some too mean.     MLM
  */
 
-archery ()
+int archery (void)
 {
   register int m, mtk;
   char *monster;
@@ -1218,7 +1219,7 @@ archery ()
  * Bug:		Sometimes goes the long way around and doesnt see things.
  */
 
-pickupafter ()
+int pickupafter (void)
 {
   /* If no goal */
   if (agoalr < 0 || agoalc < 0)
@@ -1241,7 +1242,7 @@ pickupafter ()
  *           removed from the game.
  */
 
-dropjunk ()
+int dropjunk (void)
 {
   int obj;
 
@@ -1262,7 +1263,7 @@ dropjunk ()
  * Assumes a 10 percent death tax.
  */
 
-quitforhonors ()
+int quitforhonors (void)
 {
   if (Gold > quitat && (Gold-Gold/10) <= quitat) {
     quitrogue ("quit (scoreboard)", Gold, 0);

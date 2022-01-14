@@ -36,6 +36,7 @@
 # include "types.h"
 # include "globals.h"
 # include "install.h"
+#include "debug.h"
 
 /*
  * Debugging wait loop: Handle the usual Rogomatic command chars, and also
@@ -45,7 +46,7 @@
  */
 
 /* VARARGS2 */
-dwait (msgtype, f, a1, a2, a3, a4, a5, a6, a7, a8)
+int dwait (msgtype, f, a1, a2, a3, a4, a5, a6, a7, a8)
 char *f;
 int msgtype, a1, a2, a3, a4, a5, a6, a7, a8;
 {
@@ -128,7 +129,7 @@ int msgtype, a1, a2, a3, a4, a5, a6, a7, a8;
  * promptforflags: Prompt the user for a location and dump its flags.
  */
 
-promptforflags ()
+void promptforflags (void)
 {
   int r, c;
 
@@ -154,7 +155,7 @@ char *fnames[] = {
   "boundry", "sleeper",  "everclr"
 };
 
-dumpflags (r, c)
+void dumpflags (r, c)
 int   r, c;
 {
   char **f; int b;
@@ -170,7 +171,7 @@ int   r, c;
  * Timehistory: print a time analysis of the game.
  */
 
-timehistory (f, sep)
+void timehistory (f, sep)
 FILE *f;
 char sep;
 {
@@ -203,7 +204,7 @@ char sep;
  * toggledebug: Set the value of the debugging word.
  */
 
-toggledebug ()
+void toggledebug (void)
 {
   char debugstr[100];
   int type = debugging & ~(D_FATAL | D_ERROR | D_WARNING);
@@ -251,7 +252,7 @@ toggledebug ()
  * getscrpos: Prompt the user for an x,y coordinate on the screen.
  */
 
-getscrpos (msg, r, c)
+int getscrpos (msg, r, c)
 char *msg;
 int *r, *c;
 {

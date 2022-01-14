@@ -33,6 +33,7 @@
 # include "types.h"
 # include "globals.h"
 # include "install.h"
+#include "tactics.h"
 
 /*
  * handlearmor: This routine is called to determine whether we should
@@ -47,7 +48,7 @@
  * Note that leather armor does not rust.
  */
 
-handlearmor ()
+int handlearmor (void)
 {
   int obj;
 
@@ -107,7 +108,7 @@ handlearmor ()
  *  The current strategy is to wield the best weapon from haveweapon.
  */
 
-handleweapon ()
+int handleweapon (void)
 {
   int obj;
 
@@ -133,7 +134,7 @@ handleweapon ()
 
 # define MAXSTR (version < RV52A ? 1900 : 3100)
 
-quaffpotion ()
+int quaffpotion (void)
 {
   int obj = NONE, obj2 = NONE;
 
@@ -239,7 +240,7 @@ quaffpotion ()
  * armor).
  */
 
-readscroll ()
+int readscroll (void)
 {
   register int obj, obj2;
 
@@ -343,7 +344,7 @@ readscroll ()
  * much food we need to use each ring.
  */
 
-handlering ()
+int handlering (void)
 {
   int ring1, ring2;
 
@@ -390,7 +391,7 @@ handlering ()
  * Could be extended to have an ordering of rings to wear.
  */
 
-findring (name)
+int findring (name)
 char *name;
 {
   int obj;
@@ -419,7 +420,7 @@ char *name;
  * fails to move us).		MLM
  */
 
-grope (turns)
+int grope (turns)
 register int turns;
 {
   register int k, moves;
@@ -455,7 +456,7 @@ register int turns;
  *            magic arrow. Make certain we have some food.
  */
 
-findarrow ()
+int findarrow (void)
 {
   /* If wrong version, not cheating or must go find food, then forget it */
   if (version > RV36B || !cheat || hungry())
@@ -478,7 +479,7 @@ findarrow ()
  * we can fire from a door, even if we cant shoot through one).
  */
 
-checkcango (dir, turns)
+int checkcango (dir, turns)
 register int dir, turns;
 {
   register int r, c, dr, dc;
@@ -495,7 +496,7 @@ register int dir, turns;
  * godownstairs: issues a down command and check for the halftimeshow.
  */
 
-godownstairs (running)
+int godownstairs (running)
 register int running; /* True ==> don't do anything fancy */
 {
   register int p;
@@ -576,7 +577,7 @@ register int running; /* True ==> don't do anything fancy */
  * we head down immediately.
  */
 
-plunge ()
+int plunge (void)
 {
   /* Check for applicability of this rule */
   if (stairrow == NONE && !foundtrapdoor) return (0);
@@ -635,7 +636,7 @@ static gc = 0; /* Goal corner from 0..3 */
  * Try running to each corner of the level.
  */
 
-waitaround ()
+int waitaround (void)
 {
   register int i, j;
 
@@ -660,7 +661,7 @@ waitaround ()
  *      game, and issues the proper calls to get the score written.
  */
 
-goupstairs (running)
+int goupstairs (running)
 int running;
 {
   int obj;
@@ -725,7 +726,7 @@ int running;
  *				Don't rest when hungry (and no food)
  */
 
-restup ()
+int restup (void)
 {
   register int obj, turns;
 
@@ -788,7 +789,7 @@ restup ()
  * that square. Calls gotowards which calls bfsearch.
  */
 
-gotowardsgoal ()
+int gotowardsgoal (void)
 {
   if (goalr > 0 && goalc > 0) { /* Keep on trucking */
     if (goalr == atrow && goalc == atcol) { goalr = NONE; goalc = NONE; }
@@ -805,7 +806,7 @@ gotowardsgoal ()
  *		them into the corner (which destroys them).
  */
 
-gotocorner ()
+int gotocorner (void)
 {
   int r, c;
 
@@ -823,7 +824,7 @@ gotocorner ()
  * lightroom: Try to light up the room if we are below level 17.
  */
 
-light ()
+int light (void)
 {
   if (Level < 17) return (0);
 
@@ -834,7 +835,7 @@ light ()
  * shootindark: If we are arching at an old monster, fire another arrow.
  */
 
-shootindark ()
+int shootindark (void)
 {
   register int obj, bow;
 
@@ -863,7 +864,7 @@ shootindark ()
  * dinnertime: Eat if we are hungry or if we have a surplus of food.
  */
 
-dinnertime ()
+int dinnertime (void)
 {
   if ((havefood (5) && objcount == maxobj && ! droppedscare) ||
       (larder > 0 && hungry ()))
@@ -877,7 +878,7 @@ dinnertime ()
  * to generate a message which identifies the wand.
  */
 
-trywand ()
+int trywand (void)
 {
   register int obj, dir, r, c, count;
 
@@ -912,7 +913,7 @@ trywand ()
  * eat: If we have food, eat it.
  */
 
-eat ()
+int eat (void)
 {
   int obj;
 

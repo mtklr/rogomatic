@@ -22,6 +22,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+#include "debuglog.h"
 
 #define MAXLINE 4096
 

@@ -25,6 +25,7 @@
 # include "types.h"
 # include "globals.h"
 # include "termtokens.h"
+#include "getroguetoken.h"
 
 # define GETLOGCHAR	fgetc(logfile)
 # define ISPRT(c)	((c) >= ' ' && (c) <= '~')
@@ -51,7 +52,7 @@ int rogue_log_open (const char *filename)
   return (fecho != NULL);
 }
 
-void rogue_log_close ()
+void rogue_log_close (void)
 {
   if (cecho)
     fprintf (fecho, "\n");
@@ -136,7 +137,7 @@ void open_frogue_fd_debuglog (int frogue_fd_dl)
 
 #define PUTDEBUGCHAR(c) {if (froguelog != NULL) {fputc(c,froguelog); fflush (froguelog);}}
 
-void close_frogue_debuglog ()
+void close_frogue_debuglog (void)
 {
   if (froguelog != NULL)
     fclose (froguelog);
@@ -159,7 +160,7 @@ void open_frogue_fd (int frogue_fd)
 #define GETROGUECHAR fgetc(frogue);
 #define UNGETROGUECHAR(c) ungetc(c, frogue);
 
-void close_frogue ()
+void close_frogue (void)
 {
   fclose (frogue);
 }
@@ -580,7 +581,7 @@ getroguetoken (void)
  * getoldcommand: retrieve the old command from a logfile we are replaying.
  */
 
-getoldcommand (s)
+int getoldcommand (s)
 register char *s;
 {
   register int charcount = 0;
@@ -606,7 +607,7 @@ register char *s;
  * Rog-O-Matic at our disposal.					LGCH.
  */
 
-int getlogtoken()
+int getlogtoken(void)
 {
   int acceptline;
   int ch = GETLOGCHAR;

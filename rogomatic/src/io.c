@@ -38,7 +38,7 @@
 # include "types.h"
 # include "globals.h"
 # include "termtokens.h"
-# include "getroguetoken.h"
+#include "io.h"
 
 # define READ	0
 
@@ -148,7 +148,7 @@ printscreen (void)
  * implies that we have synchronized with Rogue.
  */
 
-getrogue (waitstr, onat)
+void getrogue (waitstr, onat)
 char *waitstr;                          /* String to synchronize with */
 int   onat;                             /* 0 ==> Wait for waitstr
                                            1 ==> Cursor on @ sufficient
@@ -484,7 +484,7 @@ int   onat;                             /* 0 ==> Wait for waitstr
  * the status line looks like.
  */
 
-terpbot ()
+void terpbot (void)
 {
   char sstr[30], modeline[256];
   int oldlev = Level, oldgold = Gold, oldhp = Hp, Str18 = 0;
@@ -578,7 +578,7 @@ terpbot ()
  * dumpwalls: Dump the current screen map
  */
 
-dumpwalls ()
+void dumpwalls (void)
 {
   register int   r, c, S;
   char ch;
@@ -623,7 +623,7 @@ dumpwalls ()
  */
 
 /* VARARGS1 */
-sendnow (f, a1, a2, a3, a4)
+void sendnow (f, a1, a2, a3, a4)
 char *f;
 int a1, a2, a3, a4;
 {
@@ -642,7 +642,7 @@ int a1, a2, a3, a4;
  * the logging of characters in echo mode.
  */
 
-sendcnow (c)
+void sendcnow (c)
 char c;
 {
   if (replaying)
@@ -674,7 +674,7 @@ char c;
 # define bump(p,sizeq) (p)=((p)+1)%sizeq
 
 /* VARARGS1 */
-rogo_send (f, a1, a2, a3, a4)
+void rogo_send (f, a1, a2, a3, a4)
 char *f;
 int a1, a2, a3, a4;
 {
@@ -698,7 +698,7 @@ int a1, a2, a3, a4;
  * resend: Send next block of characters from the queue
  */
 
-resend ()
+int resend (void)
 {
   register char *l=lastcmd;		/* Ptr into last command */
 
@@ -721,7 +721,7 @@ resend ()
  * Rogue.
  */
 
-pending ()
+int pending (void)
 {
   return (head != tail);
 }
@@ -730,7 +730,7 @@ pending ()
  * at: move the cursor. Now just a call to move();
  */
 
-at (r, c)
+void at (r, c)
 int   r, c;
 {
   move (r, c);
@@ -747,7 +747,7 @@ int   r, c;
 # define KILLROW 17
 # define TOMBCOL 19
 
-deadrogue ()
+void deadrogue (void)
 {
   int    mh;
   char  *killer, *killend;
@@ -778,7 +778,7 @@ deadrogue ()
  * the Rogue process, then wait for it to die before returning.
  */
 
-quitrogue (reason, gld, terminationtype)
+void quitrogue (reason, gld, terminationtype)
 char *reason;                   /* A reason string for the summary line */
 int gld;                       /* What is the final score */
 int terminationtype;            /* SAVED, FINSISHED, or DIED */
@@ -861,7 +861,7 @@ int terminationtype;            /* SAVED, FINSISHED, or DIED */
  * MLM 8/27/82
  */
 
-waitfor (mess)
+void waitfor (mess)
 char *mess;
 {
   register char *m = mess;
@@ -877,7 +877,7 @@ char *mess;
  */
 
 /* VARARGS1 */
-say (f, a1, a2, a3, a4, a5, a6, a7, a8)
+void say (f, a1, a2, a3, a4, a5, a6, a7, a8)
 char *f;
 int a1, a2, a3, a4, a5, a6, a7, a8;
 {
@@ -901,7 +901,7 @@ int a1, a2, a3, a4, a5, a6, a7, a8;
  */
 
 /* VARARGS1 */
-saynow (f, a1, a2, a3, a4, a5, a6, a7, a8)
+void saynow (f, a1, a2, a3, a4, a5, a6, a7, a8)
 char *f;
 int a1, a2, a3, a4, a5, a6, a7, a8;
 {
@@ -916,7 +916,7 @@ int a1, a2, a3, a4, a5, a6, a7, a8;
  * Be sure to interpret a snapshot command, if given.
  */
 
-waitforspace ()
+void waitforspace (void)
 {
   char ch;
 
@@ -949,7 +949,7 @@ char *nexthelp[] = {
 
 char **helpline = nexthelp;
 
-givehelp ()
+void givehelp (void)
 {
   if (*helpline == NULL) helpline = nexthelp;
 
@@ -962,7 +962,7 @@ givehelp ()
  *             curses rather than sending a form feed to Rogue. MLM
  */
 
-pauserogue ()
+void pauserogue (void)
 {
   at (23, 0);
   addstr ("--press space to continue--");
@@ -986,7 +986,7 @@ pauserogue ()
 
 # define VERMSG	"ersion "
 
-getrogver ()
+void getrogver (void)
 {
   register char *vstr = versionstr, *m = VERMSG;
   register int cnt = 2000, ch;
@@ -1028,7 +1028,7 @@ getrogver ()
  * a terminal around if the user is typing at us.
  */
 
-charsavail ()
+int charsavail (void)
 {
   long n;
   int retc;
@@ -1047,7 +1047,7 @@ charsavail ()
  * redrawscreen: Make the users screen look like the Rogue screen (screen).
  */
 
-redrawscreen ()
+void redrawscreen (void)
 {
   register int i, j;
   char ch;
@@ -1067,7 +1067,7 @@ redrawscreen ()
  * roguelog file.
  */
 
-toggleecho ()
+void toggleecho (void)
 {
   if (replaying) return;
 
@@ -1098,7 +1098,7 @@ toggleecho ()
  * clearsendqueue: Throw away queued Rogue commands.
  */
 
-clearsendqueue ()
+void clearsendqueue (void)
 {
   head = tail;
 }
@@ -1107,7 +1107,7 @@ clearsendqueue ()
  * startreplay: Open the log file to replay.
  */
 
-startreplay (logf, logfname)
+void startreplay (logf, logfname)
 FILE **logf;
 char *logfname;
 {
@@ -1121,7 +1121,7 @@ char *logfname;
  * putn: Put 'n' copies of character 'c' on file 'f'.
  */
 
-putn (c, f, n)
+void putn (c, f, n)
 register char c;
 register FILE *f;
 register int n;
@@ -1134,7 +1134,7 @@ register int n;
  * printsnap: print a snapshot to file f.
  */
 
-printsnap (f)
+void printsnap (f)
 FILE *f;
 {
   register int i, j, length;
@@ -1180,7 +1180,7 @@ FILE *f;
  * dosnapshot: add a snapshot to the SHAPSHOT file.
  */
 
-dosnapshot ()
+void dosnapshot (void)
 {
   if ((snapshot = wopen (SNAPSHOT, "a")) == NULL)
     saynow ("Cannot write file %s.", SNAPSHOT);
@@ -1197,7 +1197,7 @@ dosnapshot ()
  * formfeed not recorded in the log file.   MLM
  */
 
-clearscreen ()
+void clearscreen (void)
 {
   register int i, j;
 
@@ -1221,7 +1221,7 @@ clearscreen ()
  */
 
 char *
-statusline ()
+statusline (void)
 {
   static char staticarea[256];
   register char *s=staticarea;

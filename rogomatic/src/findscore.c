@@ -29,10 +29,12 @@
 
 # include <stdio.h>
 # include "install.h"
+#include "findscore.h"
+
 # define TEMPFL "/tmp/RscoreXXXXXX"
 # define ISDIGIT(c) ((c) >= '0' && (c) <= '9')
 
-findscore (rogue, roguename)
+int findscore (rogue, roguename)
 register char *rogue, *roguename;
 {
   register int score, best = -1;

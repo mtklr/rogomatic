@@ -38,6 +38,7 @@
 # include "types.h"
 # include "globals.h"
 # include "install.h"
+#include "scorefile.h"
 
 # define LINESIZE	2048
 # define SCORE(s,p)     (atoi (s+p))
@@ -51,7 +52,7 @@ static char lokfil[100];
  * score file and catching interrupts and things.
  */
 
-add_score (new_line, vers, ntrm)
+void add_score (new_line, vers, ntrm)
 char *new_line, *vers;
 int ntrm;
 {
@@ -103,7 +104,7 @@ int ntrm;
  * dumpscore: Print out the scoreboard.
  */
 
-dumpscore (vers)
+void dumpscore (vers)
 char *vers;
 {
   char  ch, scrfil[100], delfil[100], newfil[100], allfil[100], cmd[1024];
@@ -198,7 +199,7 @@ char *vers;
  * intrupscore: We have an interrupt, clean up and unlock the score file.
  */
 
-intrupscore ()
+int intrupscore (void)
 {
   unlock_file (lokfil);
   exit (1);

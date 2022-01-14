@@ -31,6 +31,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+#include "rgmplot.h"
+
 # define WIDTH 50
 # define AVLEN 7
 # define SCALE(n) (((n)+100)/200)
@@ -43,7 +45,7 @@ char *month[] = {
 
 int doavg = 0, cheat = 0, min = -1;
 
-main (argc, argv)
+int main (argc, argv)
 int argc;
 char *argv[];
 {
@@ -148,7 +150,7 @@ char *argv[];
 }
 
 
-getlin (s)
+int getlin (s)
 char *s;
 {
   int ch, i;
@@ -170,7 +172,7 @@ char *s;
   return (i);
 }
 
-getscore (mm, dd, yy, player, score, cheated)
+int getscore (mm, dd, yy, player, score, cheated)
 int *mm, *dd, *yy, *score;
 char *player, *cheated;
 {

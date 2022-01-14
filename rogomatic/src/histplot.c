@@ -31,6 +31,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+#include "histplot.h"
 
 # define SKIPARG	while (*++(*argv)); --(*argv)
 
@@ -42,7 +43,7 @@
 
 int cheat = 0;
 
-main (argc, argv)
+int main (argc, argv)
 int argc;
 char *argv[];
 {
@@ -182,7 +183,7 @@ char *argv[];
 
 # define LEVELPOS 47
 
-getscore (score, killer, level)
+int getscore (score, killer, level)
 int *score, *level;
 char *killer;
 {

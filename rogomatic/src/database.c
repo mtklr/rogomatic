@@ -39,6 +39,7 @@
 # include <string.h>
 # include "types.h"
 # include "globals.h"
+#include "database.h"
 
 # define TABLESIZE 101
 # define NOTFOUND  (-1)
@@ -58,7 +59,7 @@ int datalen = 0;
  *           and of item_type (both must match exactly).
  */
 
-findfake (string, item_type)
+int findfake (string, item_type)
 char  *string;
 stuff item_type;
 {
@@ -85,7 +86,7 @@ stuff item_type;
  * findentry: find the database entry for 'string'
  */
 
-findentry (string)
+int findentry (string)
 char *string;
 {
   register int i;
@@ -144,7 +145,7 @@ stuff item_type;
  * addobj: Add item to dbase.
  */
 
-addobj (codename, pack_index, item_type)
+void addobj (codename, pack_index, item_type)
 char  *codename;
 int   pack_index;
 stuff item_type;
@@ -164,7 +165,7 @@ stuff item_type;
  *         object with name 'string'.
  */
 
-useobj (string)
+void useobj (string)
 char *string;
 {
   int i = findentry (string);
@@ -180,7 +181,7 @@ char *string;
  * light).
  */
 
-infername (codename, name, item_type)
+void infername (codename, name, item_type)
 char  *codename;
 char  *name;
 stuff item_type;
@@ -259,7 +260,7 @@ char *codename;
  * dumpdatabase: Debugging, dump the database on the screen.
  */
 
-dumpdatabase ()
+void dumpdatabase (void)
 {
   register int i;
 

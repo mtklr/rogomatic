@@ -40,6 +40,7 @@
 # include <curses.h>
 # include "types.h"
 # include "globals.h"
+#include "survival.h"
 
 # define SO	  1
 # define SE	  0
@@ -62,7 +63,7 @@
  * runaway code.
  */
 
-markcycles (print)
+int markcycles (print)
 {
   short mark[1920];
   struct {short where,door,dirs;} st[1000];
@@ -148,7 +149,7 @@ markcycles (print)
  * Added: 3/7/87 by mlm
  */
 
-markchokepts ()
+void markchokepts (void)
 {
   register int *Scr, *ScrEnd, loc;
 
@@ -182,7 +183,7 @@ markchokepts ()
  * Runaway: Panic!
  */
 
-int runaway ()
+int runaway (void)
 {
   if (on (SCAREM)) {
     dwait (D_BATTLE, "Not running, on scare monster scroll!");
@@ -204,7 +205,7 @@ int runaway ()
  * Canrun: set up a move which will get us away from danger.
  */
 
-int canrun ()
+int canrun (void)
 {
   int result, oldcomp = compression;
   int runinit(), runvalue(), expruninit(), exprunvalue();
@@ -228,7 +229,7 @@ int canrun ()
  *		"The Love Song of J. Alfred Prufrock", T.S. Eliot
  */
 
-int unpin ()
+int unpin (void)
 {
   int result, oldcomp = compression;
   int unpininit (), runvalue (), expunpininit (),

@@ -31,6 +31,7 @@
 # include <curses.h>
 # include "types.h"
 # include "globals.h"
+#include "search.h"
 
 # define QSIZE (4000)
 
@@ -51,7 +52,7 @@ static int didinit=0;
  * Modified to use findmove.			5/13	MLM
  */
 
-makemove (movetype, evalinit, evaluate, reevaluate)
+int makemove (movetype, evalinit, evaluate, reevaluate)
 int movetype, (*evalinit)(), (*evaluate)(), reevaluate;
 {
   if (findmove (movetype, evalinit, evaluate, reevaluate))
@@ -65,7 +66,7 @@ int movetype, (*evalinit)(), (*evaluate)(), reevaluate;
  *           the correct state for validatemap or followmap to work.	MLM
  */
 
-findmove (movetype, evalinit, evaluate, reevaluate)
+int findmove (movetype, evalinit, evaluate, reevaluate)
 int movetype, (*evalinit)(), (*evaluate)(), reevaluate;
 {
   int result;
@@ -113,7 +114,7 @@ int movetype, (*evalinit)(), (*evaluate)(), reevaluate;
  * May 13, MLM
  */
 
-followmap (movetype)
+int followmap (movetype)
 register int movetype;
 {
   register int dir, dr, dc, r, c;
@@ -197,7 +198,7 @@ register int movetype;
  * Called only by findmove.	MLM
  */
 
-validatemap (movetype, evalinit, evaluate)
+int validatemap (movetype, evalinit, evaluate)
 int movetype, (*evalinit)(), (*evaluate)();
 {
   register int thedir, dir, r, c;
@@ -268,7 +269,7 @@ int movetype, (*evalinit)(), (*evaluate)();
  * cancelmove: Invalidate all stored moves of a particular type.
  */
 
-cancelmove (movetype)
+void cancelmove (movetype)
 int movetype;
 {
   if (movetype == mvtype) mvtype = 0;
@@ -278,7 +279,7 @@ int movetype;
  * setnewgoal: Invalidate all stored moves.
  */
 
-setnewgoal ()
+void setnewgoal (void)
 {
   mvtype = 0;
   goalr = goalc = NONE;
@@ -294,7 +295,7 @@ setnewgoal ()
  * arguments and results otherwise the same as searchto.	LGCH
  */
 
-searchfrom (row, col, evaluate, dir, trow, tcol)
+int searchfrom (row, col, evaluate, dir, trow, tcol)
 int row, col, *trow, *tcol;
 int (*evaluate)();
 char dir[24][80];
@@ -348,7 +349,7 @@ char dir[24][80];
  * attempting to hack it into a faster form. 			11/6/82 MLM
  */
 
-searchto (row, col, evaluate, dir, trow, tcol)
+int searchto (row, col, evaluate, dir, trow, tcol)
 int row, col, *trow, *tcol;
 int (*evaluate)();
 char dir[24][80];

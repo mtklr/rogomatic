@@ -23,12 +23,24 @@
 #ifndef __GETROGUETOKEN_H__
 #define __GETROGUETOKEN_H__
 
-extern int number1;
-extern int number2;
-
+int rogue_log_open (const char *filename);
+void rogue_log_close (void);
+void rogue_log_write_command (char c);
+void rogue_log_write_token (char ch);
+void open_frogue_debuglog (const char *file);
+void open_frogue_fd_debuglog (int frogue_fd_dl);
+void close_frogue_debuglog (void);
 void open_frogue (const char *file);
 void open_frogue_fd (int frogue_fd);
-void close_frogue ();
+void close_frogue (void);
+static int matchnum (char ch);
+static int fetchnum (char ch);
+static int match2 (char ch1, char ch2);
+static int match3 (char ch1, char ch2, char ch3);
+static int match4 (char ch1, char ch2, char ch3, char ch4);
+static int match5 (char ch1, char ch2, char ch3, char ch4, char ch5);
 char getroguetoken (void);
+int getoldcommand (char *s);
+int getlogtoken(void);
 
 #endif /* __GETROGUETOKEN_H__ */

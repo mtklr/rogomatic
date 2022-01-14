@@ -42,7 +42,7 @@
 # include <time.h>
 
 # include "install.h"
-
+#include "utility.h"
 
 # define TRUE 1
 # define FALSE 0
@@ -51,7 +51,7 @@
  * rogo_baudrate: Determine the baud rate of the terminal
  */
 
-rogo_baudrate ()
+int rogo_baudrate (void)
 {
   return (baudrate());
 }
@@ -60,7 +60,7 @@ rogo_baudrate ()
  * getname: get userid of player.
  */
 
-char *getname ()
+char *getname (void)
 {
   static char name[100];
   int   i;
@@ -98,7 +98,7 @@ char *fname, *mode;
  * fexists: return a boolean if the named file exists
  */
 
-fexists (fn)
+int fexists (fn)
 char *fn;
 {
   struct stat pbuf;
@@ -127,7 +127,7 @@ char *f;
 
 static void   (*hstat)(int), (*istat)(int), (*qstat)(int), (*pstat)(int);
 
-critical ()
+void critical (void)
 {
 // FIXME: when uncommented, get bus errors :(
 //  hstat = signal (SIGHUP, SIG_IGN);
@@ -140,7 +140,7 @@ critical ()
  * uncritical: Enable interrupts
  */
 
-uncritical ()
+void uncritical (void)
 {
 // FIXME: when uncommented, get bus errors :(
 //  signal (SIGHUP, hstat);
@@ -153,7 +153,7 @@ uncritical ()
  * reset_int: Set all interrupts to default
  */
 
-reset_int ()
+void reset_int (void)
 {
   signal (SIGHUP, SIG_DFL);
   signal (SIGINT, SIG_DFL);
@@ -165,7 +165,7 @@ reset_int ()
  * int_exit: Set up a function to call if we get an interrupt
  */
 
-int_exit (exitproc)
+void int_exit (exitproc)
 void (*exitproc)(int);
 {
   if (signal (SIGHUP, SIG_IGN) != SIG_IGN)  signal (SIGHUP, exitproc);
@@ -184,7 +184,7 @@ void (*exitproc)(int);
 
 # define NOWRITE 0
 
-lock_file (lokfil, maxtime)
+int lock_file (lokfil, maxtime)
 char *lokfil;
 int maxtime;
 {
@@ -225,7 +225,7 @@ start:
  * unlock_file: Unlock a lock file.
  */
 
-unlock_file (lokfil)
+void unlock_file (lokfil)
 char *lokfil;
 {
   unlink (lokfil);
@@ -237,7 +237,7 @@ char *lokfil;
  */
 
 /* VARARGS2 */
-quit (code, fmt, a1, a2, a3, a4)
+void quit (code, fmt, a1, a2, a3, a4)
 int code, a1, a2, a3, a4;
 char *fmt;
 {

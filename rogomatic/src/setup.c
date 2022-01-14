@@ -32,6 +32,7 @@
 # include <signal.h>
 # include <unistd.h>
 # include "install.h"
+#include "setup.h"
 
 # define READ    0
 # define WRITE   1
@@ -42,7 +43,7 @@
 
 int   frogue, trogue;
 
-main (argc, argv)
+int main (argc, argv)
 int   argc;
 char *argv[];
 
@@ -179,7 +180,7 @@ char *argv[];
  * given the fake value 'Z'.
  */
 
-replaylog (fname, options)
+void replaylog (fname, options)
 char *fname, *options;
 {
   execl ("player", "player", "ZZ", "0", options, fname, 0);
@@ -195,7 +196,7 @@ char *fname, *options;
  *	See if a user is an author of the program
  */
 
-author()
+int author(void)
 {
   switch (getuid()) {
     case 1337:	/* Fuzzy */
