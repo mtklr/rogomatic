@@ -52,8 +52,7 @@ static int didinit=0;
  * Modified to use findmove.			5/13	MLM
  */
 
-int makemove (movetype, evalinit, evaluate, reevaluate)
-int movetype, (*evalinit)(), (*evaluate)(), reevaluate;
+int makemove(int movetype, int (*evalinit)(), int (*evaluate)(), int reevaluate)
 {
   if (findmove (movetype, evalinit, evaluate, reevaluate))
     return (followmap (movetype));
@@ -66,8 +65,7 @@ int movetype, (*evalinit)(), (*evaluate)(), reevaluate;
  *           the correct state for validatemap or followmap to work.	MLM
  */
 
-int findmove (movetype, evalinit, evaluate, reevaluate)
-int movetype, (*evalinit)(), (*evaluate)(), reevaluate;
+int findmove(int movetype, int (*evalinit)(), int (*evaluate)(), int reevaluate)
 {
   int result;
 
@@ -114,8 +112,7 @@ int movetype, (*evalinit)(), (*evaluate)(), reevaluate;
  * May 13, MLM
  */
 
-int followmap (movetype)
-register int movetype;
+int followmap(int movetype)
 {
   register int dir, dr, dc, r, c;
   int timemode, searchit, count=1;
@@ -198,8 +195,7 @@ register int movetype;
  * Called only by findmove.	MLM
  */
 
-int validatemap (movetype, evalinit, evaluate)
-int movetype, (*evalinit)(), (*evaluate)();
+int validatemap(int movetype, int (*evalinit)(), int (*evaluate)())
 {
   register int thedir, dir, r, c;
   int val, avd, cont;
@@ -269,8 +265,7 @@ int movetype, (*evalinit)(), (*evaluate)();
  * cancelmove: Invalidate all stored moves of a particular type.
  */
 
-void cancelmove (movetype)
-int movetype;
+void cancelmove(int movetype)
 {
   if (movetype == mvtype) mvtype = 0;
 }
@@ -279,7 +274,7 @@ int movetype;
  * setnewgoal: Invalidate all stored moves.
  */
 
-void setnewgoal (void)
+void setnewgoal(void)
 {
   mvtype = 0;
   goalr = goalc = NONE;
@@ -295,10 +290,7 @@ void setnewgoal (void)
  * arguments and results otherwise the same as searchto.	LGCH
  */
 
-int searchfrom (row, col, evaluate, dir, trow, tcol)
-int row, col, *trow, *tcol;
-int (*evaluate)();
-char dir[24][80];
+int searchfrom(int row, int col, int (*evaluate)(), char dir[24][80], int *trow, int *tcol)
 {
   register int r, c, sdir, tempdir;
 
@@ -349,10 +341,7 @@ char dir[24][80];
  * attempting to hack it into a faster form. 			11/6/82 MLM
  */
 
-int searchto (row, col, evaluate, dir, trow, tcol)
-int row, col, *trow, *tcol;
-int (*evaluate)();
-char dir[24][80];
+int searchto(int row, int col, int (*evaluate)(), char dir[24][80], int *trow, int *tcol)
 {
   int searchcontinue = 10000000, type, havetarget=0, depth=0;
   register int r, c, nr, nc;

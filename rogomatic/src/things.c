@@ -37,8 +37,7 @@
  * wear: This primitive function issues a command to put on armor.
  */
 
-int wear (obj)
-int obj;
+int wear(int obj)
 {
   if (currentarmor != NONE) {
     dwait (D_FATAL, "Trying to put on a second coat of armor");
@@ -56,7 +55,7 @@ int obj;
  * takeoff: Remove the current armor.
  */
 
-int takeoff (void)
+int takeoff(void)
 {
   if (currentarmor == NONE) {
     dwait (D_ERROR, "Trying to take off armor we don't have on!");
@@ -74,8 +73,7 @@ int takeoff (void)
  * wield: This primitive function issues a command to wield a weapon.
  */
 
-int wield (obj)
-int obj;
+int wield(int obj)
 {
   if (cursedweapon) return (0);
 
@@ -125,8 +123,7 @@ int obj;
  *           removed from the game (adapted from dropjunk).
  */
 
-int destroyjunk (obj)
-int obj;
+int destroyjunk(int obj)
 {
 
   if ((obj != NONE) && (gotocorner () || throw (obj, 7)))
@@ -140,8 +137,7 @@ int obj;
  * and returns 1 if it wins and 0 if it fails.
  */
 
-int drop (obj)
-int obj;
+int drop(int obj)
 {
   /* Can't if not there, in use, or on something else or
      dropped something else already */
@@ -192,8 +188,7 @@ int obj;
  * quaff: build and send a quaff potion command.
  */
 
-int quaff (obj)
-int obj;
+int quaff(int obj)
 {
   if (inven[obj].type != potion) {
     dwait (D_ERROR, "Trying to quaff %c", LETTER (obj));
@@ -209,8 +204,7 @@ int obj;
  * reads: build and send a read scroll command.
  */
 
-int reads (obj)
-int obj;
+int reads(int obj)
 {
   if (inven[obj].type != Scroll) {
     dwait (D_ERROR, "Trying to read %c", LETTER (obj));
@@ -226,8 +220,7 @@ int obj;
  * build and send a point with wand command.
  */
 
-int point (obj, dir)
-int obj, dir;
+int point(int obj, int dir)
 {
   if (inven[obj].type != wand) {
     dwait (D_ERROR, "Trying to point %c", LETTER (obj));
@@ -248,8 +241,7 @@ int obj, dir;
  * throw: build and send a throw object command.
  */
 
-int throw (obj, dir)
-int obj, dir;
+int throw(int obj, int dir)
 {
   if (obj < 0 || obj >= invcount) {
     dwait (D_ERROR, "Trying to throw %c", LETTER (obj));
@@ -264,8 +256,7 @@ int obj, dir;
  * puton: build and send a command to put on a ring.
  */
 
-int puton (obj)
-int obj;
+int puton(int obj)
 {
   if (leftring == NONE && rightring == NONE)
     { command (T_HANDLING, "P%cl", LETTER (obj)); return (1); }
@@ -280,8 +271,7 @@ int obj;
  * removering: build a command to remove a ring. It is left in the pack.
  */
 
-int removering (obj)
-int obj;
+int removering(int obj)
 {
   if (leftring != NONE && rightring != NONE && leftring == obj)
     { command (T_HANDLING, "Rl"); return (1); }
@@ -299,7 +289,7 @@ int obj;
  * initstufflist: clear the list of objects on this level.
  */
 
-void initstufflist (void)
+void initstufflist(void)
 {
   slistlen = 0;
 }
@@ -308,9 +298,7 @@ void initstufflist (void)
  * addstuff: add an item to the list of items on this level.
  */
 
-void addstuff (ch, row, col)
-char  ch;
-int   row, col;
+void addstuff(char ch, int row, int col)
 {
   /* if (seerc ('@', row, col)) return (0); */ /* Removed MLM 10/28/83 */
   if (onrc (STUFF, row, col))
@@ -329,8 +317,7 @@ int   row, col;
  * deletestuff: remove the object from the stuff list at location (x,y)
  */
 
-void deletestuff (row, col)
-int   row, col;
+void deletestuff(int row, int col)
 {
   register int   i;
   unsetrc (STUFF, row, col);
@@ -346,7 +333,7 @@ int   row, col;
  * dumpstuff: (debugging) dump the list of objects on this level.
  */
 
-void dumpstuff (void)
+void dumpstuff(void)
 {
   register int   i;
   at (1, 0);
@@ -364,8 +351,7 @@ void dumpstuff (void)
  * display: Print a message on line 1 of the screen.
  */
 
-void display (s)
-char *s;
+void display(char *s)
 {
   saynow (s);
   msgonscreen=1;
@@ -375,8 +361,7 @@ char *s;
  * prepareident: Set nextid and afterid to proper values
  */
 
-char prepareident (obj, iscroll)
-int obj, iscroll;
+char prepareident(int obj, int iscroll)
 {
   nextid = LETTER (obj);
   afterid = (iscroll > obj || inven[iscroll].count > 1) ? nextid : nextid-1;
@@ -389,7 +374,7 @@ int obj, iscroll;
  * first item in the pack).
  */
 
-int pickident (void)
+int pickident(void)
 {
   register int obj;
 
@@ -409,8 +394,7 @@ int pickident (void)
  * unknown: Return the index of any unknown object of type otype
  */
 
-int unknown (otype)
-stuff otype;
+int unknown(stuff otype)
 {
   register int i;
 
@@ -427,8 +411,7 @@ stuff otype;
  * unidentified: Return the index of any unidentified object of type otype
  */
 
-int unidentified (otype)
-stuff otype;
+int unidentified(stuff otype)
 {
   register int i;
 
@@ -447,9 +430,7 @@ stuff otype;
  * but not 'other'.
  */
 
-int haveother (otype,other)
-stuff otype;
-int other;
+int haveother(stuff otype, int other)
 {
   register int i;
 
@@ -467,8 +448,7 @@ int other;
  * have: Return the index of any object of type otype
  */
 
-int have (otype)
-stuff otype;
+int have(stuff otype)
 {
   register int i;
 
@@ -484,9 +464,7 @@ stuff otype;
  * name which is not in use .
  */
 
-int havenamed (otype,name)
-stuff otype;
-char *name;
+int havenamed(stuff otype, char *name)
 {
   register int i;
 
@@ -504,8 +482,7 @@ char *name;
  * havewand: Return the index of a charged wand or staff
  */
 
-int havewand (name)
-char *name;
+int havewand(char *name)
 {
   register int i;
 
@@ -532,8 +509,7 @@ char *name;
  * wearing: Return the index if wearing a ring with this title
  */
 
-int wearing (name)
-char *name;
+int wearing(char *name)
 {
   register int result = NONE;
 
@@ -554,10 +530,7 @@ char *name;
  * last of something .
  */
 
-int havemult (otype, name, count)
-stuff otype;
-char *name;
-int   count;
+int havemult(stuff otype, char *name, int count)
 {
   register int i, num=count;
 
@@ -576,7 +549,7 @@ int   count;
  * (used to throw away stuff at end)
  */
 
-int haveminus (void)
+int haveminus(void)
 {
   register int i;
 
@@ -606,7 +579,7 @@ int haveminus (void)
  *   and if all those fail return NONE
  */
 
-int haveuseless (void)
+int haveuseless(void)
 {
   register int i;
 
@@ -663,8 +636,7 @@ int haveuseless (void)
  * willrust: return true if a suit of armor can rust
  */
 
-int willrust (obj)
-int obj;
+int willrust(int obj)
 {
   return (! (protected ||
              armorclass (obj) > 8 || armorclass (obj) < -5 ||
@@ -676,8 +648,7 @@ int obj;
  * wielding: return true if we are wielding an object of type 'otype'
  */
 
-int wielding (otype)
-stuff otype;
+int wielding(stuff otype)
 {
   return (inven[currentweapon].type == otype);
 }
@@ -686,21 +657,21 @@ stuff otype;
  * hungry: return true if we are hungry, weak, or fainting
  */
 
-int hungry (void)
+int hungry(void)
 { return (*Ms == 'H' || *Ms == 'W' || *Ms == 'F'); }
 
 /*
  * weak: return true if we are weak or fainting
  */
 
-int weak (void)
+int weak(void)
 { return (*Ms == 'W' || *Ms == 'F'); }
 
 /*
  * fainting: return true if we are fainting
  */
 
-int fainting (void)
+int fainting(void)
 { return (*Ms == 'F'); }
 
 /*
@@ -709,8 +680,7 @@ int fainting (void)
  * routine returns true less often).
  */
 
-int havefood (n)
-int n;
+int havefood(int n)
 {
   int remaining, foodest, desired;
 

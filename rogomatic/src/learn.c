@@ -56,7 +56,7 @@ static FILE *glog=NULL;
  * Start a new gene pool
  */
 
-void initpool (k, m)
+void initpool(int k, int m)
 {
   inittime = time (0);
 
@@ -70,8 +70,7 @@ void initpool (k, m)
  * Summarize the current gene pool
  */
 
-void analyzepool (full)
-int full;
+void analyzepool(int full)
 {
   register int g;
 
@@ -123,8 +122,7 @@ int full;
  * setknobs: Read gene pool, pick genotype, and set knobs accordingly.
  */
 
-void setknobs (newid, knb, best, avg)
-int *newid, *knb, *best, *avg;
+void setknobs(int *newid, int *knb, int *best, int *avg)
 {
   register int i, g;
 
@@ -144,8 +142,7 @@ int *newid, *knb, *best, *avg;
  * evalknobs: Add a data point to the gene pool
  */
 
-void evalknobs (gid, score, level)
-int gid, score, level;
+void evalknobs(int gid, int score, int level)
 {
   register int g;
 
@@ -177,8 +174,7 @@ int gid, score, level;
  * openlog: Open the gene log file
  */
 
-FILE *rogo_openlog (genelog)
-register char *genelog;
+FILE *rogo_openlog(char *genelog)
 {
   glog = wopen (genelog, "a");
   return (glog);
@@ -188,7 +184,7 @@ register char *genelog;
  * closelog: Close the log file
  */
 
-void rogo_closelog (void)
+void rogo_closelog(void)
 {
   if (glog) fclose (glog);
 }
@@ -197,7 +193,7 @@ void rogo_closelog (void)
  * pickgenotype: Run one trial, record performance, and do some learning
  */
 
-int pickgenotype (void)
+int pickgenotype(void)
 {
   register int youth, father, mother, new;
 
@@ -261,8 +257,7 @@ int pickgenotype (void)
  * if the file exists and cannot be read.
  */
 
-int readgenes (genepool)
-register char *genepool;
+int readgenes(char *genepool)
 {
   char buf[BUFSIZ];
   register char *b;
@@ -306,9 +301,7 @@ register char *genepool;
  * structure, fill the structure according to the string.
  */
 
-static void parsegene (buf, gene)
-register char *buf;
-register genotype *gene;
+static void parsegene(char *buf, genotype *gene)
 {
   register int i;
 
@@ -338,8 +331,7 @@ register genotype *gene;
  * writegenes: Write the gene pool 'genes' out to file 'genepool'
  */
 
-void writegenes (genepool)
-register char *genepool;
+void writegenes(char *genepool)
 {
   register FILE *gfil;
   register int g;
@@ -368,9 +360,7 @@ register char *genepool;
  * Write out one line representing the gene.
  */
 
-static void writegene (gfil, g)
-register FILE *gfil;
-register genotype *g;
+static void writegene(FILE *gfil, genotype *g)
 {
   register int i;
 
@@ -398,8 +388,7 @@ register genotype *g;
  * initgene: Allocate a new genotype structure, set everything to 0.
  */
 
-static void initgene (gene)
-register genotype *gene;
+static void initgene(genotype *gene)
 {
   register int i;
 
@@ -418,8 +407,7 @@ register genotype *gene;
  * compgene: Compare two genotypes in terms of score.
  */
 
-static int compgene (a, b)
-genotype **a, **b;
+static int compgene(genotype **a, genotype **b)
 {
   register int result;
 
@@ -434,9 +422,7 @@ genotype **a, **b;
  * summgene: Summarize a single genotype
  */
 
-static void summgene (f, gene)
-register FILE *f;
-register genotype *gene;
+static void summgene(FILE *f, genotype *gene)
 {
   fprintf (f, "%3d age %2d, created %4d, ",
            gene->id, TRIALS(gene), gene->creation);
@@ -449,9 +435,7 @@ register genotype *gene;
  * Birth: Summarize Record the birth of a genotype.
  */
 
-static void birth (f, gene)
-register FILE *f;
-register genotype *gene;
+static void birth(FILE *f, genotype *gene)
 {
   if (!glog) return;
 
@@ -471,9 +455,7 @@ register genotype *gene;
  * printdna: Print the genotype of a gene
  */
 
-static void printdna (f, gene)
-FILE *f;
-register genotype *gene;
+static void printdna(FILE *f, genotype *gene)
 {
   register int i;
 
@@ -492,8 +474,7 @@ register genotype *gene;
  * cross: Cross two genotypes producing a new genotype
  */
 
-static void cross (father, mother, new)
-register int father, mother, new;
+static void cross(int father, int mother, int new)
 {
   register int cpoint, i;
 
@@ -532,8 +513,7 @@ register int father, mother, new;
  * mutate: mutate a genes producing a new gene
  */
 
-static void mutate (father, new)
-register int father, new;
+static void mutate(int father, int new)
 {
   register int i;
 
@@ -570,8 +550,7 @@ register int father, new;
  * shift: shift a gene producing a new gene
  */
 
-static void shift (father, new)
-register int father, new;
+static void shift(int father, int new)
 {
   register int i, offset;
 
@@ -605,8 +584,7 @@ register int father, new;
  * randompool: Initialize the pool to a random starting point
  */
 
-static void randompool (m)
-register int m;
+static void randompool(int m)
 {
   register int i, g;
 
@@ -631,8 +609,7 @@ register int m;
  * selectgene: Select a random gene, weighted by mean score.
  */
 
-static int selectgene (e1, e2)
-register int e1, e2;
+static int selectgene(int e1, int e2)
 {
   register int total=0;
   register int g;
@@ -667,8 +644,7 @@ register int e1, e2;
  * unique: Return false if gene is an exact copy of another gene.
  */
 
-static int unique (new)
-register int new;
+static int unique(int new)
 {
   register int g, i, delta, sumsquares;
 
@@ -694,7 +670,7 @@ register int new;
  * greater for older genotypes.
  */
 
-static int untested (void)
+static int untested(void)
 {
   register int g, y= -1, trials=1e9, newtrials, count=length;
 
@@ -714,7 +690,7 @@ static int untested (void)
  * youngest: Return the index of the youngest genotype
  */
 
-static int youngest (void)
+static int youngest(void)
 {
   register int g, y=0, trials=1e9, newtrials, count=length;
 
@@ -731,8 +707,7 @@ static int youngest (void)
  * makeunique: Mutate a genotype until it is unique
  */
 
-static void makeunique (new)
-register int new;
+static void makeunique(int new)
 {
   register int i;
 
@@ -747,8 +722,7 @@ register int new;
  * triangle: Return a non-zero triangularly distributed number from -n to n.
  */
 
-static int triangle (n)
-register int n;
+static int triangle(int n)
 {
   register int val;
 
@@ -765,8 +739,7 @@ register int n;
  * only consider genotypes dominated by other genotypes.
  */
 
-static int badgene (e1, e2)
-register int e1, e2;
+static int badgene(int e1, int e2)
 {
   register int g, worst, trials;
   double worstval, bestval, avg, dev, value;

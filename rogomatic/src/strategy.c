@@ -53,7 +53,7 @@ extern int genericinit(), sleepvalue();	/* From explore.c */
  * from the user).
  */
 
-int   strategize (void)
+int strategize(void)
 {
   dwait (D_CONTROL, "Strategizing...");
 
@@ -222,7 +222,7 @@ int   strategize (void)
  *                 with this name.
  */
 
-int callitpending (void)
+int callitpending(void)
 {
 
   if (pending_call_letter != ' ') {
@@ -240,7 +240,7 @@ int callitpending (void)
  * weapon already in hand.
  */
 
-int   fightmonster (void)
+int fightmonster(void)
 {
   register int i, rr, cc, mdir = NONE, mbad  = NONE, danger = 0;
   int  melee = 0, adjacent = 0, alertmonster = 0;
@@ -367,7 +367,7 @@ int   fightmonster (void)
  * charging after him. Special case for sitting on a door.
  */
 
-int   tomonster (void)
+int tomonster(void)
 {
   register int i, dist, rr, cc, mdir = NONE, mbad = NONE;
   int   closest, which, danger = 0, adj = 0, alert = 0;
@@ -462,8 +462,7 @@ int   tomonster (void)
  * Some monsters are included here because we want to shoot arrows at them.
  */
 
-int wanttowake(c)
-char c;
+int wanttowake(char c)
 {
   char *monster = monname (c);
 
@@ -497,7 +496,7 @@ char c;
  *		Also rest if we are critically weak and have some food.
  */
 
-int aftermelee (void)
+int aftermelee(void)
 {
   if (foughtmonster > 0) {
     lyinginwait = 1;
@@ -526,15 +525,17 @@ int aftermelee (void)
 # define die_in(n)	(Hp/n < danger*50/(100-k_run))
 # define live_for(n)	(! die_in(n))
 
-int battlestations (m, monster, mbad, danger, mdir, mdist, alert, adj)
-int m;			/* Monster index */
-char *monster;          /* What is it? */
-int mbad;               /* How bad is it? */
-int danger;             /* How many points damage per round? */
-int mdir;               /* Which direction (clear line of sight)? */
-int mdist;              /* How many turns until battle? */
-int alert;              /* Is he known to be awake? */
-int adj;		/* How many attackers are there? */
+/*
+ * m;		Monster index
+ * *monster;	What is it?
+ * mbad;	How bad is it?
+ * danger;	How many points damage per round?
+ * mdir;	Which direction (clear line of sight)?
+ * mdist;	How many turns until battle?
+ * alert;	Is he known to be awake?
+ * adj;		How many attackers are there?
+ */
+int battlestations(int m, char *monster, int mbad, int danger, int mdir, int mdist, int alert, int adj)
 {
   int obj, turns;
   static int stepback = 0;
@@ -999,7 +1000,7 @@ int adj;		/* How many attackers are there? */
  * try to drop our least useful item. If pack is still full, fail.
  */
 
-int tostuff (void)
+int tostuff(void)
 {
   register int i, closest, dist, w, worst, worstval;
   int   which, wrow, wcol;
@@ -1076,7 +1077,7 @@ int tostuff (void)
  * fightinvisible: being hounded by unseen beasties, try something clever.
  */
 
-int fightinvisible (void)
+int fightinvisible(void)
 {
   char cmd[20]; register int dir, liberties = 0, lastdir, obj;
 
@@ -1167,7 +1168,7 @@ int fightinvisible (void)
  * Note: some monsters are to wimpy archery, and some too mean.     MLM
  */
 
-int archery (void)
+int archery(void)
 {
   register int m, mtk;
   char *monster;
@@ -1219,7 +1220,7 @@ int archery (void)
  * Bug:		Sometimes goes the long way around and doesnt see things.
  */
 
-int pickupafter (void)
+int pickupafter(void)
 {
   /* If no goal */
   if (agoalr < 0 || agoalc < 0)
@@ -1242,7 +1243,7 @@ int pickupafter (void)
  *           removed from the game.
  */
 
-int dropjunk (void)
+int dropjunk(void)
 {
   int obj;
 
@@ -1263,7 +1264,7 @@ int dropjunk (void)
  * Assumes a 10 percent death tax.
  */
 
-int quitforhonors (void)
+int quitforhonors(void)
 {
   if (Gold > quitat && (Gold-Gold/10) <= quitat) {
     quitrogue ("quit (scoreboard)", Gold, 0);

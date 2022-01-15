@@ -54,8 +54,7 @@ int   objval[] = {
   /* none */         0
 };
 
-int worth (obj)
-int obj;
+int worth(int obj)
 {
   int value, w;
 
@@ -148,8 +147,7 @@ int obj;
  * object is of no use. Used by worth to set value to 0.
  */
 
-int useless (i)
-int i;
+int useless(int i)
 {
   /* Not useless if we are using it */
   if (itemis (i, INUSE))

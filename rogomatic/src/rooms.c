@@ -44,7 +44,7 @@ int levelmap[9];
  * newlevel: Clear old data structures and set up for a new level.
  */
 
-void newlevel (void)
+void newlevel(void)
 {
   int   i, j;
 
@@ -119,7 +119,7 @@ static struct {int top,bot,left,right;} bounds[9]=
   /*8*/	 {16, 22,  53,  79}
 };
 
-void markmissingrooms (void)
+void markmissingrooms(void)
 {
   register int rm,i,j;
 
@@ -145,8 +145,7 @@ nextroom: ;
  *		room 6 | room 7 | room 8
  */
 
-int whichroom (r,c)
-register int r,c;
+int whichroom(int r, int c)
 {
   register int rm;
 
@@ -162,8 +161,7 @@ register int r,c;
  * nametrap: look around for a trap and set its type.
  */
 
-void nametrap (traptype, standingonit)
-int traptype, standingonit;
+void nametrap(int traptype, int standingonit)
 {
   register int i, r, c, tdir = NONE, monsteradj = 0;
 
@@ -219,8 +217,7 @@ int traptype, standingonit;
  * findstairs: Look for STAIRS somewhere and set the stairs to that square.
  */
 
-void findstairs (notr, notc)
-int notr, notc;
+void findstairs(int notr, int notc)
 {
   register int r, c;
 
@@ -237,8 +234,7 @@ int notr, notc;
  * downright: Find a square from which we cannot go down or right.
  */
 
-int downright (drow, dcol)
-int *drow, *dcol;
+int downright(int *drow, int *dcol)
 {
   register int i=atrow, j=atcol;
 
@@ -255,7 +251,7 @@ int *drow, *dcol;
  * Try to light up the situation
  */
 
-int lightroom (void)
+int lightroom(void)
 {
   int obj;
 
@@ -278,7 +274,7 @@ int lightroom (void)
  * darkroom: Are we in a dark room?
  */
 
-int darkroom (void)
+int darkroom(void)
 {
   register int dir, dir2, drow, dcol;
 
@@ -307,7 +303,7 @@ int darkroom (void)
 
 static int curt, curb, curl, curr;
 
-void currentrectangle (void )
+void currentrectangle(void)
 {
   int   flags = fT + fB + fL + fR, r, c, any = 1;
 
@@ -412,7 +408,7 @@ void clearcurrect(void)
  * Bug if teleported horiz or vert. Infers cango
  */
 
-void updateat (void)
+void updateat(void)
 {
   register int dr = atrow - atrow0, dc = atcol - atcol0;
   register int i, r, c;
@@ -499,9 +495,7 @@ void updateat (void)
  * updatepos: Something changed on the screen, update the screen map
  */
 
-void updatepos (ch, row, col)
-register char  ch;
-register int row, col;
+void updatepos(char ch, int row, int col)
 {
   char  oldch = screen[row][col], *monster, functionchar();
   int   seenbefore = onrc (EVERCLR, row, col);
@@ -707,7 +701,7 @@ register int row, col;
  * avoid doing silly things.
  */
 
-void teleport (void)
+void teleport(void)
 {
   register int r = atrow0, c = atcol0;
 
@@ -766,8 +760,7 @@ void mapinfer(void)
  * markexplored: If we are in a room, mark the location as explored.
  */
 
-void markexplored (row, col)
-int row, col;
+void markexplored(int row, int col)
 {
   register int rm = whichroom (row, col);
 
@@ -783,8 +776,7 @@ int row, col;
  * unmarkexplored: If we are in a room, unmark the location as explored.
  */
 
-void unmarkexplored (row, col)
-int row, col;
+void unmarkexplored(int row, int col)
 {
   register int rm = whichroom (row, col);
 
@@ -795,8 +787,7 @@ int row, col;
  * isexplored: If we are in a room, return true if it has been explored.
  */
 
-int isexplored (row, col)
-int row, col;
+int isexplored(int row, int col)
 {
   register int rm = whichroom (row, col);
 
@@ -807,8 +798,7 @@ int row, col;
  * haveexplored: Have we explored n rooms?
  */
 
-int haveexplored (n)
-int n;
+int haveexplored(int n)
 {
   register int rm, count = 0;
 
@@ -823,7 +813,7 @@ int n;
  * printexplored: List the explored rooms
  */
 
-void printexplored (void)
+void printexplored(void)
 {
   register int rm;
 
@@ -854,8 +844,7 @@ void printexplored (void)
  * space.
  */
 
-void inferhall (r, c)
-register int r, c;
+void inferhall(int r, int c)
 {
   register int i, j, k;
 
@@ -957,8 +946,7 @@ register int r, c;
   dwait (D_SEARCH | D_CONTROL, "Hall search done.");
 }
 
-void connectdoors (r1, c1, r2, c2)
-register int r1, c1, r2, c2;
+void connectdoors(int r1, int c1, int r2, int c2)
 {
   register int r, c;
   int endr = max (r1, r2), endc = max (c1, c2);
@@ -982,8 +970,7 @@ register int r1, c1, r2, c2;
  * September 25, 1983	Michael L. Mauldin
  */
 
-int canbedoor (deadr, deadc)
-int deadr, deadc;
+int canbedoor(int deadr, int deadc)
 {
   register int r, c, dr, dc, k, count;
 
@@ -1007,8 +994,7 @@ int deadr, deadc;
  * mazedoor: Return true if this could be a door to a maze
  */
 
-int mazedoor (row, col)
-int row, col;
+int mazedoor(int row, int col)
 {
   register int r=row, c=col, dr, dc, k=0, dir = NONE;
 
@@ -1047,8 +1033,7 @@ int row, col;
  * nextto:  Is there a square type orthogonally adjacent?
  */
 
-int nextto (type,r,c)
-register int type, r, c;
+int nextto(int type, int r, int c)
 {
   register int result;
 
@@ -1071,8 +1056,7 @@ register int type, r, c;
  * Fuzzy:	Replaces knowisdoor (), October 17, 1983.
  */
 
-int nexttowall (r,c)
-register int r, c;
+int nexttowall(int r, int c)
 {
   return (onrc (DOOR | WALL, r-1, c) == WALL ||
           onrc (DOOR | WALL, r+1, c) == WALL ||
@@ -1084,7 +1068,7 @@ register int r, c;
  * dumpmazedoor: Show all squares for which mazedoor(r,c) is true.
  */
 
-void dumpmazedoor (void)
+void dumpmazedoor(void)
 {
   register int r, c;
 
@@ -1103,7 +1087,7 @@ void dumpmazedoor (void)
  * foundnew: Reactivate rules which new new squares to work
  */
 
-void foundnew (void)
+void foundnew(void)
 {
   new_mark = new_findroom = new_search = new_stairs = 1;
   reusepsd = teleported = 0;

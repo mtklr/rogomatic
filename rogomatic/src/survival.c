@@ -63,7 +63,7 @@
  * runaway code.
  */
 
-int markcycles (print)
+int markcycles(print)
 {
   short mark[1920];
   struct {short where,door,dirs;} st[1000];
@@ -149,7 +149,7 @@ int markcycles (print)
  * Added: 3/7/87 by mlm
  */
 
-void markchokepts (void)
+void markchokepts(void)
 {
   register int *Scr, *ScrEnd, loc;
 
@@ -183,7 +183,7 @@ void markchokepts (void)
  * Runaway: Panic!
  */
 
-int runaway (void)
+int runaway(void)
 {
   if (on (SCAREM)) {
     dwait (D_BATTLE, "Not running, on scare monster scroll!");
@@ -205,7 +205,7 @@ int runaway (void)
  * Canrun: set up a move which will get us away from danger.
  */
 
-int canrun (void)
+int canrun(void)
 {
   int result, oldcomp = compression;
   int runinit(), runvalue(), expruninit(), exprunvalue();
@@ -229,7 +229,7 @@ int canrun (void)
  *		"The Love Song of J. Alfred Prufrock", T.S. Eliot
  */
 
-int unpin (void)
+int unpin(void)
 {
   int result, oldcomp = compression;
   int unpininit (), runvalue (), expunpininit (),
@@ -263,8 +263,7 @@ int unpin (void)
  *             door.
  */
 
-int backtodoor (dist)
-int dist;
+int backtodoor(int dist)
 {
   int rundoorinit(), rundoorvalue();
   static int lastcall= -10, stillcount=0, notmoving=0, closest=99;

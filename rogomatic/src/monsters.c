@@ -41,8 +41,7 @@
  * monname: Return a monster name given letter '@ABC..Z'
  */
 
-char *monname (m)
-char m;
+char *monname(char m)
 {
   return (monhist[monindex[m-'A'+1]].m_name);
 }
@@ -52,9 +51,7 @@ char m;
  * list which are in the same square.
  */
 
-void addmonster (ch, r, c, quiescence)
-char  ch;
-int   r, c, quiescence;
+void addmonster(char ch, int r, int c, int quiescence)
 {
   char *monster = monname (ch);
 
@@ -83,8 +80,7 @@ int   r, c, quiescence;
  * deletemonster: remove a monster from the list at location (row, col).
  */
 
-void deletemonster (r, c)
-int   r, c;
+void deletemonster(int r, int c)
 {
   int   i;
 
@@ -100,7 +96,7 @@ int   r, c;
  * dumpmonsters: (debugging) dump the list of monsters on this level.
  */
 
-void dumpmonster (void)
+void dumpmonster(void)
 {
   int   i;
   at (1, 0);
@@ -124,7 +120,7 @@ void dumpmonster (void)
  * it sat still for a turn and must be asleep.
  */
 
-void sleepmonster (void)
+void sleepmonster(void)
 {
   register int m;
 
@@ -142,7 +138,7 @@ void sleepmonster (void)
  * holdmonsters: Mark all close monsters as being held.
  */
 
-void holdmonsters (void)
+void holdmonsters(void)
 {
   register int m;
 
@@ -167,8 +163,7 @@ void holdmonsters (void)
  * dir = -m  means wake up all adjacent monsters of type m.
  */
 
-void wakemonster (dir)
-int dir;
+void wakemonster(int dir)
 {
   register int m;
 
@@ -191,8 +186,7 @@ int dir;
  * seemonster: Return true if a particular monster is on the monster list.
  */
 
-int seemonster (monster)
-char *monster;
+int seemonster(char *monster)
 {
   register int m;
 
@@ -208,8 +202,7 @@ char *monster;
  * monster on the monster list.		DR UTexas 26 Jan 84
  */
 
-int seeawakemonster (monster)
-char *monster;
+int seeawakemonster(char *monster)
 {
   register int m;
 
@@ -226,8 +219,7 @@ char *monster;
  *             is used for unknown monsters (e.g. "it").
  */
 
-int monsternum (monster)
-char *monster;
+int monsternum(char *monster)
 {
   int m, mh;
 
@@ -243,7 +235,7 @@ char *monster;
  * each monster.
  */
 
-void newmonsterlevel ()
+void newmonsterlevel(void)
 {
   register int m;
   register char *monster;
@@ -265,8 +257,7 @@ void newmonsterlevel ()
  * isholder: Return true if the monster can hold us.
  */
 
-int isholder (monster)
-register char *monster;
+int isholder(char *monster)
 {
   return (streq (monster, "venus flytrap") || streq (monster, "violet fungi"));
 }

@@ -43,9 +43,7 @@
 
 int cheat = 0;
 
-int main (argc, argv)
-int argc;
-char *argv[];
+int main (int argc, char *argv[])
 {
   int score = 0, maxfreq = 0, lowscore = 0, min = 200, killnum = 0;
   int bucket[NUMBUK], killed[NUMBUK][NOMON], level = 0, dolev = 0;
@@ -183,9 +181,7 @@ char *argv[];
 
 # define LEVELPOS 47
 
-int getscore (score, killer, level)
-int *score, *level;
-char *killer;
+int getscore(int *score, char *killer, int *level)
 {
   int dd, yy;
   char line[128], mmstr[8], player[16], cheated=' ';

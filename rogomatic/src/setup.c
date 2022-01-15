@@ -43,10 +43,7 @@
 
 int   frogue, trogue;
 
-int main (argc, argv)
-int   argc;
-char *argv[];
-
+int main(int argc, char *argv[])
 {
   int   ptc[2], ctp[2];
   int   child, score = 0, oldgame = 0;
@@ -180,8 +177,7 @@ char *argv[];
  * given the fake value 'Z'.
  */
 
-void replaylog (fname, options)
-char *fname, *options;
+void replaylog(char *fname, char *options)
 {
   execl ("player", "player", "ZZ", "0", options, fname, 0);
 # ifdef PLAYER

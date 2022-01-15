@@ -51,7 +51,7 @@
  * rogo_baudrate: Determine the baud rate of the terminal
  */
 
-int rogo_baudrate (void)
+int rogo_baudrate(void)
 {
   return (baudrate());
 }
@@ -60,7 +60,7 @@ int rogo_baudrate (void)
  * getname: get userid of player.
  */
 
-char *getname (void)
+char *getname(void)
 {
   static char name[100];
   int   i;
@@ -81,8 +81,7 @@ char *getname (void)
  * wopen: Open a file for world access.
  */
 
-FILE *wopen(fname, mode)
-char *fname, *mode;
+FILE *wopen(char *fname, char *mode)
 {
   int oldmask;
   FILE *newlog;
@@ -98,8 +97,7 @@ char *fname, *mode;
  * fexists: return a boolean if the named file exists
  */
 
-int fexists (fn)
-char *fn;
+int fexists(char *fn)
 {
   struct stat pbuf;
 
@@ -110,8 +108,7 @@ char *fn;
  * filelength: Do a stat and return the length of a file.
  */
 
-int filelength (f)
-char *f;
+int filelength(char *f)
 {
   struct stat sbuf;
 
@@ -127,7 +124,7 @@ char *f;
 
 static void   (*hstat)(int), (*istat)(int), (*qstat)(int), (*pstat)(int);
 
-void critical (void)
+void critical(void)
 {
 // FIXME: when uncommented, get bus errors :(
 //  hstat = signal (SIGHUP, SIG_IGN);
@@ -140,7 +137,7 @@ void critical (void)
  * uncritical: Enable interrupts
  */
 
-void uncritical (void)
+void uncritical(void)
 {
 // FIXME: when uncommented, get bus errors :(
 //  signal (SIGHUP, hstat);
@@ -153,7 +150,7 @@ void uncritical (void)
  * reset_int: Set all interrupts to default
  */
 
-void reset_int (void)
+void reset_int(void)
 {
   signal (SIGHUP, SIG_DFL);
   signal (SIGINT, SIG_DFL);
@@ -165,8 +162,7 @@ void reset_int (void)
  * int_exit: Set up a function to call if we get an interrupt
  */
 
-void int_exit (exitproc)
-void (*exitproc)(int);
+void int_exit(void (*exitproc)(int))
 {
   if (signal (SIGHUP, SIG_IGN) != SIG_IGN)  signal (SIGHUP, exitproc);
 
@@ -184,9 +180,7 @@ void (*exitproc)(int);
 
 # define NOWRITE 0
 
-int lock_file (lokfil, maxtime)
-char *lokfil;
-int maxtime;
+int lock_file(const char *lokfil, int maxtime)
 {
 
   int try;
@@ -225,8 +219,7 @@ start:
  * unlock_file: Unlock a lock file.
  */
 
-void unlock_file (lokfil)
-char *lokfil;
+void unlock_file(const char *lokfil)
 {
   unlink (lokfil);
 }
@@ -237,9 +230,7 @@ char *lokfil;
  */
 
 /* VARARGS2 */
-void quit (code, fmt, a1, a2, a3, a4)
-int code, a1, a2, a3, a4;
-char *fmt;
+void quit(int code, char *fmt, int a1, int a2, int a3, int a4)
 {
   fprintf (stderr, fmt, a1, a2, a3, a4);
   exit (code);
@@ -264,8 +255,7 @@ char *fmt;
  *  Originally from klg (Ken Greer) on IUS/SUS UNIX
  */
 
-int stlmatch (big, small)
-char *small, *big;
+int stlmatch(char *big, char *small)
 {
   register char *s, *b;
   s = small;
@@ -326,8 +316,7 @@ static int  findenv ();		/* look for a name in the env. */
 static int  newenv ();		/* copy env. from stack to heap */
 static int  moreenv ();		/* incr. size of env. */
 
-int  rogo_putenv (name, value)
-char *name, *value;
+int rogo_putenv(char *name, char *value)
 {
   register int  i, j;
   register char *p;
@@ -387,8 +376,7 @@ char *name, *value;
   return (0);
 }
 
-static int  findenv (name)
-char *name;
+static int findenv(char *name)
 {
   register char *namechar, *envchar;
   register int  i, found;
@@ -410,7 +398,7 @@ char *name;
   return (found ? i - 1 : -1);
 }
 
-static int  newenv ()
+static int newenv(void)
 {
   register char **env, *elem;
   register int  i, esize;
@@ -439,7 +427,7 @@ static int  newenv ()
   return (0);
 }
 
-static int  moreenv ()
+static int moreenv(void)
 {
   register int  esize;
   register char **env;

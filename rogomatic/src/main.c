@@ -106,6 +106,9 @@
 # include "termtokens.h"
 # include "install.h"
 
+void onintr(int sig);
+void startlesson(void);
+void endlesson(void);
 
 /* FIXME: get rid of this prototype in the correct way */
 FILE *rogo_openlog (char *genelog);
@@ -343,9 +346,7 @@ jmp_buf  commandtop;
  * Main program
  */
 
-main (argc, argv)
-int   argc;
-char *argv[];
+int main(int argc, char *argv[])
 {
   char  ch, *s, *getenv(), *statusline(), msg[128];
   int startingup = 1;
@@ -802,7 +803,7 @@ char *argv[];
  * and reset some goal variables.
  */
 
-void onintr (int sig)
+void onintr(int sig)
 {
   sendnow ("n\033");            /* Tell Rogue we don't want to quit */
   refresh ();                   /* Clear terminal output */
@@ -819,7 +820,7 @@ void onintr (int sig)
  * test this game, and set the parameters (or "knobs") accordingly.
  */
 
-startlesson ()
+void startlesson(void)
 {
   int tmpseed = 0;
 
@@ -873,7 +874,7 @@ startlesson ()
  * evaluate the performance of this genotype and save in genepool.
  */
 
-endlesson ()
+void endlesson(void)
 {
   if (geneid > 0 &&
       (stlmatch (termination, "perditus") ||

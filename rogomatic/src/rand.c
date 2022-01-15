@@ -69,8 +69,7 @@
 # define AUXLEN 97
 static int seed1=872978, seed2=518652, seed3=226543, auxtab[AUXLEN];
 
-void rogo_srand (seed)
-int seed;
+void rogo_srand(int seed)
 {
   register int i;
 
@@ -85,7 +84,7 @@ int seed;
     auxtab[i] = X;
 }
 
-int rogo_rand (void)
+int rogo_rand(void)
 {
   register int j, result;
 
@@ -95,8 +94,7 @@ int rogo_rand (void)
   return (result);
 }
 
-int rogo_randint (max)
-register int max;
+int rogo_randint(int max)
 {
   register int j, result;
 

@@ -71,7 +71,7 @@ static char *result[] = { res1, res2, res3, res4, res5 };
  * multiple messages.
  */
 
-void terpmes (void)
+void terpmes(void)
 {
   char mess[128]; char topline[128];
   register char *m, *mend, *s, *t;
@@ -154,8 +154,7 @@ void terpmes (void)
  * or call functions.
  */
 
-void parsemsg (mess, mend)
-register char *mess, *mend;
+void parsemsg(char *mess, char *mend)
 {
   int unknown = 0;
 
@@ -706,8 +705,7 @@ register char *mess, *mend;
  * characters matched by the 'i'th *.
  */
 
-int smatch (dat, pat, res)
-register char *dat, *pat, **res;
+int smatch(char *dat, char *pat, char **res)
 {
   register char *star = 0, *starend, *resp;
   int nres = 0;
@@ -745,8 +743,7 @@ register char *dat, *pat, **res;
  * readident: we have read an identify scroll.
  */
 
-void readident (name)
-char *name;
+void readident(char *name)
 {
   int obj; char id = '*';	/* Default is "* for list" */
   stuff item_type = none;
@@ -846,7 +843,7 @@ char *name;
  * rampage: read a scroll of genocide.
  */
 
-void rampage (void)
+void rampage(void)
 {
   char monc;
 
@@ -890,7 +887,7 @@ void rampage (void)
  * Good rings we have identified, so don't bother marking rings.
  */
 
-void curseditem (void)
+void curseditem(void)
 {
   usesynch = 0;    /* Force a reset inventory */
 
@@ -922,9 +919,7 @@ void curseditem (void)
  * base, and then zap that name into all of the same objects
  */
 
-void infer (objname, item_type)
-char *objname;
-stuff item_type;
+void infer(char *objname, stuff item_type)
 {
   register int i;
 
@@ -945,8 +940,7 @@ stuff item_type;
  * Killed: called whenever we defeat a monster.
  */
 
-void killed (monster)
-register char *monster;
+void killed(char *monster)
 {
   register int m = 0, mh = 0;
 
@@ -1002,8 +996,7 @@ register char *monster;
  * washit: Record being hit by a monster.
  */
 
-void washit (monster)
-char *monster;
+void washit(char *monster)
 {
   register int mh = 0, m = 0;
 
@@ -1031,8 +1024,7 @@ char *monster;
  * wasmissed: Record being missed by a monster.
  */
 
-void wasmissed (monster)
-char *monster;
+void wasmissed(char *monster)
 {
   register int mh = 0, m = 0;
 
@@ -1057,7 +1049,7 @@ char *monster;
  * didhit: Record hitting a monster.
  */
 
-void didhit (void)
+void didhit(void)
 {
   register int m = 0;
 
@@ -1075,7 +1067,7 @@ void didhit (void)
  * didmiss: Record missing a monster.
  */
 
-void didmiss (void)
+void didmiss(void)
 {
   register int m = 0;
 
@@ -1093,8 +1085,7 @@ void didmiss (void)
  * mshit: Record hitting a monster with a missile.
  */
 
-void mshit (monster)
-char *monster;
+void mshit(char *monster)
 {
   register int mh;
 
@@ -1117,8 +1108,7 @@ char *monster;
  * msmiss: Record missing a monster with a missile.
  */
 
-void msmiss (monster)
-char *monster;
+void msmiss(char *monster)
 {
   register int mh;
 
@@ -1143,8 +1133,7 @@ char *monster;
  *            statistics about the amount of gold picked up.
  */
 
-void countgold (amount)
-register char *amount;
+void countgold(char *amount)
 {
   int pot;
 
@@ -1156,9 +1145,7 @@ register char *amount;
  * Summary: print a summary of the game.
  */
 
-void summary (f, sep)
-FILE *f;
-char sep;
+void summary(FILE *f, char sep)
 {
   register int m;
   char s[1024];
@@ -1191,7 +1178,7 @@ char sep;
  * versiondep: Set version dependent variables.
  */
 
-void versiondep (void)
+void versiondep(void)
 {
   if (version >= RV53A)		genocide = "DMJGU";
   else if (version >= RV52A)	genocide = "UDVPX";
@@ -1206,9 +1193,7 @@ void versiondep (void)
  * when we are being stalked by an invisible monster.
  */
 
-int getmonhist (monster, hitormiss)
-char *monster;
-int hitormiss;
+int getmonhist(char *monster, int hitormiss)
 {
   if (cosmic || blinded)
     { return (findmonster ("it")); }

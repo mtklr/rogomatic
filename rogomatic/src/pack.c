@@ -44,8 +44,7 @@ static char *stuffmess [] = {
  * itemstr: print the inventory message for a single item.
  */
 
-char *itemstr (i)
-register int i;
+char *itemstr(int i)
 {
   static char ispace[128];
   register char *item = ispace;
@@ -89,8 +88,7 @@ register int i;
  * dumpinv: print the inventory. calls itemstr.
  */
 
-void dumpinv (f)
-register FILE *f;
+void dumpinv(FILE *f)
 {
   register int i;
 
@@ -112,8 +110,7 @@ register FILE *f;
  * removeinv: remove an item from the inventory.
  */
 
-void removeinv (pos)
-int pos;
+void removeinv(int pos)
 {
   if (--(inven[pos].count) == 0) {
     clearpack  (pos);		/* Assure nothing at that spot  DR UT */
@@ -134,8 +131,7 @@ int pos;
  * things can be dropped all at once.
  */
 
-void deleteinv (pos)
-int pos;
+void deleteinv(int pos)
 {
 
   if (--(inven[pos].count) == 0 || inven[pos].type == missile) {
@@ -155,8 +151,7 @@ int pos;
  * clearpack: zero out slot in pack.  DR UTexas 01/05/84
  */
 
-void clearpack (pos)
-int pos;
+void clearpack(int pos)
 {
   if (pos >= MAXINV) return;
 
@@ -181,8 +176,7 @@ int pos;
  * the pack.
  */
 
-void rollpackup (pos)
-register int pos;
+void rollpackup(int pos)
 {
   register char *savebuf;
   register int i;
@@ -216,8 +210,7 @@ register int pos;
  * objects behind that position.
  */
 
-void rollpackdown (pos)
-register int pos;
+void rollpackdown(int pos)
 {
   register char *savebuf;
   register int i;
@@ -271,7 +264,7 @@ void resetinv(void)
  * doresetinv: reset the inventory.  DR UTexas 01/05/84
  */
 
-void doresetinv (void)
+void doresetinv(void)
 {
   int i;
   static char space[MAXINV][80];
@@ -296,8 +289,7 @@ void doresetinv (void)
 
 # define xtr(w,b,e,k) {what=(w);xbeg=mess+(b);xend=mend-(e);xknow|=(k);}
 
-int inventory (msgstart, msgend)
-char *msgstart, *msgend;
+int inventory(char *msgstart, char *msgend)
 {
   register char *p, *q, *mess = msgstart, *mend = msgend;
   char objname[100];
@@ -637,7 +629,7 @@ char *msgstart, *msgend;
  * countpack: Count objects, missiles, and food in the pack.
  */
 
-void countpack (void)
+void countpack(void)
 {
   register int i, cnt;
 

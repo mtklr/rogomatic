@@ -43,8 +43,7 @@ static char ltmnam[100];	/* Long term memory file name */
  * mapcharacter: Read a character help message
  */
 
-int mapcharacter (ch, str)
-char ch, *str;
+int mapcharacter(char ch, char *str)
 {
   dwait (D_CONTROL, "mapcharacter called: '%c' ==> '%s'", ch, str);
 
@@ -66,8 +65,7 @@ char ch, *str;
  * history array.  Create an entry if none exists.
  */
 
-int addmonhist (monster)
-char *monster;
+int addmonhist(char *monster)
 {
   register int m;
 
@@ -88,8 +86,7 @@ char *monster;
  * history array.  Return -1 if the monster is not in the table.
  */
 
-int findmonster (monster)
-char *monster;
+int findmonster(char *monster)
 {
   register int m;
 
@@ -107,8 +104,7 @@ char *monster;
  * access to the output file.
  */
 
-void saveltm (score)
-int score;
+void saveltm(int score)
 {
   register int m;
   register FILE *ltmfil;
@@ -156,7 +152,7 @@ int score;
  * restoreltm: Read the long term memory file.
  */
 
-void restoreltm (void)
+void restoreltm(void)
 {
   sprintf (ltmnam, "%s/ltm%d", getRgmDir (), version);
   dwait (D_CONTROL, "Restoreltm called, reading file '%s'", ltmnam);
@@ -194,7 +190,7 @@ void restoreltm (void)
  * into storage.  Be careful about serializing access to the file.
  */
 
-void readltm (void)
+void readltm(void)
 {
   char buf[BUFSIZ];
   register FILE *ltmfil;
@@ -223,8 +219,7 @@ void readltm (void)
  * parsemonster: parse one line from the ltm file.
  */
 
-void parsemonster (monster)
-char *monster;
+void parsemonster(char *monster)
 {
   register char *attrs;
   char *index();
@@ -251,8 +246,7 @@ char *monster;
  * clearltm: Clear a whole long term memory array.
  */
 
-void clearltm (ltmarr)
-register ltmrec *ltmarr;
+void clearltm(ltmrec *ltmarr)
 {
   register int i;
 
@@ -271,7 +265,7 @@ register ltmrec *ltmarr;
  * dumpmonstertable: Format and print the monster table on the screen
  */
 
-void dumpmonstertable (void)
+void dumpmonstertable(void)
 {
   register int m;
   char monc;
@@ -301,7 +295,7 @@ void dumpmonstertable (void)
  * analyzeltm: Set the monatt array based on current long term memory.
  */
 
-void analyzeltm (void)
+void analyzeltm(void)
 {
   register int m, i;
   double avg_dam = 0.6*Level+3, max_dam = 7.0+Level, avg_arr = 4.0;

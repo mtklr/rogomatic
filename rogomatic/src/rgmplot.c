@@ -45,9 +45,7 @@ char *month[] = {
 
 int doavg = 0, cheat = 0, min = -1;
 
-int main (argc, argv)
-int argc;
-char *argv[];
+int main(int argc, char *argv[])
 {
   int mm, dd, yy, score = 0, lastday = -1, lastmon = -1, lastyy = -1, h;
   int sumscores = 0, numscores = 0, i;
@@ -150,8 +148,7 @@ char *argv[];
 }
 
 
-int getlin (s)
-char *s;
+int getlin(char *s)
 {
   int ch, i;
   static int endfile = 0;
@@ -172,9 +169,7 @@ char *s;
   return (i);
 }
 
-int getscore (mm, dd, yy, player, score, cheated)
-int *mm, *dd, *yy, *score;
-char *player, *cheated;
+int getscore(int *mm, int *dd, int *yy, char *player, int *score, char *cheated)
 {
   char line[128], reason[32];
 

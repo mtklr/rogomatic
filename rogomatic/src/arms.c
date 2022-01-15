@@ -42,7 +42,7 @@
 
 # define swap(x,y) {t=(x); (x)=(y); (y)=t;}
 
-int havearmor (int k, int print, int rustproof)
+int havearmor(int k, int print, int rustproof)
 {
   register int i, j, w, t, n=0;
   int armind[MAXINV], armval[MAXINV];
@@ -80,8 +80,7 @@ int havearmor (int k, int print, int rustproof)
  * of remove curse and -2 for when we don't have a remove curse.
  */
 
-int armorclass (i)
-int i;
+int armorclass(int i)
 {
   int class;
 
@@ -119,7 +118,7 @@ int i;
  *             then NONE is returned.
  */
 
-int haveweapon (int k, int print)
+int haveweapon(int k, int print)
 {
   register int i, j, w, t, n=0;
   int weapind[MAXINV], weapval[MAXINV];
@@ -170,8 +169,7 @@ int haveweapon (int k, int print)
  *              high numbers.
  */
 
-int weaponclass (i)
-int i;
+int weaponclass(int i)
 {
   int class, hitplus = 0, damplus = 0;
 
@@ -238,7 +236,7 @@ int i;
  *           then NONE is returned.
  */
 
-int havering (int k, int print)
+int havering(int k, int print)
 {
   register int i, j, r, t, n=0;
   int ringind[MAXINV], ringval[MAXINV];
@@ -285,8 +283,7 @@ int havering (int k, int print)
  *            value of the ring.
  */
 
-int ringclass (i)
-int i;
+int ringclass(int i)
 {
   int class = 0, magicplus = 0;
 
@@ -472,7 +469,7 @@ int i;
  *          then NONE is returned.
  */
 
-int havebow (int k, int print)
+int havebow(int k, int print)
 {
   register int i, j, w, t, n=0;
   int bowind[MAXINV], bowval[MAXINV];
@@ -506,8 +503,7 @@ int havebow (int k, int print)
  *           hit, multiplied by 10.
  */
 
-int bowclass (i)
-int i;
+int bowclass(int i)
 {
   int class, hitplus = 0, damplus = 0;
 
@@ -534,7 +530,7 @@ int i;
  * are cheating.  Consider arrows first if we are wielding our bow.
  */
 
-int havemissile (void)
+int havemissile(void)
 {
   register int i, fewest = 9999, obj = NONE;
 
@@ -570,7 +566,7 @@ int havemissile (void)
  * havearrow: return the index of any arrow which has count 1.
  */
 
-int havearrow (void)
+int havearrow(void)
 {
   int arr;
 
@@ -587,8 +583,7 @@ int havearrow (void)
  * hitbonus: Return the bonus to hit.
  */
 
-int hitbonus (strength)
-int strength;
+int hitbonus(int strength)
 {
   int bonus = 0;
 
@@ -615,8 +610,7 @@ int strength;
  * damagebonus: bonus = the damage bonus.
  */
 
-int damagebonus (strength)
-int strength;
+int damagebonus(int strength)
 {
   int bonus = 0;
 
@@ -649,7 +643,7 @@ int strength;
  * setbonuses: Set global hit and damage pluses.
  */
 
-void setbonuses (void)
+void setbonuses(void)
 {
   /* Set global Hit bonus */
   gplushit = hitbonus (Str);

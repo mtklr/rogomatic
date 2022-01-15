@@ -52,9 +52,7 @@ static char lokfil[100];
  * score file and catching interrupts and things.
  */
 
-void add_score (new_line, vers, ntrm)
-char *new_line, *vers;
-int ntrm;
+void add_score(char *new_line, char *vers, int ntrm)
 {
   int   wantscore = 1;
   char  ch;
@@ -104,8 +102,7 @@ int ntrm;
  * dumpscore: Print out the scoreboard.
  */
 
-void dumpscore (vers)
-char *vers;
+void dumpscore(char *vers)
 {
   char  ch, scrfil[100], delfil[100], newfil[100], allfil[100], cmd[1024];
   FILE *scoref, *deltaf;
@@ -199,9 +196,8 @@ char *vers;
  * intrupscore: We have an interrupt, clean up and unlock the score file.
  */
 
-int intrupscore (void)
+int intrupscore(void)
 {
   unlock_file (lokfil);
   exit (1);
 }
-
