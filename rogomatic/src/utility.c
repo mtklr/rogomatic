@@ -230,9 +230,12 @@ void unlock_file(const char *lokfil)
  */
 
 /* VARARGS2 */
-void quit(int code, char *fmt, int a1, int a2, int a3, int a4)
+void quit(int code, char *fmt, ...)
 {
-  fprintf (stderr, fmt, a1, a2, a3, a4);
+  va_list ap;
+  va_start(ap, fmt);
+  vfprintf(stderr, fmt, ap);
+
   exit (code);
 }
 

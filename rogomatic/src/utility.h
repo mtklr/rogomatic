@@ -12,7 +12,7 @@ void reset_int(void);
 void int_exit(void (*exitproc)(int));
 int lock_file(const char *lokfil, int maxtime);
 void unlock_file(const char *lokfil);
-void quit();
+void quit(int code, char *fmt, ...);
 int stlmatch(char *small, char *big);
 int rogo_putenv(char *name, char *value);
 static int findenv(char *name);

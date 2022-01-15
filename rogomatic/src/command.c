@@ -31,6 +31,7 @@
 # include <curses.h>
 # include <ctype.h>
 # include <string.h>
+#include <stdarg.h>
 # include "types.h"
 # include "globals.h"
 #include "command.h"
@@ -71,13 +72,16 @@ void mmove(int d, int mode)
  */
 
 /* VARARGS2 */
-void command(int tmode, char *f, int a1, int a2, int a3, int a4)
+void command(int tmode, char *f, ...)
 {
   int times;
   char cmd[128], functionchar ();
 
   /* Build the command */
-  sprintf (cmd, f, a1, a2, a3, a4);
+  va_list ap;
+  va_start(ap, f);
+  vsnprintf(cmd, sizeof(cmd), f, ap);
+  va_end(ap);
 
   debuglog ("command : command (%s)\n",cmd);
 

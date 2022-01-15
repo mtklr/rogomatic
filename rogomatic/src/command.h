@@ -5,7 +5,7 @@ void move1(int d);
 void fmove(int d);
 void rmove(int count, int d, int mode);
 void mmove(int d, int mode);
-void command();
+void command(int tmode, char *f, ...);
 int commandcount(char *cmd);
 char functionchar(char *cmd);
 int functionesc(char *cmd);

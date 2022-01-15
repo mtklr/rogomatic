@@ -34,6 +34,7 @@
 # include <sys/ioctl.h>
 # include <time.h>
 # include <unistd.h>
+#include <stdarg.h>
 # include "install.h"
 # include "types.h"
 # include "globals.h"
@@ -621,14 +622,17 @@ void dumpwalls(void)
  */
 
 /* VARARGS1 */
-void sendnow(char *f, int a1, int a2, int a3, int a4)
+void sendnow(char *f, ...)
 {
   char cmd[128];
   register char *s = cmd;
 
   memset(cmd, '\0', 128);
 
-  sprintf (cmd, f, a1, a2, a3, a4);
+  va_list ap;
+  va_start(ap, f);
+  vsnprintf(cmd, sizeof(cmd), f, ap);
+  va_end(ap);
 
   while (*s) sendcnow (*s++);
 }
@@ -669,13 +673,17 @@ void sendcnow(char c)
 # define bump(p,sizeq) (p)=((p)+1)%sizeq
 
 /* VARARGS1 */
-void rogo_send(char *f, int a1, int a2, int a3, int a4)
+void rogo_send(char *f, ...)
 {
   char cmd[128];
   register char *s = cmd;
 
   memset (cmd, '\0', 128);
-  sprintf (s, f, a1, a2, a3, a4);
+
+  va_list ap;
+  va_start(ap, f);
+  vsnprintf(cmd, sizeof(cmd), f, ap);
+  va_end(ap);
 
   debuglog ("rogo_send (%s)\n",s);
 
@@ -870,13 +878,14 @@ void waitfor(char *mess)
  */
 
 /* VARARGS1 */
-void say(char *f, int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8)
+void say(char *f, va_list ap)
 {
   char buf[BUFSIZ], *b;
 
   if (!emacs && !terse) {
     memset (buf, '\0', BUFSIZ);
-    sprintf (buf, f, a1, a2, a3, a4, a5, a6, a7, a8);
+    vsnprintf(buf, sizeof(buf), f, ap);
+
     at (0,0);
 
     for (b=buf; *b; b++) printw ("%s", unctrl (*b));
@@ -892,10 +901,13 @@ void say(char *f, int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8
  */
 
 /* VARARGS1 */
-void saynow(char *f, int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8)
+void saynow(char *f, ...)
 {
   if (!emacs && !terse) {
-    say (f, a1, a2, a3, a4, a5, a6, a7, a8);
+    va_list ap;
+    va_start(ap, f);
+    say (f, ap);
+    va_end(ap);
     refresh ();
   }
 }
