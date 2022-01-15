@@ -55,7 +55,7 @@ extern char versionstr[];	/* Version of Rogue we are playing */
 /* character and string functions */
 extern int getlogtoken();
 extern char *getname(), *itemstr();
-extern char logchar(), *monname(), *findentry_getfakename(), *findentry_getrealname();
+extern char logchar(), *monname(char m), *findentry_getfakename(), *findentry_getrealname();
 
 /* double precision floating point functions */
 double prob(), mean(), stdev();	/* For stats.c */

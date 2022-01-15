@@ -1161,7 +1161,7 @@ FILE *f;
 char sep;
 {
   register int m;
-  char s[1024], *monname ();
+  char s[1024];
 
   sprintf (s, "Monsters killed:%c%c", sep, sep);
 
