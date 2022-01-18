@@ -669,11 +669,17 @@ void sendcnow(char c)
      if you want to run full blast, make sure the USLEEP global
      constant is 0. */
 
-  if ((USLEEP) && (!noterm))
-    if (Level > 20) usleep (USLEEP+(Level * 8000));
-    else if (Level > 16) usleep (USLEEP+(Level * 4000));
-    else if (Level > 12) usleep (USLEEP+(Level * 2000));
-    else usleep (USLEEP);
+  if ((USLEEP) && (!noterm)) {
+    if (Level > 20) {
+	    usleep (USLEEP+(Level * 8000));
+    } else if (Level > 16) {
+	    usleep (USLEEP+(Level * 4000));
+    } else if (Level > 12) {
+	    usleep (USLEEP+(Level * 2000));
+    } else {
+	    usleep (USLEEP);
+    }
+  }
 
   rogue_log_write_command (c);
 
