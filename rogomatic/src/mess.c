@@ -59,7 +59,7 @@ static int monkilled[] = {
 static int totalkilled=0, timeshit=0, timesmissed=0, hits=0, misses=0;
 static int sumgold=0, sumsqgold=0, numgold=0;
 
-static mhit=0, mmiss=0, mtarget= NONE;
+static int mhit=0, mmiss=0, mtarget= NONE;
 
 /* Other local data */
 int identifying = 0;		/* Next message is from identify scroll */
@@ -860,7 +860,7 @@ void rampage(void)
   char monc;
 
   /* Check the next monster in the list, we may not fear him */
-  while (monc = *genocide) {
+  while ((monc = *genocide)) {
     /* Do not waste genocide on stalkers if we have the right ring */
     if ((streq (monname (monc), "invisible stalker") ||
          streq (monname (monc), "phantom")) &&
