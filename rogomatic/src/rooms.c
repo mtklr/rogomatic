@@ -1069,13 +1069,13 @@ int nextto(int type, int r, int c)
 {
   register int result;
 
-  if (result = onrc (type, r-1, c)) return (result);
+  if ((result = onrc (type, r-1, c))) return (result);
 
-  if (result = onrc (type, r+1, c)) return (result);
+  if ((result = onrc (type, r+1, c))) return (result);
 
-  if (result = onrc (type, r, c-1)) return (result);
+  if ((result = onrc (type, r, c-1))) return (result);
 
-  if (result = onrc (type, r, c+1)) return (result);
+  if ((result = onrc (type, r, c+1))) return (result);
 
   return (0);
 }

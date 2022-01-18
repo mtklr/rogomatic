@@ -1055,7 +1055,7 @@ int charsavail(void)
   long n;
   int retc;
 
-  if (retc = ioctl (READ, FIONREAD, &n)) {
+  if ((retc = ioctl (READ, FIONREAD, &n))) {
     saynow ("Ioctl returns %d, n=%ld.\n", retc, n);
     n=0;
   }
