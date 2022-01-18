@@ -21,11 +21,12 @@
  */
 
 # include <stdio.h>
-
+#include <stdlib.h>
 # include "types.h"
 # include "globals.h"
 # include "termtokens.h"
 #include "getroguetoken.h"
+#include "debuglog.h"
 
 # define GETLOGCHAR	fgetc(logfile)
 # define ISPRT(c)	((c) >= ' ' && (c) <= '~')

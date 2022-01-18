@@ -31,6 +31,10 @@
 # include <stdlib.h>
 # include "types.h"
 # include "install.h"
+# include "utility.h"
+# include "learn.h"
+# include "config.h"
+# include "rand.h"
 
 int knob[MAXKNOB];
 char *knob_name[MAXKNOB] = {

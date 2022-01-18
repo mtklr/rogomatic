@@ -40,6 +40,8 @@
 # include "types.h"
 # include "globals.h"
 #include "database.h"
+#include "debug.h"
+#include "io.h"
 
 # define TABLESIZE 101
 # define NOTFOUND  (-1)

@@ -37,6 +37,14 @@
 # include "globals.h"
 # include "install.h"
 #include "debug.h"
+#include "config.h"
+#include "io.h"
+#include "mess.h"
+#include "pack.h"
+#include "things.h"
+#include "monsters.h"
+#include "database.h"
+#include "survival.h"
 
 /*
  * Debugging wait loop: Handle the usual Rogomatic command chars, and also

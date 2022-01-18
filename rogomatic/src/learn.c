@@ -29,8 +29,12 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+#include <time.h>
 # include "types.h"
 #include "learn.h"
+#include "stats.h"
+#include "rand.h"
+#include "utility.h"
 
 # define TRIALS(g)		((g)->score.count)
 # define NONE		(-1)

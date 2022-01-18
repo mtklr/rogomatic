@@ -28,8 +28,11 @@
  */
 
 # include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 # include "install.h"
 #include "findscore.h"
+#include "utility.h"
 
 # define TEMPFL "/tmp/RscoreXXXXXX"
 # define ISDIGIT(c) ((c) >= '0' && (c) <= '9')

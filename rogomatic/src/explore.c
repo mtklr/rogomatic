@@ -32,6 +32,13 @@
 # include "types.h"
 # include "globals.h"
 #include "explore.h"
+#include "search.h"
+#include "rooms.h"
+#include "io.h"
+#include "debug.h"
+#include "things.h"
+#include "command.h"
+#include "survival.h"
 
 # define SEARCHES(r,c)						\
 	(onrc(DEADEND,r,c) ?					\

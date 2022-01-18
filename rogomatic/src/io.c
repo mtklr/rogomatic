@@ -40,6 +40,21 @@
 # include "globals.h"
 # include "termtokens.h"
 #include "io.h"
+#include "rooms.h"
+#include "debuglog.h"
+#include "monsters.h"
+#include "getroguetoken.h"
+#include "mess.h"
+#include "debug.h"
+#include "pack.h"
+#include "search.h"
+#include "things.h"
+#include "arms.h"
+#include "ltm.h"
+#include "stats.h"
+#include "scorefile.h"
+#include "utility.h"
+#include "command.h"
 
 # define READ	0
 

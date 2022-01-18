@@ -32,9 +32,20 @@
 # include <ctype.h>
 # include <string.h>
 #include <stdarg.h>
+#include <stdlib.h>
 # include "types.h"
 # include "globals.h"
 #include "command.h"
+#include "debuglog.h"
+#include "monsters.h"
+#include "things.h"
+#include "io.h"
+#include "pack.h"
+#include "database.h"
+#include "arms.h"
+#include "utility.h"
+#include "getroguetoken.h"
+#include "debug.h"
 
 # define EQUAL 0
 
