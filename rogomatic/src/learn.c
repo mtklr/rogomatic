@@ -46,7 +46,8 @@ extern int knob[];
 extern double mean(), stdev(), sqrt();
 extern FILE *wopen();
 
-static int inittime=0, trialno=0, lastid=0;
+time_t inittime;
+static int trialno=0, lastid=0;
 static int crosses=0, shifts=0, mutations=0;
 static statistic g_score = ZEROSTAT;
 static statistic g_level = ZEROSTAT;
@@ -278,7 +279,7 @@ int readgenes(char *genepool)
   /* Read the header line */
   b = buf;
   fgets (b, BUFSIZ, gfil);
-  sscanf (b, "%d %d %d %d %d %d",
+  sscanf (b, "%ld %d %d %d %d %d",
           &inittime, &trialno, &lastid, &crosses, &shifts, &mutations);
   SKIPTO ('|', b);
   parsestat (b, &g_score);
@@ -345,7 +346,7 @@ void writegenes(char *genepool)
     quit (1, "Cannot open file '%s'\n", genepool);
 
   /* Write the header line */
-  fprintf (gfil, "%d %d %d %d %d %d",
+  fprintf (gfil, "%ld %d %d %d %d %d",
            inittime, trialno, lastid, crosses, shifts, mutations);
   fprintf (gfil, "|");
   writestat (gfil, &g_score);

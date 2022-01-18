@@ -18,7 +18,7 @@ static void parsegene(char *buf, genotype *gene);
 void writegenes(char *genepool);
 static void writegene(FILE *gfil, genotype *g);
 static void initgene(genotype *gene);
-static int compgene(genotype **a, genotype **b);
+static int compgene();
 static void summgene(FILE *f, genotype *gene);
 static void birth(FILE *f, genotype *gene);
 static void printdna(FILE *f, genotype *gene);
