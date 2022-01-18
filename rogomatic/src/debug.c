@@ -110,7 +110,7 @@ int dwait(int msgtype, char *f, ...)
 
     switch (fgetc (stdin)) {
       case '?':
-        say ("i=inv, d=debug !=stf, @=mon, #=wls, $=id, ^=flg, &=chr");
+        saynow ("i=inv, d=debug !=stf, @=mon, #=wls, $=id, ^=flg, &=chr");
         break;
       case 'i': at (1,0); dumpinv ((FILE *) NULL); at (row, col); break;
       case 'd': toggledebug (); 	break;
@@ -270,7 +270,7 @@ int getscrpos(char *msg, int *r, int *c)
     if (*r>=1 && *r<23 && *c>=0 && *c<=79)
       return (1);
     else
-      say ("%d,%d is not on the screen!", *r, *c);
+      saynow ("%d,%d is not on the screen!", *r, *c);
   }
 
   at (row, col);
