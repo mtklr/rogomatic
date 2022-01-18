@@ -30,9 +30,17 @@
 
 # include <curses.h>
 # include <ctype.h>
+#include <string.h>
 # include "types.h"
 # include "globals.h"
 #include "rooms.h"
+#include "things.h"
+#include "monsters.h"
+#include "io.h"
+#include "search.h"
+#include "debug.h"
+#include "debuglog.h"
+#include "explore.h"
 
 # define sign(x) ((x)?(x)>0?1:-1:0)
 # define EXPLORED 01

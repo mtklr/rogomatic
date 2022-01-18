@@ -35,6 +35,19 @@
 # include "globals.h"
 # include "install.h"
 #include "strategy.h"
+#include "debug.h"
+#include "command.h"
+#include "io.h"
+#include "tactics.h"
+#include "things.h"
+#include "explore.h"
+#include "search.h"
+#include "rooms.h"
+#include "monsters.h"
+#include "survival.h"
+#include "database.h"
+#include "arms.h"
+#include "worth.h"
 
 /*
  * foughtmonster records whether we engaged in battle recently.  This

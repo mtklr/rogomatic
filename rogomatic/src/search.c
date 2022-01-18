@@ -32,6 +32,10 @@
 # include "types.h"
 # include "globals.h"
 #include "search.h"
+#include "debug.h"
+#include "command.h"
+#include "things.h"
+#include "io.h"
 
 # define QSIZE (4000)
 

@@ -35,10 +35,13 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+#include <unistd.h>
 # include "types.h"
 # include "globals.h"
 # include "install.h"
 #include "scorefile.h"
+#include "config.h"
+#include "utility.h"
 
 # define LINESIZE	2048
 # define SCORE(s,p)     (atoi (s+p))

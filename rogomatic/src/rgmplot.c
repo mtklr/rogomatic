@@ -32,6 +32,7 @@
 # include <stdlib.h>
 # include <string.h>
 #include "rgmplot.h"
+#include "utility.h"
 
 # define WIDTH 50
 # define AVLEN 7

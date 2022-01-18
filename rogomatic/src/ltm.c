@@ -31,10 +31,16 @@
 # include <curses.h>
 # include <math.h>
 # include <string.h>
+#include <time.h>
 # include "types.h"
 # include "globals.h"
 # include "install.h"
 #include "ltm.h"
+#include "debug.h"
+#include "utility.h"
+#include "config.h"
+#include "stats.h"
+#include "io.h"
 
 static int nosave = 0;		/* True ==> dont write ltm back out */
 static char ltmnam[100];	/* Long term memory file name */

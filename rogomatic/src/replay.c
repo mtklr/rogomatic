@@ -34,6 +34,7 @@
 # include "types.h"
 # include "globals.h"
 #include "replay.h"
+#include "io.h"
 
 # define MAXNUMLEV 50
 # define FIRSTLEVSTR "\nR: "

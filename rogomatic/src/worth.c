@@ -37,6 +37,10 @@
 # include "types.h"
 # include "globals.h"
 #include "worth.h"
+#include "utility.h"
+#include "arms.h"
+#include "arms.h"
+#include "things.h"
 
 int   objval[] = {
   /* strange */      0,

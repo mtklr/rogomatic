@@ -30,9 +30,14 @@
 # include <stdio.h>
 # include <ctype.h>
 # include <curses.h>
+#include <string.h>
 # include "types.h"
 # include "globals.h"
 #include "monsters.h"
+#include "debug.h"
+#include "utility.h"
+#include "io.h"
+#include "ltm.h"
 
 # define ADJACENT(m) (max (abs (mlist[m].mrow - atrow),\
 			   abs (mlist[m].mcol - atcol)) == 1)

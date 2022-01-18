@@ -38,6 +38,7 @@
  * Author: Michael Mauldin, June 14, 1983.
  */
 
+#include <time.h>
 #include "rand.h"
 
 /* Rand 1, period length 444674 */

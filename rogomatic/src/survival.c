@@ -41,6 +41,11 @@
 # include "types.h"
 # include "globals.h"
 #include "survival.h"
+#include "io.h"
+#include "debug.h"
+#include "tactics.h"
+#include "search.h"
+#include "rooms.h"
 
 # define SO	  1
 # define SE	  0

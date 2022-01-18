@@ -30,11 +30,23 @@
 # include <curses.h>
 # include <ctype.h>
 # include <string.h>
+#include <stdlib.h>
 # include "types.h"
 # include "globals.h"
 #include "mess.h"
+#include "io.h"
+#include "rooms.h"
+#include "pack.h"
+#include "debug.h"
+#include "search.h"
+#include "utility.h"
+#include "things.h"
+#include "monsters.h"
+#include "tactics.h"
+#include "ltm.h"
+#include "database.h"
+#include "stats.h"
 
-extern int clearsendqueue ();
 
 /* Matching macros */
 # define MATCH(p) smatch(mess,p,result)

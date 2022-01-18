@@ -34,6 +34,17 @@
 # include "globals.h"
 # include "install.h"
 #include "tactics.h"
+#include "arms.h"
+#include "things.h"
+#include "debug.h"
+#include "database.h"
+#include "utility.h"
+#include "command.h"
+#include "explore.h"
+#include "io.h"
+#include "titlepage.h"
+#include "rooms.h"
+#include "search.h"
 
 /*
  * handlearmor: This routine is called to determine whether we should

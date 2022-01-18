@@ -29,9 +29,18 @@
 
 # include <curses.h>
 # include <string.h>
+# include <stdlib.h>
 # include "types.h"
 # include "globals.h"
 #include "pack.h"
+#include "worth.h"
+#include "database.h"
+#include "io.h"
+#include "command.h"
+#include "debug.h"
+#include "things.h"
+#include "utility.h"
+
 
 static char *stuffmess [] = {
   "strange", "food", "potion", "scroll",

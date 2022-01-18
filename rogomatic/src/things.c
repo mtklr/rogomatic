@@ -29,9 +29,17 @@
 
 # include <ctype.h>
 # include <curses.h>
+#include <string.h>
 # include "types.h"
 # include "globals.h"
 #include "things.h"
+#include "debug.h"
+#include "command.h"
+#include "tactics.h"
+#include "utility.h"
+#include "io.h"
+#include "database.h"
+#include "arms.h"
 
 /*
  * wear: This primitive function issues a command to put on armor.

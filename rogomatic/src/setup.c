@@ -33,6 +33,9 @@
 # include <unistd.h>
 # include "install.h"
 #include "setup.h"
+#include "findscore.h"
+#include "utility.h"
+#include "scorefile.h"
 
 # define READ    0
 # define WRITE   1

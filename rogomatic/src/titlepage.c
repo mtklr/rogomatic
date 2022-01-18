@@ -34,6 +34,7 @@
 # include "types.h"
 # include "globals.h"
 #include "titlepage.h"
+#include "utility.h"
 
 static char *titlepage[]= {
   /* The static part of the display */
