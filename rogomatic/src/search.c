@@ -465,7 +465,7 @@ int searchto(int row, int col, int (*evaluate)(), char dir[24][80], int *trow, i
         /* IF we have not considered stepping on the square yet */
         /* and if it is accessible    THEN: Put it on the queue */
         if (dir[nr][nc] == NOTTRIED && (CANGO&S) && (type&S) == type &&
-            (k<4 || onrc (CANGO,r,nc) && onrc (CANGO,nr,c))) {
+            (k<4 || (onrc (CANGO,r,nc) && onrc (CANGO,nr,c)))) {
           moveval[nr][nc] = NONE;  /* flag unevaluated */
 
           *(tail++) = nr;  *(tail++) = nc; if (tail == end) tail = begin;

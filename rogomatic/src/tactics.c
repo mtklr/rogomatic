@@ -193,7 +193,7 @@ int quaffpotion(void)
 
   if (cosmic && Str != Strmax &&
       (obj = havenamed (potion, "poison")) != NONE) {
-    if (wearing ("sustain strength") != NONE && quaff (obj) ||
+    if ((wearing ("sustain strength") != NONE && quaff (obj)) ||
         findring ("sustain strength"))
       return (1);
   }
@@ -206,9 +206,9 @@ int quaffpotion(void)
   if (Hp == Hpmax &&
       ((obj = havemult (potion, "healing", 2)) != NONE ||
        (obj = havemult (potion, "extra healing", 2)) != NONE ||
-       know ("blindness") && (obj = havenamed (potion, "healing")) != NONE ||
-       know ("blindness") && (know ("hallucination") || version < RV53A)  &&
-       Level < 15 && (obj = havenamed (potion, "extra healing")) != NONE) &&
+       (know ("blindness") && (obj = havenamed (potion, "healing")) != NONE) ||
+       (know ("blindness") && (know ("hallucination") || version < RV53A)  &&
+       Level < 15 && (obj = havenamed (potion, "extra healing")) != NONE)) &&
       quaff (obj))
     return (1);
 
@@ -283,7 +283,7 @@ int readscroll(void)
       ((obj2 = unknown (ring)) != NONE ||
        (obj2 = unidentified (wand)) != NONE ||
        (obj2 = unidentified (Scroll)) != NONE ||
-       Level > 10 && (obj2 = unknown (wand)) != NONE ||
+       (Level > 10 && (obj2 = unknown (wand)) != NONE) ||
        ((cheat || version == RV36A) &&
         ((obj2 = unknown (potion)) != NONE ||
          (obj2 = haveother (Scroll, obj)) != NONE)))) {

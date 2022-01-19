@@ -161,8 +161,8 @@ int drop(int obj)
   /* read unknown scrolls or good scrolls rather than dropping them */
   if (inven[obj].type == Scroll &&
       (!itemis (obj, KNOWN) ||
-       stlmatch (inven[obj].str, "identify") &&
-       prepareident (pickident (), obj) ||
+       (stlmatch (inven[obj].str, "identify") &&
+       prepareident (pickident (), obj)) ||
        stlmatch (inven[obj].str, "enchant") ||
        stlmatch (inven[obj].str, "genocide") ||
        stlmatch (inven[obj].str, "gold detection") ||
@@ -181,7 +181,7 @@ int drop(int obj)
        stlmatch (inven[obj].str, "monster detection") ||
        stlmatch (inven[obj].str, "raise level") ||
        stlmatch (inven[obj].str, "healing") ||
-       stlmatch (inven[obj].str, "haste self") && !hasted ||
+       (stlmatch (inven[obj].str, "haste self") && !hasted) ||
        stlmatch (inven[obj].str, "extra healing") ||
        stlmatch (inven[obj].str, "restore strength") ||
        stlmatch (inven[obj].str, "gain strength")) &&
@@ -593,10 +593,10 @@ int haveuseless(void)
 
   for (i=0; i<invcount; ++i) {
     if (inven[i].count > 0) {
-      if (inven[i].type == wand && inven[i].charges == 0 ||
+      if ((inven[i].type == wand && inven[i].charges == 0) ||
           stlmatch (inven[i].str, "teleport to") ||
           stlmatch (inven[i].str, "haste monster") ||
-          itemis (i, WORTHLESS) && streq (inven[i].str, "arrow"))
+          (itemis (i, WORTHLESS) && streq (inven[i].str, "arrow")))
         return (i);
       else if (inven[i].type == potion &&
         (stlmatch (inven[i].str, "blindness") ||
@@ -649,7 +649,7 @@ int willrust(int obj)
   return (! (protected ||
              armorclass (obj) > 8 || armorclass (obj) < -5 ||
              itemis (obj, PROTECTED) ||
-             stlmatch (inven[obj].str, "leather") && version > RV36B));
+             (stlmatch (inven[obj].str, "leather") && version > RV36B)));
 }
 
 /*
