@@ -637,7 +637,7 @@ static struct {
   { 21,  3, -1,  1, 78,  1}
 };  /* Bottom left corner */
 
-static gc = 0; /* Goal corner from 0..3 */
+static int gc = 0; /* Goal corner from 0..3 */
 
 /*
  * waitaround: For some reason we want to stay on this level for a while.
@@ -650,7 +650,8 @@ int waitaround(void)
 
   if (gotowardsgoal ()) return (1);
 
-  gc = ++gc % 4;
+  ++gc;
+  gc = gc % 4;
 
   for (i = cb[gc].vertstart; i != cb[gc].vertend; i += cb[gc].vertdelt)
     for (j = cb[gc].horstart; j != cb[gc].horend; j += cb[gc].hordelt)
