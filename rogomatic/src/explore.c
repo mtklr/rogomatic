@@ -141,6 +141,9 @@ int gotoinit(void)
 /* ARGSUSED */
 int gotovalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
+  (void) depth; /* unused */
+  (void) cont;  /* unused */
+
   *avd = onrc (SAFE, r, c)    ? 0 :
          onrc (ARROW, r, c)   ? 50 :
          onrc (TRAPDOR, r, c) ? 175 :
@@ -168,6 +171,9 @@ int gotovalue(int r, int c, int depth, int *val, int *avd, int *cont)
 /* ARGSUSED */
 int sleepvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
+  (void) depth; /* unused */
+  (void) cont;  /* unused */
+
   *avd = onrc (SAFE, r, c)    ? 0 :
          onrc (ARROW, r, c)   ? 50 :
          onrc (TRAPDOR, r, c) ? 175 :
@@ -330,6 +336,9 @@ int setpsd(int print)
 /* ARGSUSED */
 int downvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
+  (void) depth; /* unused */
+  (void) cont;  /* unused */
+
   *avd = onrc (SAFE, r, c)    ? 0 :
          onrc (ARROW, r, c)   ? 50 :
          onrc (TRAPDOR, r, c) ? 175 :
@@ -518,6 +527,8 @@ int rundoorinit(void)
 /* ARGSUSED */
 void rundoorvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
+  (void) depth; /* unused */
+
   *avd = onrc (ARROW, r, c) ? 50 :
          onrc (TRAPDOR, r, c) ? 0 :
          onrc (TELTRAP, r, c) ? 0 :
@@ -575,6 +586,8 @@ int roominit(void)
 /* ARGSUSED */
 int expvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
+  (void) depth; /* unused */
+
   register int k, nr, nc, l;
   int a, v = 0, nunseenb = 0, nseenb = 0, nearb = 0;
 
@@ -682,6 +695,8 @@ int expvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 /* ARGSUSED */
 int zigzagvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
+  (void) depth; /* unused */
+
   register int k, nr, nc, a, v = 0, nunseenb = 0;
 
   a = onrc (SAFE|DOOR|STAIRS|HALL, r, c) ? 0 :
@@ -751,6 +766,8 @@ int secretinit(void)
 /* ARGSUSED */
 int secretvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
+  (void) depth; /* unused */
+
   register int v, a, k;
 
   *val=0;
@@ -1053,6 +1070,9 @@ int doorexplore(void)
 
 int safevalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
+  (void) depth; /* unused */
+  (void) cont;  /* unused */
+
   register int k, v;
 
   *avd = onrc (SAFE, r, c)    ? 0 :
@@ -1195,6 +1215,8 @@ int archeryinit(void)
 /* ARGSUSED */
 int archeryvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
+  (void) depth; /* unused */
+
   *avd = (onrc (SAFE, r, c)	? 0 :
           onrc (TRAPDOR, r, c)	? ROGINFINITY :
           onrc (HALL, r, c)	? ROGINFINITY :
@@ -1267,6 +1289,8 @@ int restinit(void)
 /* ARGSUSED */
 int restvalue (int r, int c, int depth, int *val, int *avd, int *cont)
 {
+  (void) depth; /* unused */
+
   register int dr, dc, ar, ac;
   int count, dir, rm;
 

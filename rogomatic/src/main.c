@@ -522,6 +522,7 @@ int main(int argc, char *argv[])
    * the level drawing.
    */
   {
+
     char *m = "More--";				/* FSM to check for '--More--' */
 
     if (!replaying)
@@ -828,6 +829,8 @@ int main(int argc, char *argv[])
 
 void onintr(int sig)
 {
+  (void) sig; /* unused */
+
   sendnow ("n\033");            /* Tell Rogue we don't want to quit */
   refresh ();                   /* Clear terminal output */
   clearsendqueue ();            /* Clear command queue */

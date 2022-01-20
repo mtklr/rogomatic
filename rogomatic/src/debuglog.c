@@ -33,6 +33,9 @@ FILE *debug = NULL;
 static void
 err_doit(int errnoflag, int error, const char *fmt, va_list ap)
 {
+  (void) errnoflag; /* unused */
+  (void) error;     /* unused */
+
   char buf[MAXLINE];
 
   vsnprintf(buf, MAXLINE, fmt, ap);
