@@ -128,11 +128,10 @@ static void   (*hstat)(int), (*istat)(int), (*qstat)(int), (*pstat)(int);
 
 void critical(void)
 {
-// FIXME: when uncommented, get bus errors :(
-//  hstat = signal (SIGHUP, SIG_IGN);
-//  istat = signal (SIGINT, SIG_IGN);
-//  pstat = signal (SIGPIPE, SIG_IGN);
-//  qstat = signal (SIGQUIT, SIG_IGN);
+  hstat = signal (SIGHUP, SIG_IGN);
+  istat = signal (SIGINT, SIG_IGN);
+  pstat = signal (SIGPIPE, SIG_IGN);
+  qstat = signal (SIGQUIT, SIG_IGN);
 }
 
 /*
@@ -141,11 +140,10 @@ void critical(void)
 
 void uncritical(void)
 {
-// FIXME: when uncommented, get bus errors :(
-//  signal (SIGHUP, hstat);
-//  signal (SIGINT, istat);
-//  signal (SIGPIPE, pstat);
-//  signal (SIGQUIT, qstat);
+  signal (SIGHUP, hstat);
+  signal (SIGINT, istat);
+  signal (SIGPIPE, pstat);
+  signal (SIGQUIT, qstat);
 }
 
 /*
