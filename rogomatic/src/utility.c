@@ -46,6 +46,13 @@
 # include "install.h"
 #include "utility.h"
 
+#ifdef ROGO_PUTENV
+int rogo_putenv(char *name, char *value);
+static int findenv(char *name);
+static int newenv(void);
+static int moreenv(void);
+#endif
+
 # define TRUE 1
 # define FALSE 0
 

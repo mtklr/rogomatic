@@ -28,6 +28,13 @@
 #include "getroguetoken.h"
 #include "debuglog.h"
 
+static int matchnum(char ch);
+static int fetchnum(char ch);
+static int match2(char ch1, char ch2);
+static int match3(char ch1, char ch2, char ch3);
+static int match4(char ch1, char ch2, char ch3, char ch4);
+// static int match5(char ch1, char ch2, char ch3, char ch4, char ch5);
+
 # define GETLOGCHAR	fgetc(logfile)
 # define ISPRT(c)	((c) >= ' ' && (c) <= '~')
 
@@ -274,6 +281,7 @@ static int match4(char ch1, char ch2, char ch3, char ch4)
   }
 }
 
+/*
 static int match5(char ch1, char ch2, char ch3, char ch4, char ch5)
 {
   char mch1 = GETROGUECHAR;
@@ -299,7 +307,7 @@ static int match5(char ch1, char ch2, char ch3, char ch4, char ch5)
     return 0;
   }
 }
-
+*/
 
 
 /*
