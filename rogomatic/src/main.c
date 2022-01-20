@@ -800,7 +800,7 @@ int main(int argc, char *argv[])
     char lognam[128];
 
     /* Make up a new log file name */
-    sprintf (lognam, "%0.4s.%d.%d", ourkiller, MaxLevel, ourscore);
+    sprintf (lognam, "%.4s.%d.%d", ourkiller, MaxLevel, ourscore);
 
     /* Close the open file */
     toggleecho ();
