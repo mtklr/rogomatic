@@ -473,7 +473,7 @@ int searchto(int row, int col, int (*evaluate)(), char dir[24][80], int *trow, i
           dir[nr][nc] = sdirect[k];  /* direction we used to get here */
 
           if (debug (D_SCREEN | D_SEARCH | D_INFORM))
-            { at (nr, nc); printw ("%c", ">/^\\</v\\  ~"[dir[nr][nc]]);}
+            { at (nr, nc); printw ("%c", ">/^\\</v\\  ~"[(int) dir[nr][nc]]);}
         }
       }
 

@@ -312,7 +312,7 @@ void addstuff(char ch, int row, int col)
   if (onrc (STUFF, row, col))
     deletestuff (row, col);
 
-  slist[slistlen].what = translate[ch];
+  slist[slistlen].what = translate[(int) ch];
   slist[slistlen].srow = row;
   slist[slistlen].scol = col;
 
