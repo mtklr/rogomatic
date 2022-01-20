@@ -14,9 +14,12 @@ int lock_file(const char *lokfil, int maxtime);
 void unlock_file(const char *lokfil);
 void quit(int code, char *fmt, ...);
 int stlmatch(char *small, char *big);
+
+#ifdef ROGO_PUTENV
 int rogo_putenv(char *name, char *value);
 static int findenv(char *name);
 static int newenv(void);
 static int moreenv(void);
+#endif
 
 #endif

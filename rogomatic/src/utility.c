@@ -276,6 +276,7 @@ int stlmatch(char *big, char *small)
 }
 # endif
 
+#ifdef ROGO_PUTENV
 /*
  *  putenv  --  put value into environment
  *
@@ -447,3 +448,4 @@ static int moreenv(void)
   envsize = esize;
   return (0);
 }
+#endif
