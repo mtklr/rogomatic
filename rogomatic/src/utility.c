@@ -72,7 +72,6 @@ int rogo_baudrate(void)
 char *getname(void)
 {
   static char name[100];
-  int   i;
   struct passwd *passwd;
 
   passwd = getpwuid (getuid ());

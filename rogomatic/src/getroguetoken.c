@@ -195,7 +195,6 @@ static int matchnum(char ch)
 
 static int fetchnum(char ch)
 {
-  char ch2;
   char num[20];
   int ind = 1;
   int done = 0;
