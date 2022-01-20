@@ -28,6 +28,8 @@
 
 %}
 %option noyywrap
+%option noinput
+%option nounput
 %%
 "Jan"	printf ("1");
 "Feb"	printf ("2");
