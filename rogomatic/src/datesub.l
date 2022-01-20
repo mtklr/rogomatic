@@ -27,6 +27,7 @@
  */
 
 %}
+%option noyywrap
 %%
 "Jan"	printf ("1");
 "Feb"	printf ("2");
@@ -41,11 +42,6 @@
 "Nov"	printf ("11");
 "Dec"	printf ("12");
 %%
-
-int yywrap(void)
-{
-	;
-}
 
 int main(void)
 {

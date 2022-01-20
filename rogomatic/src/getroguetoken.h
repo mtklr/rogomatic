@@ -40,7 +40,7 @@ static int match3(char ch1, char ch2, char ch3);
 static int match4(char ch1, char ch2, char ch3, char ch4);
 static int match5(char ch1, char ch2, char ch3, char ch4, char ch5);
 char getroguetoken(void);
-int getoldcommand(char *s);
+void getoldcommand(char *s);
 int getlogtoken(void);
 
 #endif /* __GETROGUETOKEN_H__ */

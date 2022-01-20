@@ -49,7 +49,7 @@ static char ltmnam[100];	/* Long term memory file name */
  * mapcharacter: Read a character help message
  */
 
-int mapcharacter(char ch, char *str)
+void mapcharacter(char ch, char *str)
 {
   dwait (D_CONTROL, "mapcharacter called: '%c' ==> '%s'", ch, str);
 

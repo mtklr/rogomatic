@@ -209,6 +209,7 @@ int used(char *codename)
     if (streq (dbase[i].fakename, codename))
       return (dbase[i].used);
 
+  return FALSE;
 }
 
 /*
