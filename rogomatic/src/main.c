@@ -655,7 +655,7 @@ int main(int argc, char *argv[])
           clrtoeol (); at (row, col); refresh (); break;
 
         case ':': chicken = !chicken;
-          say (chicken ? "chicken" : "aggressive");
+          saynow (chicken ? "chicken" : "aggressive");
           break;
 
         case '~': if (replaying)
@@ -691,7 +691,7 @@ int main(int argc, char *argv[])
           pauserogue ();
           break;
 
-        case 'r': resetinv (); say ("Inventory reset."); break;
+        case 'r': resetinv (); saynow ("Inventory reset."); break;
 
         case 'i': clear (); dumpinv ((FILE *) NULL); pauserogue (); break;
 
@@ -701,7 +701,7 @@ int main(int argc, char *argv[])
         case '(': clear (); dumpdatabase (); pauserogue (); break;
 
         case 'c': cheat = !cheat;
-          say (cheat ? "cheating" : "righteous");
+          saynow (cheat ? "cheating" : "righteous");
           break;
 
         case 'd': toggledebug ();	break;
