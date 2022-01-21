@@ -9,7 +9,7 @@ int filelength(char *f);
 void critical(void);
 void uncritical(void);
 void reset_int(void);
-void int_exit(void (*exitproc)(int));
+void int_exit(void (*exitproc)());
 int lock_file(const char *lokfil, int maxtime);
 void unlock_file(const char *lokfil);
 void quit(int code, char *fmt, ...);

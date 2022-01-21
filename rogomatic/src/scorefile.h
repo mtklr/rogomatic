@@ -3,6 +3,6 @@
 
 void add_score(char *new_line, char *vers, int ntrm);
 void dumpscore(char *vers);
-int intrupscore(void);
+void intrupscore(void);
 
 #endif

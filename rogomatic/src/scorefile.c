@@ -109,7 +109,8 @@ void dumpscore(char *vers)
 {
   char  ch, scrfil[100], delfil[100], newfil[100], allfil[100], cmd[1024];
   FILE *scoref, *deltaf;
-  int   oldmask, intrupscore ();
+  int   oldmask;
+  void intrupscore (void);
 
   sprintf (lokfil, "%s %s", LOCKFILE, vers);
   sprintf (scrfil, "%s/rgmscore%s", getRgmDir (), vers);
@@ -199,7 +200,7 @@ void dumpscore(char *vers)
  * intrupscore: We have an interrupt, clean up and unlock the score file.
  */
 
-int intrupscore(void)
+void intrupscore(void)
 {
   unlock_file (lokfil);
   exit (1);

@@ -168,7 +168,7 @@ void reset_int(void)
  * int_exit: Set up a function to call if we get an interrupt
  */
 
-void int_exit(void (*exitproc)(int))
+void int_exit(void (*exitproc)())
 {
   if (signal (SIGHUP, SIG_IGN) != SIG_IGN)  signal (SIGHUP, exitproc);
 
