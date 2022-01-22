@@ -59,7 +59,6 @@ static int triangle(int n);
 static int badgene(int e1, int e2);
 
 # define TRIALS(g)		((g)->score.count)
-# define NONE		(-1)
 # define MAXM		100
 # define ALLELE		100
 # define ZEROSTAT	{0, 0, 0, 0, 0}
