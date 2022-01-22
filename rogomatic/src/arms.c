@@ -36,6 +36,7 @@
 #include "arms.h"
 
 #include "debug.h"
+#include "pack.h"
 #include "things.h"
 #include "utility.h"
 

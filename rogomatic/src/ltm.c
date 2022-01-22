@@ -42,6 +42,7 @@
 #include "config.h"
 #include "debug.h"
 #include "io.h"
+#include "monsters.h"
 #include "stats.h"
 #include "utility.h"
 

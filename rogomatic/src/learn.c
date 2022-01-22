@@ -30,6 +30,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 #include "types.h"
 
@@ -64,7 +65,6 @@ static int badgene(int e1, int e2);
 # define ZEROSTAT	{0, 0, 0, 0, 0}
 
 extern int knob[];
-extern double mean(), stdev(), sqrt();
 extern FILE *wopen();
 
 time_t inittime;

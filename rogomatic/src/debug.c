@@ -48,6 +48,7 @@
 #include "pack.h"
 #include "survival.h"
 #include "things.h"
+#include "utility.h"
 
 /*
  * Debugging wait loop: Handle the usual Rogomatic command chars, and also

@@ -38,6 +38,7 @@
 #include "command.h"
 #include "debug.h"
 #include "io.h"
+#include "monsters.h"
 #include "rooms.h"
 #include "search.h"
 #include "survival.h"

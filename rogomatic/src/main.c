@@ -270,11 +270,6 @@ int   wplushit = 1;		/* Our plus hit from weapon bonus */
 int   zone = NONE;		/* Current screen zone, 0..8 */
 int   zonemap[9][9];		/* Map of zones connections */
 
-/* Functions */
-void (*istat)(int);
-void onintr (int sig);
-char getroguetoken (), *getname();
-
 /* Stuff list, list of objects on this level */
 stuffrec slist[MAXSTUFF]; 	int slistlen=0;
 
@@ -549,6 +544,7 @@ int main(int argc, char *argv[])
    * Kernigan & Dennis Ritchie. I sure wouldn't have thought of it.
    */
 
+  void (*istat)(int);
   istat = signal (SIGINT, SIG_IGN); /* save original status */
   setjmp (commandtop);              /* save stack position */
 
