@@ -28,24 +28,27 @@
  * Rogue, this file and 'things.c' make up the effector interface.
  */
 
-# include <curses.h>
-# include <ctype.h>
-# include <string.h>
+#include <ctype.h>
+#include <curses.h>
 #include <stdarg.h>
 #include <stdlib.h>
-# include "types.h"
-# include "globals.h"
+#include <string.h>
+
+#include "types.h"
+#include "globals.h"
+
 #include "command.h"
-#include "debuglog.h"
-#include "monsters.h"
-#include "things.h"
-#include "io.h"
-#include "pack.h"
-#include "database.h"
+
 #include "arms.h"
-#include "utility.h"
-#include "getroguetoken.h"
+#include "database.h"
 #include "debug.h"
+#include "debuglog.h"
+#include "getroguetoken.h"
+#include "io.h"
+#include "monsters.h"
+#include "pack.h"
+#include "things.h"
+#include "utility.h"
 
 # define EQUAL 0
 

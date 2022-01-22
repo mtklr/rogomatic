@@ -28,13 +28,16 @@
  * weapons and rings.
  */
 
-# include <curses.h>
-# include "types.h"
-# include "globals.h"
+#include <curses.h>
+
+#include "types.h"
+#include "globals.h"
+
 #include "arms.h"
+
+#include "debug.h"
 #include "things.h"
 #include "utility.h"
-#include "debug.h"
 
 /*
  * havearmor: Return Kth best armor. K should be in the range 1 to invcount.

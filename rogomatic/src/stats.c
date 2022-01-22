@@ -46,9 +46,11 @@
  *	writestat:	Write a statistic to a file.
  */
 
-# include <stdio.h>
-# include <math.h>
-# include "types.h"
+#include <math.h>
+#include <stdio.h>
+
+#include "types.h"
+
 #include "stats.h"
 
 /*

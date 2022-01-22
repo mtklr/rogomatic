@@ -28,10 +28,12 @@
  * and produces a scatter plot of the scores.
  */
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "rgmplot.h"
+
 #include "utility.h"
 
 # define WIDTH 50

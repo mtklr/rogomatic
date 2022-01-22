@@ -27,34 +27,37 @@
  * This file contains all of the functions which deal with the real world.
  */
 
-# include <curses.h>
-# include <ctype.h>
-# include <string.h>
-# include <stdlib.h>
-# include <sys/ioctl.h>
-# include <time.h>
-# include <unistd.h>
+#include <ctype.h>
+#include <curses.h>
 #include <stdarg.h>
-# include "install.h"
-# include "types.h"
-# include "globals.h"
-# include "termtokens.h"
+#include <stdlib.h>
+#include <string.h>
+#include <sys/ioctl.h>
+#include <time.h>
+#include <unistd.h>
+
+#include "types.h"
+#include "globals.h"
+#include "install.h"
+
 #include "io.h"
-#include "rooms.h"
-#include "debuglog.h"
-#include "monsters.h"
-#include "getroguetoken.h"
-#include "mess.h"
-#include "debug.h"
-#include "pack.h"
-#include "search.h"
-#include "things.h"
+
 #include "arms.h"
-#include "ltm.h"
-#include "stats.h"
-#include "scorefile.h"
-#include "utility.h"
 #include "command.h"
+#include "debug.h"
+#include "debuglog.h"
+#include "getroguetoken.h"
+#include "ltm.h"
+#include "mess.h"
+#include "monsters.h"
+#include "pack.h"
+#include "rooms.h"
+#include "scorefile.h"
+#include "search.h"
+#include "stats.h"
+#include "termtokens.h"
+#include "things.h"
+#include "utility.h"
 
 # define READ	0
 

@@ -20,12 +20,13 @@
  * along with Rog-O-Matic.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-# include <sys/types.h>
-# include <dirent.h>
-# include <stdlib.h>
-#include "config.h"
+#include <dirent.h>
+#include <stdlib.h>
+#include <sys/types.h>
 
-# include "install.h"
+#include "install.h"
+
+#include "config.h"
 
 /* install.h has a RGMDIR and a LOCKFILE which are set to the install path
  * which is fine, unless you are testing things out when you might want a

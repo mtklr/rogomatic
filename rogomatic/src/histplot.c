@@ -28,10 +28,12 @@
  * of the scores.
  */
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "histplot.h"
+
 #include "utility.h"
 
 # define SKIPARG	while (*++(*argv)); --(*argv)

@@ -27,26 +27,29 @@
  * This file contains all of the 'high level intelligence' of Rog-O-Matic.
  */
 
-# include <stdio.h>
-# include <ctype.h>
-# include <curses.h>
-# include <string.h>
-# include "types.h"
-# include "globals.h"
-# include "install.h"
+#include <stdio.h>
+#include <ctype.h>
+#include <curses.h>
+#include <string.h>
+
+#include "types.h"
+#include "globals.h"
+#include "install.h"
+
 #include "strategy.h"
-#include "debug.h"
+
+#include "arms.h"
 #include "command.h"
+#include "database.h"
+#include "debug.h"
+#include "explore.h"
 #include "io.h"
+#include "monsters.h"
+#include "rooms.h"
+#include "search.h"
+#include "survival.h"
 #include "tactics.h"
 #include "things.h"
-#include "explore.h"
-#include "search.h"
-#include "rooms.h"
-#include "monsters.h"
-#include "survival.h"
-#include "database.h"
-#include "arms.h"
 #include "worth.h"
 
 /*

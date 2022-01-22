@@ -28,17 +28,20 @@
  * paths to explore, pick up something, or run away.
  */
 
-# include <curses.h>
-# include "types.h"
-# include "globals.h"
+#include <curses.h>
+
+#include "types.h"
+#include "globals.h"
+
 #include "explore.h"
-#include "search.h"
-#include "rooms.h"
-#include "io.h"
-#include "debug.h"
-#include "things.h"
+
 #include "command.h"
+#include "debug.h"
+#include "io.h"
+#include "rooms.h"
+#include "search.h"
 #include "survival.h"
+#include "things.h"
 
 # define SEARCHES(r,c)						\
 	(onrc(DEADEND,r,c) ?					\

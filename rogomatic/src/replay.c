@@ -28,12 +28,15 @@
  * Rog-O-Matic log file.
  */
 
-# include <curses.h>
-# include <ctype.h>
-# include <string.h>
-# include "types.h"
-# include "globals.h"
+#include <ctype.h>
+#include <curses.h>
+#include <string.h>
+
+#include "types.h"
+#include "globals.h"
+
 #include "replay.h"
+
 #include "io.h"
 
 # define MAXNUMLEV 50

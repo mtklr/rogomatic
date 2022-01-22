@@ -27,24 +27,27 @@
  * This file contains all of the 'medium level intelligence' of Rog-O-Matic.
  */
 
-# include <stdio.h>
-# include <ctype.h>
-# include <curses.h>
-# include "types.h"
-# include "globals.h"
-# include "install.h"
+#include <ctype.h>
+#include <curses.h>
+#include <stdio.h>
+
+#include "types.h"
+#include "globals.h"
+#include "install.h"
+
 #include "tactics.h"
+
 #include "arms.h"
-#include "things.h"
-#include "debug.h"
-#include "database.h"
-#include "utility.h"
 #include "command.h"
+#include "database.h"
+#include "debug.h"
 #include "explore.h"
 #include "io.h"
-#include "titlepage.h"
 #include "rooms.h"
 #include "search.h"
+#include "things.h"
+#include "titlepage.h"
+#include "utility.h"
 
 /*
  * handlearmor: This routine is called to determine whether we should

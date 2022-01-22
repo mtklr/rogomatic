@@ -35,17 +35,20 @@
  * there was no door there.
  */
 
-# include <stdio.h>
-# include <ctype.h>
-# include <curses.h>
-# include "types.h"
-# include "globals.h"
+#include <ctype.h>
+#include <curses.h>
+#include <stdio.h>
+
+#include "types.h"
+#include "globals.h"
+
 #include "survival.h"
-#include "io.h"
+
 #include "debug.h"
-#include "tactics.h"
-#include "search.h"
+#include "io.h"
 #include "rooms.h"
+#include "search.h"
+#include "tactics.h"
 
 # define SO	  1
 # define SE	  0

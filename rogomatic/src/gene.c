@@ -27,14 +27,16 @@
  * Initialize and summarize the gene pool
  */
 
-# include <stdio.h>
-# include <stdlib.h>
-# include "types.h"
-# include "install.h"
-# include "utility.h"
-# include "learn.h"
-# include "config.h"
-# include "rand.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "types.h"
+#include "install.h"
+
+#include "config.h"
+#include "learn.h"
+#include "rand.h"
+#include "utility.h"
 
 int knob[MAXKNOB];
 char *knob_name[MAXKNOB] = {

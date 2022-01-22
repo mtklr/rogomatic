@@ -27,15 +27,18 @@
  * This file contains the very basic search mechanisms for exploration etc.
  */
 
-# include <stdio.h>
-# include <curses.h>
-# include "types.h"
-# include "globals.h"
+#include <curses.h>
+#include <stdio.h>
+
+#include "types.h"
+#include "globals.h"
+
 #include "search.h"
-#include "debug.h"
+
 #include "command.h"
-#include "things.h"
+#include "debug.h"
 #include "io.h"
+#include "things.h"
 
 # define QSIZE (4000)
 

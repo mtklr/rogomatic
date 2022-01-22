@@ -93,41 +93,43 @@
  *	on a UTexas computer.
  *****************************************************************/
 
-# include <curses.h>
-# include <ctype.h>
-# include <fcntl.h>
-# include <signal.h>
-# include <setjmp.h>
-# include <string.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <unistd.h>
-# include "types.h"
-# include "termtokens.h"
-# include "install.h"
+#include <ctype.h>
+#include <curses.h>
+#include <fcntl.h>
+#include <setjmp.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+#include "types.h"
+#include "install.h"
+
+#include "arms.h"
+#include "command.h"
+#include "config.h"
+#include "database.h"
+#include "debug.h"
 #include "debuglog.h"
+#include "debuglog.h"
+#include "explore.h"
 #include "getroguetoken.h"
 #include "io.h"
-#include "ltm.h"
-#include "command.h"
-#include "mess.h"
-#include "debug.h"
-#include "pack.h"
-#include "database.h"
-#include "things.h"
-#include "monsters.h"
-#include "arms.h"
-#include "replay.h"
-#include "debuglog.h"
-#include "search.h"
-#include "config.h"
-#include "rand.h"
-#include "utility.h"
 #include "learn.h"
-#include "strategy.h"
+#include "ltm.h"
+#include "mess.h"
+#include "monsters.h"
+#include "pack.h"
+#include "rand.h"
+#include "replay.h"
 #include "rooms.h"
+#include "search.h"
+#include "strategy.h"
 #include "survival.h"
-#include "explore.h"
+#include "termtokens.h"
+#include "things.h"
+#include "utility.h"
 
 void onintr(int sig);
 void startlesson(void);

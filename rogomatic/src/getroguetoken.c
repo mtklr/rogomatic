@@ -20,13 +20,16 @@
  * along with Rog-O-Matic.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-# include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
-# include "types.h"
-# include "globals.h"
-# include "termtokens.h"
+
+#include "types.h"
+#include "globals.h"
+
 #include "getroguetoken.h"
+
 #include "debuglog.h"
+#include "termtokens.h"
 
 static int matchnum(char ch);
 static int fetchnum(char ch);

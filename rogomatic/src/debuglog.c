@@ -22,6 +22,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+
 #include "debuglog.h"
 
 static void err_doit(int errnoflag, int error, const char *fmt, va_list ap);

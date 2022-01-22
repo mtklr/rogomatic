@@ -28,19 +28,22 @@
  * term memory"
  */
 
-# include <curses.h>
-# include <math.h>
-# include <string.h>
+#include <curses.h>
+#include <math.h>
+#include <string.h>
 #include <time.h>
-# include "types.h"
-# include "globals.h"
-# include "install.h"
+
+#include "types.h"
+#include "globals.h"
+#include "install.h"
+
 #include "ltm.h"
-#include "debug.h"
-#include "utility.h"
+
 #include "config.h"
-#include "stats.h"
+#include "debug.h"
 #include "io.h"
+#include "stats.h"
+#include "utility.h"
 
 static int nosave = 0;		/* True ==> dont write ltm back out */
 static char ltmnam[100];	/* Long term memory file name */

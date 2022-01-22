@@ -27,13 +27,16 @@
  * Genetic learning component.
  */
 
-# include <stdio.h>
-# include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
-# include "types.h"
+
+#include "types.h"
+
 #include "learn.h"
-#include "stats.h"
+
 #include "rand.h"
+#include "stats.h"
 #include "utility.h"
 
 static void parsegene(char *buf, genotype *gene);

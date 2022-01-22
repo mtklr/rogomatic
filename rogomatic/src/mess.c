@@ -27,26 +27,28 @@
  * This file contains all of the functions which parse the message line.
  */
 
-# include <curses.h>
-# include <ctype.h>
-# include <string.h>
+#include <ctype.h>
+#include <curses.h>
 #include <stdlib.h>
-# include "types.h"
-# include "globals.h"
-#include "mess.h"
-#include "io.h"
-#include "rooms.h"
-#include "pack.h"
-#include "debug.h"
-#include "search.h"
-#include "utility.h"
-#include "things.h"
-#include "monsters.h"
-#include "tactics.h"
-#include "ltm.h"
-#include "database.h"
-#include "stats.h"
+#include <string.h>
 
+#include "types.h"
+#include "globals.h"
+
+#include "mess.h"
+
+#include "database.h"
+#include "debug.h"
+#include "io.h"
+#include "ltm.h"
+#include "monsters.h"
+#include "pack.h"
+#include "rooms.h"
+#include "search.h"
+#include "stats.h"
+#include "tactics.h"
+#include "things.h"
+#include "utility.h"
 
 /* Matching macros */
 # define MATCH(p) smatch(mess,p,result)

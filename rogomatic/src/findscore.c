@@ -27,11 +27,14 @@
  * Read the Rogue scoreboard to determine a goal score.
  */
 
-# include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-# include "install.h"
+
+#include "install.h"
+
 #include "findscore.h"
+
 #include "utility.h"
 
 # define TEMPFL "/tmp/RscoreXXXXXX"

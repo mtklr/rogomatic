@@ -31,15 +31,18 @@
  * file is sorted and merged into the rgmscore file.
  */
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/stat.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
-# include "types.h"
-# include "globals.h"
-# include "install.h"
+
+#include "types.h"
+#include "globals.h"
+#include "install.h"
+
 #include "scorefile.h"
+
 #include "config.h"
 #include "utility.h"
 

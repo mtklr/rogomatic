@@ -27,15 +27,18 @@
  * This is the program which forks and execs the Rogue & the Player
  */
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <unistd.h>
-# include "install.h"
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#include "install.h"
+
 #include "setup.h"
+
 #include "findscore.h"
-#include "utility.h"
 #include "scorefile.h"
+#include "utility.h"
 
 # define READ    0
 # define WRITE   1

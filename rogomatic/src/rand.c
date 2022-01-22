@@ -39,6 +39,7 @@
  */
 
 #include <time.h>
+
 #include "rand.h"
 
 /* Rand 1, period length 444674 */

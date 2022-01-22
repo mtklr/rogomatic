@@ -35,11 +35,14 @@
  *
  */
 
-# include <curses.h>
-# include <string.h>
-# include "types.h"
-# include "globals.h"
+#include <curses.h>
+#include <string.h>
+
+#include "types.h"
+#include "globals.h"
+
 #include "database.h"
+
 #include "debug.h"
 #include "io.h"
 

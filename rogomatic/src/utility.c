@@ -31,19 +31,20 @@
  * defined here (otherwise the functions from -lcmu are used).
  */
 
-# include <curses.h>
-# include <pwd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <time.h>
+#include <curses.h>
 #include <fcntl.h>
+#include <pwd.h>
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <time.h>
 #include <unistd.h>
 
-# include "install.h"
+#include "install.h"
+
 #include "utility.h"
 
 #ifdef ROGO_PUTENV

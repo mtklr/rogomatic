@@ -33,14 +33,17 @@
  * which is the "worst" object in the pack.
  */
 
-# include <curses.h>
-# include "types.h"
-# include "globals.h"
+#include <curses.h>
+
+#include "types.h"
+#include "globals.h"
+
 #include "worth.h"
-#include "utility.h"
+
 #include "arms.h"
 #include "arms.h"
 #include "things.h"
+#include "utility.h"
 
 int   objval[] = {
   /* strange */      0,

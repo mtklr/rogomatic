@@ -27,17 +27,20 @@
  * This file contains all of the monster specific functions.
  */
 
-# include <stdio.h>
-# include <ctype.h>
-# include <curses.h>
+#include <ctype.h>
+#include <curses.h>
+#include <stdio.h>
 #include <string.h>
-# include "types.h"
-# include "globals.h"
+
+#include "types.h"
+#include "globals.h"
+
 #include "monsters.h"
+
 #include "debug.h"
-#include "utility.h"
 #include "io.h"
 #include "ltm.h"
+#include "utility.h"
 
 # define ADJACENT(m) (max (abs (mlist[m].mrow - atrow),\
 			   abs (mlist[m].mcol - atcol)) == 1)

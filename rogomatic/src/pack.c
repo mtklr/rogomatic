@@ -27,20 +27,22 @@
  * This file contains functions which mess with Rog-O-Matics pack
  */
 
-# include <curses.h>
-# include <string.h>
-# include <stdlib.h>
-# include "types.h"
-# include "globals.h"
+#include <curses.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "types.h"
+#include "globals.h"
+
 #include "pack.h"
-#include "worth.h"
-#include "database.h"
-#include "io.h"
+
 #include "command.h"
+#include "database.h"
 #include "debug.h"
+#include "io.h"
 #include "things.h"
 #include "utility.h"
-
+#include "worth.h"
 
 static char *stuffmess [] = {
   "strange", "food", "potion", "scroll",

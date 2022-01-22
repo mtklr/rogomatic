@@ -30,21 +30,24 @@
  * (because Rogue uses a different dungeon each time).
  */
 
-# include <curses.h>
-# include <setjmp.h>
-# include <string.h>
-# include "types.h"
-# include "globals.h"
-# include "install.h"
+#include <curses.h>
+#include <setjmp.h>
+#include <string.h>
+
+#include "types.h"
+#include "globals.h"
+#include "install.h"
+
 #include "debug.h"
+
 #include "config.h"
+#include "database.h"
 #include "io.h"
 #include "mess.h"
-#include "pack.h"
-#include "things.h"
 #include "monsters.h"
-#include "database.h"
+#include "pack.h"
 #include "survival.h"
+#include "things.h"
 
 /*
  * Debugging wait loop: Handle the usual Rogomatic command chars, and also

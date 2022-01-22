@@ -29,11 +29,14 @@
  * the screen.
  */
 
-# include <stdio.h>
-# include <curses.h>
-# include "types.h"
-# include "globals.h"
+#include <curses.h>
+#include <stdio.h>
+
+#include "types.h"
+#include "globals.h"
+
 #include "titlepage.h"
+
 #include "utility.h"
 
 static char *titlepage[]= {
