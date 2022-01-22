@@ -31,7 +31,7 @@
 #define GLOBALS_H_
 
 /* global files */
-extern FILE *trogue;	/* From Rogue, To Rogue */
+extern FILE *trogue;		/* From Rogue, To Rogue */
 extern FILE *logfile;		/* Rogomatic score file */
 extern FILE *realstdout;	/* Real stdout when in terse or emacs mode */
 extern FILE *snapshot;		/* File for snapshot command */
@@ -57,11 +57,17 @@ extern char versionstr[];	/* Version of Rogue we are playing */
 
 /* character and string functions */
 extern int getlogtoken();
-extern char *getname(), *itemstr();
-extern char logchar(), *monname(char m), *findentry_getfakename(), *findentry_getrealname();
+extern char *getname();
+extern char *itemstr();
+extern char logchar();
+extern char *monname(char m);
+extern char *findentry_getfakename();
+extern char *findentry_getrealname();
 
-/* double precision floating point functions */
-double prob(), mean(), stdev();	/* For stats.c */
+/* double precision floating point functions for stats.c */
+double prob();
+double mean();
+double stdev();
 
 /* global integers */
 extern int aggravated;		/* True if we aggravated this level */
@@ -92,10 +98,11 @@ extern int darkdir;		/* Direction of arrow in dark room */
 extern int darkturns;		/* # arrows left to fire in dark room */
 extern int debugging;		/* Debugging options in effect */
 extern int didreadmap;		/* Last magically mapped level */
-extern int doorlist[], *newdoors; /* Holds r,c of new doors found */
+extern int doorlist[];		/* Holds r,c of new doors found */
+extern int *newdoors;		/* Holds r,c of new doors found */
 extern int doublehasted;	/* True if double hasted (3.6 only) */
 extern int droppedscare;	/* Number of scare mon. on this level */
-extern int diddrop;	/* If we've dropped anything on this spot */
+extern int diddrop;		/* If we've dropped anything on this spot */
 extern int emacs;		/* True if in emacs mode */
 extern int exploredlevel;	/* We completely explored this level */
 extern int floating;		/* True if we are levitating */
@@ -108,7 +115,8 @@ extern int goodweapon;		/* Used for two-handed sword */
 extern int gplusdam;		/* Global damage bonus */
 extern int gplushit;		/* Global hit bonus */
 extern int hasted;		/* True if hasted */
-extern int head,tail;		/* endpoints of circular queue */
+extern int head;		/* endpoints of circular queue */
+extern int tail;		/* endpoints of circular queue */
 extern int hitstokill;		/* Number of hits to kill last monster */
 extern int interrupted;		/* True if at commandtop from onintr() */
 extern int knowident;		/* Found an identify scroll? */
@@ -149,7 +157,8 @@ extern int room[];		/* Flags for each room */
 extern int row,col;		/* where is the cursor? */
 extern int scrmap[24][80];	/* attribute flags for squares */
 extern int slowed;		/* True if we recently slowed a monster */
-extern int stairrow,staircol;	/* Where is the staircase */
+extern int stairrow;		/* Where is the staircase */
+extern int staircol;		/* Where is the staircase */
 extern int teleported;		/* times teleported on this level */
 extern int terse;		/* True if in terse mode */
 extern int transparent;		/* True ==> user mode */
@@ -165,12 +174,22 @@ extern int zone;		/* Current zone (0 to 8) */
 extern int zonemap[9][9];	/* Connectivity map */
 
 /* Status line variables */
-extern int Level,MaxLevel,Gold,Hp,Hpmax,Str,Strmax,Ac,Exp,Explev;
+extern int Level;
+extern int MaxLevel;
+extern int Gold;
+extern int Hp;
+extern int Hpmax;
+extern int Str;
+extern int Strmax;
+extern int Ac;
+extern int Exp;
+extern int Explev;
 extern char Ms[];		/* Msg 'X', 'Hungry', 'Weak', 'Fainting' */
 extern int turns;		/* Est time in Rogue turns since start */
 
 /* Geometry data */
-extern int deltc[], deltr[];	/* Displacements for directions */
+extern int deltc[];		/* Displacements for directions */
+extern int deltr[];		/* Displacements for directions */
 extern int deltrc[];		/* ditto */
 extern char keydir[];		/* Directions for motion keys */
 extern int movedir;		/* Which direction did we last move */
@@ -180,30 +199,42 @@ extern stuff translate[];	/* what Rogue characters represent */
 extern timerec timespent[];
 
 /* Objects in pack */
-extern invrec inven[];	extern int invcount;
+extern invrec inven[];
+extern int invcount;
 
 /* Stuff on this level */
-extern stuffrec slist[]; extern int slistlen;
+extern stuffrec slist[];
+extern int slistlen;
 
 /* Monster on this level */
-extern monrec mlist[];	extern int mlistlen;
+extern monrec mlist[];
+extern int mlistlen;
 
-extern char	killedmonster, targetmonster;
+extern char killedmonster;
+extern char targetmonster;
 
 /* Door search variables */
-extern int	new_mark, new_findroom, new_search, new_stairs, new_arch;
-extern char	timessearched[24][80], timestosearch;
-extern int	searchstartr, searchstartc;
-extern int	reusepsd;
+extern int new_mark;
+extern int new_findroom;
+extern int new_search;
+extern int new_stairs;
+extern int new_arch;
+extern char timessearched[24][80];
+extern char timestosearch;
+extern int searchstartr;
+extern int searchstartc;
+extern int reusepsd;
 
 /* Results of last makemove */
-extern int	ontarget, targetrow, targetcol;
+extern int ontarget;
+extern int targetrow;
+extern int targetcol;
 
 /* Monster attribute and Long term memory arrays */
 extern attrec monatt[];		/* Monster attributes */
 extern lrnrec ltm;		/* Long term memory -- general */
-extern ltmrec monhist[]; 	/* Long term memory -- creatures */
-extern ltmrec delhist[]; 	/* Long term memory -- changes this game */
+extern ltmrec monhist[];	/* Long term memory -- creatures */
+extern ltmrec delhist[];	/* Long term memory -- changes this game */
 extern int nextmon;		/* Length of LTM */
 extern int monindex[];		/* Index into monhist array */
 
