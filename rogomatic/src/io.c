@@ -581,7 +581,7 @@ void terpbot(void)
         fflush (realstdout);
       }
       else if (terse && oldlev != Level) {
-        fprintf (realstdout, "%s\n", screen[23]);
+        fprintf (realstdout, "%s\r\n", screen[23]);
         fflush (realstdout);
       }
     }

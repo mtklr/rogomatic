@@ -498,7 +498,7 @@ int main(int argc, char *argv[])
   if (emacs)
     { fprintf (realstdout, "%s  (%%b)", msg); fflush (realstdout); }
   else if (terse)
-    { fprintf (realstdout, "%s\n", msg); fflush (realstdout); }
+    { fprintf (realstdout, "%s\r\n", msg); fflush (realstdout); }
   else
     { saynow (msg); }
 
