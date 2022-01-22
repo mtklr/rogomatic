@@ -255,7 +255,7 @@ int callitpending(void)
 
 int fightmonster(void)
 {
-  register int i, rr, cc, mdir = NONE, mbad  = NONE, danger = 0;
+  int i, rr, cc, mdir = NONE, mbad  = NONE, danger = 0;
   int  melee = 0, adjacent = 0, alertmonster = 0;
   int  wanddir = NONE, m = NONE, howmean;
   char mon, monc = ':', *monster;
@@ -382,7 +382,7 @@ int fightmonster(void)
 
 int tomonster(void)
 {
-  register int i, dist, rr, cc, mdir = NONE, mbad = NONE;
+  int i, dist, rr, cc, mdir = NONE, mbad = NONE;
   int   closest, which, danger = 0, adj = 0, alert = 0;
   char  monc = ':', monchar = ':', *monster;
 
@@ -434,7 +434,7 @@ int tomonster(void)
   /* No monsters worth bothering, return failure */
   if (which < 0) return (0);
 
-  /* Save the monsters location in registers */
+  /* Save the monsters location */
   rr = mlist[which].mrow - atrow; cc = mlist[which].mcol - atcol;
 
   /* If the monster is on an exact diagonal, record direction */
@@ -1015,7 +1015,7 @@ int battlestations(int m, char *monster, int mbad, int danger, int mdir, int mdi
 
 int tostuff(void)
 {
-  register int i, closest, dist, w, worst, worstval;
+  int i, closest, dist, w, worst, worstval;
   int   which, wrow, wcol;
   stuff what;
 
@@ -1058,7 +1058,7 @@ int tostuff(void)
   /* Could not find anything worth picking up, return failure */
   if (which < 0) return (0);
 
-  /* Found something, save its location and type in registers */
+  /* Found something, save its location and type */
   what= slist[which].what; wrow= slist[which].srow; wcol= slist[which].scol;
 
   /* We can always pick up more gold */
@@ -1092,7 +1092,7 @@ int tostuff(void)
 
 int fightinvisible(void)
 {
-  char cmd[20]; register int dir, liberties = 0, lastdir, obj;
+  char cmd[20]; int dir, liberties = 0, lastdir, obj;
 
   /* Count down the time since we were last hit by a stalker */
   if (--beingstalked < 0)
@@ -1183,7 +1183,7 @@ int fightinvisible(void)
 
 int archery(void)
 {
-  register int m, mtk;
+  int m, mtk;
   char *monster;
 
   for (m=0; m < mlistlen; m++) {	/* Find a sleeping monster */

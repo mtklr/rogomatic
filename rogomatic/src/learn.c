@@ -96,7 +96,7 @@ void initpool(int k, int m)
 
 void analyzepool(int full)
 {
-  register int g;
+  int g;
 
   qsort (genes, length, sizeof (*genes), compgene);
 
@@ -110,7 +110,7 @@ void analyzepool(int full)
   /* Give average of each gene */
   if (full == 2) {
     statistic gs;
-    register int k;
+    int k;
     extern char *knob_name[];
 
     for (k=0; k<MAXKNOB; k++) {
@@ -148,7 +148,7 @@ void analyzepool(int full)
 
 void setknobs(int *newid, int *knb, int *best, int *avg)
 {
-  register int i, g;
+  int i, g;
 
   ++trialno;
 
@@ -168,7 +168,7 @@ void setknobs(int *newid, int *knb, int *best, int *avg)
 
 void evalknobs(int gid, int score, int level)
 {
-  register int g;
+  int g;
 
   /* Find out which gene has the correct id */
   for (g=0; g<length; g++)
@@ -219,7 +219,7 @@ void rogo_closelog(void)
 
 int pickgenotype(void)
 {
-  register int youth, father, mother, new;
+  int youth, father, mother, new;
 
   /* Find genotype with fewer trials than needed to measure its performance */
   youth = untested ();
@@ -284,8 +284,8 @@ int pickgenotype(void)
 int readgenes(char *genepool)
 {
   char buf[BUFSIZ];
-  register char *b;
-  register int g=0;
+  char *b;
+  int g=0;
   FILE *gfil;
 
   if ((gfil = fopen (genepool, "r")) == NULL) {
@@ -327,7 +327,7 @@ int readgenes(char *genepool)
 
 static void parsegene(char *buf, genotype *gene)
 {
-  register int i;
+  int i;
 
   /* Get genotype specific info */
   sscanf (buf, "%d %d %d %d", &gene->id, &gene->creation,
@@ -357,8 +357,8 @@ static void parsegene(char *buf, genotype *gene)
 
 void writegenes(char *genepool)
 {
-  register FILE *gfil;
-  register int g;
+  FILE *gfil;
+  int g;
 
   /* Open the gene file */
   if ((gfil = wopen (genepool, "w")) == NULL)
@@ -386,7 +386,7 @@ void writegenes(char *genepool)
 
 static void writegene(FILE *gfil, genotype *g)
 {
-  register int i;
+  int i;
 
   /* Print genotype specific info */
   fprintf (gfil, "%3d %4d %3d %3d|", g->id, g->creation,
@@ -414,7 +414,7 @@ static void writegene(FILE *gfil, genotype *g)
 
 static void initgene(genotype *gene)
 {
-  register int i;
+  int i;
 
   /* Clear genoptye specific info */
   gene->id = gene->creation = gene->father = gene->mother = 0;
@@ -433,7 +433,7 @@ static void initgene(genotype *gene)
 
 static int compgene(genotype **a, genotype **b)
 {
-  register int result;
+  int result;
 
   result = (int) mean (&((*b)->score)) -
            (int) mean (&((*a)->score));
@@ -481,7 +481,7 @@ static void birth(FILE *f, genotype *gene)
 
 static void printdna(FILE *f, genotype *gene)
 {
-  register int i;
+  int i;
 
   fprintf (f, "(");
 
@@ -500,7 +500,7 @@ static void printdna(FILE *f, genotype *gene)
 
 static void cross(int father, int mother, int new)
 {
-  register int cpoint, i;
+  int cpoint, i;
 
   /* Set the new genotypes info */
   genes[new]->id = ++lastid;
@@ -539,7 +539,7 @@ static void cross(int father, int mother, int new)
 
 static void mutate(int father, int new)
 {
-  register int i;
+  int i;
 
   /* Set the new genotypes info */
   genes[new]->id = ++lastid;
@@ -576,7 +576,7 @@ static void mutate(int father, int new)
 
 static void shift(int father, int new)
 {
-  register int i, offset;
+  int i, offset;
 
   /* Set the new genotypes info */
   genes[new]->id = ++lastid;
@@ -610,7 +610,7 @@ static void shift(int father, int new)
 
 static void randompool(int m)
 {
-  register int i, g;
+  int i, g;
 
   for (g=0; g<m; g++) {
     if (g >= length) {
@@ -635,8 +635,8 @@ static void randompool(int m)
 
 static int selectgene(int e1, int e2)
 {
-  register int total=0;
-  register int g;
+  int total=0;
+  int g;
 
   /* Find the total worth */
   for (g=0; g<length; g++) {
@@ -670,7 +670,7 @@ static int selectgene(int e1, int e2)
 
 static int unique(int new)
 {
-  register int g, i, delta, sumsquares;
+  int g, i, delta, sumsquares;
 
   for (g=0; g<length; g++) {
     if (g != new) {
@@ -696,7 +696,7 @@ static int unique(int new)
 
 static int untested(void)
 {
-  register int g, y= -1, trials=1e9, newtrials, count=length;
+  int g, y= -1, trials=1e9, newtrials, count=length;
 
   for (g = rogo_randint (length); count-- > 0; g = (g+1) % length) {
     if (TRIALS (genes[g]) >= trials) continue;
@@ -716,7 +716,7 @@ static int untested(void)
 
 static int youngest(void)
 {
-  register int g, y=0, trials=1e9, newtrials, count=length;
+  int g, y=0, trials=1e9, newtrials, count=length;
 
   for (g = rogo_randint (length); count-- > 0; g = (g+1) % length) {
     newtrials = TRIALS (genes[g]);
@@ -733,7 +733,7 @@ static int youngest(void)
 
 static void makeunique(int new)
 {
-  register int i;
+  int i;
 
   while (!unique (new)) {
     i=rogo_randint (MAXKNOB);
@@ -748,7 +748,7 @@ static void makeunique(int new)
 
 static int triangle(int n)
 {
-  register int val;
+  int val;
 
   do {
     val = rogo_randint (n) - rogo_randint (n);
@@ -765,7 +765,7 @@ static int triangle(int n)
 
 static int badgene(int e1, int e2)
 {
-  register int g, worst, trials;
+  int g, worst, trials;
   double worstval, bestval, avg, dev, value;
 
   worst = -1; worstval = 1.0e9;

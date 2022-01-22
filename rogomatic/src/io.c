@@ -171,7 +171,7 @@ void printscreen(void)
 void getrogue(char *waitstr, int onat)
 {
   int   botprinted = 0, wasmapped = didreadmap, r, c, pending ();
-  register int i, j;
+  int i, j;
   char  ch, *s, *m, *q, *d, *call;
   int *doors;
   static int moved = 0;
@@ -503,7 +503,7 @@ void terpbot(void)
   char sstr[30], modeline[256];
   int oldlev = Level, oldgold = Gold, oldhp = Hp, Str18 = 0;
   extern int geneid;
-  register int i, oldstr = Str, oldAc = Ac, oldExp = Explev;
+  int i, oldstr = Str, oldAc = Ac, oldExp = Explev;
 
   /* Since we use scanf to read this field, it must not be left blank */
   if (screen[23][78] == ' ') screen[23][78] = 'X';
@@ -594,7 +594,7 @@ void terpbot(void)
 
 void dumpwalls(void)
 {
-  register int   r, c, S;
+  int   r, c, S;
   char ch;
 
   printexplored ();
@@ -640,7 +640,7 @@ void dumpwalls(void)
 void sendnow(char *f, ...)
 {
   char cmd[128];
-  register char *s = cmd;
+  char *s = cmd;
 
   memset(cmd, '\0', 128);
 
@@ -697,7 +697,7 @@ void sendcnow(char c)
 void rogo_send(char *f, ...)
 {
   char cmd[128];
-  register char *s = cmd;
+  char *s = cmd;
 
   memset (cmd, '\0', 128);
 
@@ -722,7 +722,7 @@ void rogo_send(char *f, ...)
 
 int resend(void)
 {
-  register char *l=lastcmd;		/* Ptr into last command */
+  char *l=lastcmd;		/* Ptr into last command */
 
   morecount = 0;			/* Clear message count */
 
@@ -886,7 +886,7 @@ void quitrogue(char *reason, int gld, int terminationtype)
 
 void waitfor(char *mess)
 {
-  register char *m = mess;
+  char *m = mess;
 
   while (*m) {
     if (getroguetoken () == *m) m++;
@@ -1010,8 +1010,8 @@ void pauserogue(void)
 
 void getrogver(void)
 {
-  register char *vstr = versionstr, *m = VERMSG;
-  register int cnt = 2000, ch;
+  char *vstr = versionstr, *m = VERMSG;
+  int cnt = 2000, ch;
 
   if (replaying) {		/* Look for version string in log */
     while (cnt-- > 0 && *m)
@@ -1071,7 +1071,7 @@ int charsavail(void)
 
 void redrawscreen(void)
 {
-  register int i, j;
+  int i, j;
   char ch;
 
   clear ();
@@ -1153,7 +1153,7 @@ void putn(char c, FILE *f, int n)
 
 void printsnap(FILE *f)
 {
-  register int i, j, length;
+  int i, j, length;
   struct tm *localtime(), *ts;
   char *statusline();
   long clock;
@@ -1215,7 +1215,7 @@ void dosnapshot(void)
 
 void clearscreen(void)
 {
-  register int i, j;
+  int i, j;
 
   row = col = 0;
   clear ();
@@ -1239,7 +1239,7 @@ void clearscreen(void)
 char *statusline(void)
 {
   static char staticarea[256];
-  register char *s=staticarea;
+  char *s=staticarea;
 
   sprintf (s, "Status: ");
 

@@ -73,7 +73,7 @@ void mapcharacter(char ch, char *str)
 
 int addmonhist(char *monster)
 {
-  register int m;
+  int m;
 
   /* Search for the monsters entry in the table */
   for (m=0; m<nextmon; m++)
@@ -94,7 +94,7 @@ int addmonhist(char *monster)
 
 int findmonster(char *monster)
 {
-  register int m;
+  int m;
 
   /* Search for the monsters entry in the table */
   for (m=0; m<nextmon; m++)
@@ -112,8 +112,8 @@ int findmonster(char *monster)
 
 void saveltm(int score)
 {
-  register int m;
-  register FILE *ltmfil;
+  int m;
+  FILE *ltmfil;
 
   if (nextmon < 1 || nosave) return;
 
@@ -199,7 +199,7 @@ void restoreltm(void)
 void readltm(void)
 {
   char buf[BUFSIZ];
-  register FILE *ltmfil;
+  FILE *ltmfil;
 
   if ((ltmfil = fopen (ltmnam, "r")) == NULL) {
     nosave = 1;
@@ -227,9 +227,9 @@ void readltm(void)
 
 void parsemonster(char *monster)
 {
-  register char *attrs;
+  char *attrs;
   char *index();
-  register int m;
+  int m;
 
   /* Separate the monster name from the attributes */
   if ((attrs = index (monster, '|')) == NULL) return;
@@ -254,7 +254,7 @@ void parsemonster(char *monster)
 
 void clearltm(ltmrec *ltmarr)
 {
-  register int i;
+  int i;
 
   for (i=0; i<MAXMON; i++) {
     ltmarr[i].m_name[0] = '\0';
@@ -273,7 +273,7 @@ void clearltm(ltmrec *ltmarr)
 
 void dumpmonstertable(void)
 {
-  register int m;
+  int m;
   char monc;
 
   clear (); mvprintw (0,0,"Monster table:");
@@ -303,7 +303,7 @@ void dumpmonstertable(void)
 
 void analyzeltm(void)
 {
-  register int m, i;
+  int m, i;
   double avg_dam = 0.6*Level+3, max_dam = 7.0+Level, avg_arr = 4.0;
   double phit, mean_dam, stdev_dam, three_dev;
 

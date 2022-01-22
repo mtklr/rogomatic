@@ -588,9 +588,9 @@ char getroguetoken(void)
  * getoldcommand: retrieve the old command from a logfile we are replaying.
  */
 
-void getoldcommand(register char *s)
+void getoldcommand(char *s)
 {
-  register int charcount = 0;
+  int charcount = 0;
   char ch = ' ', term = '"', *startpat = "\nC: ";
 
   while (*startpat && (int) ch != EOF)

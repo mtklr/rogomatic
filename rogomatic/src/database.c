@@ -63,7 +63,7 @@ int datalen = 0;
 
 int findfake(char *string, stuff item_type)
 {
-  register int i;
+  int i;
 
   for (i = 0; i < datalen; i++)
     if (streq (dbase[i].fakename, string) &&
@@ -88,7 +88,7 @@ int findfake(char *string, stuff item_type)
 
 int findentry(char *string)
 {
-  register int i;
+  int i;
 
   for (i = 0; i < datalen; i++)
     if (streq (dbase[i].fakename, string) ||
@@ -106,7 +106,7 @@ int findentry(char *string)
 
 char *findentry_getfakename (char *string, stuff item_type)
 {
-  register int i;
+  int i;
 
   for (i = 0; i < datalen; i++)
     if ((dbase[i].item_type == item_type) && 
@@ -125,7 +125,7 @@ char *findentry_getfakename (char *string, stuff item_type)
 
 char *findentry_getrealname(char *string, stuff item_type)
 {
-  register int i;
+  int i;
 
   for (i = 0; i < datalen; i++)
     if ((dbase[i].item_type == item_type) && 
@@ -174,7 +174,7 @@ void useobj(char *string)
 
 void infername(char *codename, char *name, stuff item_type)
 {
-  register int i;
+  int i;
 
   i = findfake (codename, item_type);
 
@@ -203,7 +203,7 @@ void infername(char *codename, char *name, stuff item_type)
 
 int used(char *codename)
 {
-  register int i;
+  int i;
 
   for (i = 0; i < datalen; i++)
     if (streq (dbase[i].fakename, codename))
@@ -218,7 +218,7 @@ int used(char *codename)
 
 int know(char *name)
 {
-  register int i;
+  int i;
 
   for (i = 0; i < datalen; i++)
     if (*dbase[i].realname && streq (dbase[i].realname, name))
@@ -233,7 +233,7 @@ int know(char *name)
 
 char *realname(char *codename)
 {
-  register int i;
+  int i;
 
   for (i = 0; i < datalen; i++)
     if (*dbase[i].realname && streq (dbase[i].fakename, codename))
@@ -248,7 +248,7 @@ char *realname(char *codename)
 
 void dumpdatabase(void)
 {
-  register int i;
+  int i;
 
   for (i = 0; i < datalen; i++) {
     at (i+1, 0);

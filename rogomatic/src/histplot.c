@@ -49,7 +49,7 @@ int main (int argc, char *argv[])
   int score = 0, maxfreq = 0, lowscore = 0, min = 200, killnum = 0;
   int bucket[NUMBUK], killed[NUMBUK][NOMON], level = 0, dolev = 0;
   int total[NOMON];
-  register int i, j, h, f;
+  int i, j, h, f;
   char killer[100], plot[128];
 
   /* Zero the buckets */

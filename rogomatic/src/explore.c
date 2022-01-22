@@ -229,7 +229,7 @@ int wallkind(int r, int c)
 
 int setpsd(int print)
 {
-  register int i, j, k, whereto, numberpsd=0;
+  int i, j, k, whereto, numberpsd=0;
 
   if (!print && reusepsd > 0) return (reusepsd-1);
 
@@ -288,7 +288,7 @@ int setpsd(int print)
 
       else {
         if ((k = wallkind (i,j)) >= 0) {	/* A legit sort of wall */
-          register int rm = whichroom (i,j);
+          int rm = whichroom (i,j);
 
           if (rm >= 0 && rm < 9) {
             whereto = rogo_connect[rm][k];
@@ -588,7 +588,7 @@ int expvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
   (void) depth; /* unused */
 
-  register int k, nr, nc, l;
+  int k, nr, nc, l;
   int a, v = 0, nunseenb = 0, nseenb = 0, nearb = 0;
 
   a = onrc (SAFE|DOOR|STAIRS|HALL, r, c) ? 0 :
@@ -697,7 +697,7 @@ int zigzagvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
   (void) depth; /* unused */
 
-  register int k, nr, nc, a, v = 0, nunseenb = 0;
+  int k, nr, nc, a, v = 0, nunseenb = 0;
 
   a = onrc (SAFE|DOOR|STAIRS|HALL, r, c) ? 0 :
       onrc (ARROW, r, c)   ? 50 :
@@ -768,7 +768,7 @@ int secretvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
   (void) depth; /* unused */
 
-  register int v, a, k;
+  int v, a, k;
 
   *val=0;
   v = 0;	/* establish value of square */
@@ -787,8 +787,8 @@ int secretvalue(int r, int c, int depth, int *val, int *avd, int *cont)
     a += 200;
 
   for (k=0; k<8; k++) {  /* examine adjacent squares */
-    register int nr = r + deltr[k];
-    register int nc = c + deltc[k];
+    int nr = r + deltr[k];
+    int nc = c + deltc[k];
 
     if (nr >= 1 && nr <= 22 &&
         nc >= 0 && nc <= 80 &&
@@ -832,7 +832,7 @@ int secretvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 
 void avoidmonsters(void)
 {
-  register int i, r, c, wearingstealth;
+  int i, r, c, wearingstealth;
 
   /* Clear old avoid monster values */
   for (i = 24*80; i--; ) avdmonsters[0][i] = 0;
@@ -911,7 +911,7 @@ void caddycorner(int r, int c, int d1, int d2, char ch)
 
 void pinavoid(void)
 {
-  register int i;
+  int i;
 
   /* Clear old avoid monster values */
   for (i = 24*80; i--; ) avdmonsters[0][i] = 0;
@@ -919,7 +919,7 @@ void pinavoid(void)
   /* Avoid each monster in turn */
   for (i=0; i<mlistlen; i++) {
     if (mlist[i].q == AWAKE) {
-      register int d, dr, dc, mr = mlist[i].mrow, mc = mlist[i].mcol;
+      int d, dr, dc, mr = mlist[i].mrow, mc = mlist[i].mcol;
       d = direc (searchstartr-mr,searchstartc-mc);
       dr = (searchstartr-mr)/2+mr - deltr[d];		/* MLM */
       dc=(searchstartc-mc)/2+mc - deltc[d];		/* MLM */
@@ -1073,7 +1073,7 @@ int safevalue(int r, int c, int depth, int *val, int *avd, int *cont)
   (void) depth; /* unused */
   (void) cont;  /* unused */
 
-  register int k, v;
+  int k, v;
 
   *avd = onrc (SAFE, r, c)    ? 0 :
          onrc (TRAPDOR | BEARTRP | GASTRAP, r, c) ? ROGINFINITY :
@@ -1132,7 +1132,7 @@ static int archrow = NONE, archcol = NONE, archturns = NONE, archval[24][80];
 int archmonster(int m, int trns)
 {
   int archeryinit(), archeryvalue();
-  register int mr, mc;
+  int mr, mc;
 
   dwait (D_CONTROL | D_BATTLE, "archmonster: m=%d, turns=%d", m, trns);
 
@@ -1182,7 +1182,7 @@ int archmonster(int m, int trns)
 
 int archeryinit(void)
 {
-  register int dir, r, c, dr, dc, dist;
+  int dir, r, c, dr, dc, dist;
 
   /* Clear the archery value array */
   for (r = 24*80; r--; ) archval[0][r] = 0;
@@ -1291,7 +1291,7 @@ int restvalue (int r, int c, int depth, int *val, int *avd, int *cont)
 {
   (void) depth; /* unused */
 
-  register int dr, dc, ar, ac;
+  int dr, dc, ar, ac;
   int count, dir, rm;
 
   /* Find room number for diagonal selection */

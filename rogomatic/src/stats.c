@@ -76,7 +76,7 @@ void addprob(probability *p, int success)
 
 double prob(probability *p)
 {
-  register int trials = p->fail + p->win;
+  int trials = p->fail + p->win;
 
   if (trials < 1)	return (0.0);
   else			return ((double) p->win / trials);
@@ -144,7 +144,7 @@ double mean(statistic *s)
 
 double stdev(statistic *s)
 {
-  register int n = s->count;
+  int n = s->count;
 
   if (n < 2)	return (0.0);
   else		return (sqrt ((n * s->sumsq - s->sum * s->sum) / (n * (n-1))));

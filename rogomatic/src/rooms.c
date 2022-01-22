@@ -129,7 +129,7 @@ static struct {int top,bot,left,right;} bounds[9]=
 
 void markmissingrooms(void)
 {
-  register int rm,i,j;
+  int rm,i,j;
 
   for (rm=0; rm<9; ++rm) {
     room[rm]=0;
@@ -155,7 +155,7 @@ nextroom: ;
 
 int whichroom(int r, int c)
 {
-  register int rm;
+  int rm;
 
   for (rm=0; rm<9; ++rm)
     if (r >= bounds[rm].top  && r <= bounds[rm].bot &&
@@ -171,7 +171,7 @@ int whichroom(int r, int c)
 
 void nametrap(int traptype, int standingonit)
 {
-  register int i, r, c, tdir = NONE, monsteradj = 0;
+  int i, r, c, tdir = NONE, monsteradj = 0;
 
   if (standingonit)
     { r=atrow; c=atcol; }
@@ -227,7 +227,7 @@ void nametrap(int traptype, int standingonit)
 
 void findstairs(int notr, int notc)
 {
-  register int r, c;
+  int r, c;
 
   stairrow = staircol = NONE;
 
@@ -244,7 +244,7 @@ void findstairs(int notr, int notc)
 
 int downright(int *drow, int *dcol)
 {
-  register int i=atrow, j=atcol;
+  int i=atrow, j=atcol;
 
   while (i < 23 && j < 79) {
     if (onrc (CANGO, i, j+1)) j++;
@@ -284,7 +284,7 @@ int lightroom(void)
 
 int darkroom(void)
 {
-  register int dir, dir2, drow, dcol;
+  int dir, dir2, drow, dcol;
 
   if (!on (DOOR | ROOM))
     return (0);
@@ -450,8 +450,8 @@ void clearcurrect(void)
 
 void updateat(void)
 {
-  register int dr = atrow - atrow0, dc = atcol - atcol0;
-  register int i, r, c;
+  int dr = atrow - atrow0, dc = atcol - atcol0;
+  int i, r, c;
   int   dist, newzone, sum;
 
   /*
@@ -743,7 +743,7 @@ void updatepos(char ch, int row, int col)
 
 void teleport(void)
 {
-  register int r = atrow0, c = atcol0;
+  int r = atrow0, c = atcol0;
 
   goalr = goalc = NONE; setnewgoal ();
 
@@ -778,7 +778,7 @@ void teleport(void)
 
 void mapinfer(void)
 {
-  register int r, c, inroom;
+  int r, c, inroom;
 
   dwait (D_CONTROL, "Map read: inferring rooms.");
 
@@ -802,7 +802,7 @@ void mapinfer(void)
 
 void markexplored(int row, int col)
 {
-  register int rm = whichroom (row, col);
+  int rm = whichroom (row, col);
 
   if (rm != NONE && !(levelmap[rm] & EXPLORED)) {
     levelmap[rm] |= EXPLORED;
@@ -818,7 +818,7 @@ void markexplored(int row, int col)
 
 void unmarkexplored(int row, int col)
 {
-  register int rm = whichroom (row, col);
+  int rm = whichroom (row, col);
 
   if (rm != NONE) levelmap[rm] &= ~EXPLORED;
 }
@@ -829,7 +829,7 @@ void unmarkexplored(int row, int col)
 
 int isexplored(int row, int col)
 {
-  register int rm = whichroom (row, col);
+  int rm = whichroom (row, col);
 
   return (rm != NONE ? levelmap[rm] & EXPLORED : 0);
 }
@@ -840,7 +840,7 @@ int isexplored(int row, int col)
 
 int haveexplored(int n)
 {
-  register int rm, count = 0;
+  int rm, count = 0;
 
   for (rm = 0; rm < 9; rm++)
     if (levelmap[rm] & EXPLORED)
@@ -855,7 +855,7 @@ int haveexplored(int n)
 
 void printexplored(void)
 {
-  register int rm;
+  int rm;
 
   at (0,0);
   printw ("Rooms explored: ");
@@ -886,7 +886,7 @@ void printexplored(void)
 
 void inferhall(int r, int c)
 {
-  register int i, j, k;
+  int i, j, k;
 
   int inc, rm, end1, end2, end, dropout = 0, dir = NONE;
 
@@ -988,7 +988,7 @@ void inferhall(int r, int c)
 
 void connectdoors(int r1, int c1, int r2, int c2)
 {
-  register int r, c;
+  int r, c;
   int endr = max (r1, r2), endc = max (c1, c2);
 
   dwait (D_INFORM, "Inferring hall (%d,%d) to (%d,%d)", r1, c1, r2, c2);
@@ -1012,7 +1012,7 @@ void connectdoors(int r1, int c1, int r2, int c2)
 
 int canbedoor(int deadr, int deadc)
 {
-  register int r, c, dr, dc, k, count;
+  int r, c, dr, dc, k, count;
 
   /* Check all orthogonal directions around the square */
   for (k=0; k < 8; k+=2) {
@@ -1036,7 +1036,7 @@ int canbedoor(int deadr, int deadc)
 
 int mazedoor(int row, int col)
 {
-  register int r=row, c=col, dr, dc, k=0, dir = NONE;
+  int r=row, c=col, dr, dc, k=0, dir = NONE;
 
   if (onrc (HALL,r,c+1)) {dir=0; k++; dr=0;   dc=1;}
 
@@ -1075,7 +1075,7 @@ int mazedoor(int row, int col)
 
 int nextto(int type, int r, int c)
 {
-  register int result;
+  int result;
 
   if ((result = onrc (type, r-1, c))) return (result);
 
@@ -1110,7 +1110,7 @@ int nexttowall(int r, int c)
 
 void dumpmazedoor(void)
 {
-  register int r, c;
+  int r, c;
 
   for (r=2; r<22; r++) {
     for (c=1; c<79; c++) {

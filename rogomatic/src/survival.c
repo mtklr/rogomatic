@@ -72,7 +72,7 @@ int markcycles(print)
 {
   short mark[1920];
   struct {short where,door,dirs;} st[1000];
-  register int sp,newsquare; int *Scr; int whichdir; int D;
+  int sp,newsquare; int *Scr; int whichdir; int D;
 
   if (!new_mark) return (0);
 
@@ -80,7 +80,7 @@ int markcycles(print)
 
   markchokepts ();
 
-  { register int count=1920; register short *m=mark; while(count--) *m++=0;}
+  { int count=1920; short *m=mark; while(count--) *m++=0;}
   sp=1; st[1].where=atrow*80+atcol; st[1].dirs=1; st[1].door=0;
 
   for (D = 0; D < 8; D += 2) {
@@ -111,7 +111,7 @@ int markcycles(print)
         /* whichdir is 6,2, or 4. */
         if ((Scr[newsquare= (st[sp].where+deltrc[(whichdir+D)&7])])&CANGO) {
           if (mark[newsquare]) {
-            register int stop,i;
+            int stop,i;
 
             if (mark[newsquare]<sp) {
               for (stop=st[mark[newsquare]].door,
@@ -156,12 +156,12 @@ int markcycles(print)
 
 void markchokepts(void)
 {
-  register int *Scr, *ScrEnd;
+  int *Scr, *ScrEnd;
 
   for (Scr = scrmap[0], ScrEnd = &Scr[1920]; Scr<ScrEnd; Scr++) {
     if (*Scr & DOOR) *Scr |= CHOKE;
     else if (*Scr & HALL) {
-      register int nbrs = 0, k;
+      int nbrs = 0, k;
 
       for (k=0; k<8; k++)
         { if (Scr[deltrc[k]] & CANGO) nbrs++; }
@@ -174,7 +174,7 @@ void markchokepts(void)
         *Scr |= CHOKE;
 
         if (debug (D_SCREEN)) {
-          register int rowcol = Scr - scrmap[0];
+          int rowcol = Scr - scrmap[0];
           standout ();
           mvprintw (rowcol/80, rowcol%80, "C");
           standend ();

@@ -118,7 +118,7 @@ int findmove(int movetype, int (*evalinit)(), int (*evaluate)(), int reevaluate)
 
 int followmap(int movetype)
 {
-  register int dir, dr, dc, r, c;
+  int dir, dr, dc, r, c;
   int timemode, searchit, count=1;
 
   dir=mvdir[atrow][atcol]-FROM; dr=deltr[dir]; dc=deltc[dir];
@@ -139,7 +139,7 @@ int followmap(int movetype)
     }
   }
 
-  r=atrow+dr; c=atcol+dc;		/* Save next square in registers */
+  r=atrow+dr; c=atcol+dc;		/* Save next square */
 
   /* If exploring and are moving to a new hall square, use fmove */
   if (movetype == EXPLORE &&
@@ -201,7 +201,7 @@ int followmap(int movetype)
 
 int validatemap(int movetype, int (*evalinit)(), int (*evaluate)())
 {
-  register int thedir, dir, r, c;
+  int thedir, dir, r, c;
   int val, avd, cont;
 
   dwait (D_CONTROL | D_SEARCH, "Validatemap: type %d", movetype);
@@ -296,7 +296,7 @@ void setnewgoal(void)
 
 int searchfrom(int row, int col, int (*evaluate)(), char dir[24][80], int *trow, int *tcol)
 {
-  register int r, c, sdir, tempdir;
+  int r, c, sdir, tempdir;
 
   if (!searchto (row, col, evaluate, dir, trow, tcol)) {
     return (0);
@@ -348,8 +348,8 @@ int searchfrom(int row, int col, int (*evaluate)(), char dir[24][80], int *trow,
 int searchto(int row, int col, int (*evaluate)(), char dir[24][80], int *trow, int *tcol)
 {
   int searchcontinue = 10000000, type, havetarget=0, depth=0;
-  register int r, c, nr, nc;
-  register int k;
+  int r, c, nr, nc;
+  int k;
   char begin[QSIZE], *end, *head, *tail;
   int saveavd[24][80], val, avd, cont;
   int any;
@@ -455,7 +455,7 @@ int searchto(int row, int col, int (*evaluate)(), char dir[24][80], int *trow, i
 
     while (1) {
       for (k=0; k<8; k++) {
-        register int S;
+        int S;
 
         /* examine adjacent squares. */
         nr = r + sdeltr[k];

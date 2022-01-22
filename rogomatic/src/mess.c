@@ -86,7 +86,7 @@ static char *result[] = { res1, res2, res3, res4, res5 };
 void terpmes(void)
 {
   char mess[128]; char topline[128];
-  register char *m, *mend, *s, *t;
+  char *m, *mend, *s, *t;
 
   s=&screen[0][0];
   memset (topline, '\0', 128);
@@ -719,7 +719,7 @@ void parsemsg(char *mess, char *mend)
 
 int smatch(char *dat, char *pat, char **res)
 {
-  register char *star = 0, *starend, *resp;
+  char *star = 0, *starend, *resp;
   int nres = 0;
 
   while (1) {
@@ -933,7 +933,7 @@ void curseditem(void)
 
 void infer(char *objname, stuff item_type)
 {
-  register int i;
+  int i;
 
   if (*lastname && *objname && !stlmatch (objname, lastname)) {
     infername (lastname, objname, item_type);
@@ -954,7 +954,7 @@ void infer(char *objname, stuff item_type)
 
 void killed(char *monster)
 {
-  register int m = 0, mh = 0;
+  int m = 0, mh = 0;
 
   /* Find out what we really killed */
   if (!cosmic && !blinded && targetmonster>0 && streq (monster, "it"))
@@ -1010,7 +1010,7 @@ void killed(char *monster)
 
 void washit(char *monster)
 {
-  register int mh = 0, m = 0;
+  int mh = 0, m = 0;
 
   /* Find out what really hit us */
   if ((mh = getmonhist (monster, 1)) != NONE)
@@ -1038,7 +1038,7 @@ void washit(char *monster)
 
 void wasmissed(char *monster)
 {
-  register int mh = 0, m = 0;
+  int mh = 0, m = 0;
 
   /* Find out what really missed us */
   if ((mh = getmonhist (monster, 1)) != NONE)
@@ -1063,7 +1063,7 @@ void wasmissed(char *monster)
 
 void didhit(void)
 {
-  register int m = 0;
+  int m = 0;
 
   /* Record our hit */
   if (!cosmic) m = lastmonster;
@@ -1081,7 +1081,7 @@ void didhit(void)
 
 void didmiss(void)
 {
-  register int m = 0;
+  int m = 0;
 
   /* Record our miss */
   if (!cosmic) m = lastmonster;
@@ -1099,7 +1099,7 @@ void didmiss(void)
 
 void mshit(char *monster)
 {
-  register int mh;
+  int mh;
 
   /* Arching in a dark room? */
   if (!cosmic && !blinded && targetmonster > 0 && streq (monster, "it"))
@@ -1122,7 +1122,7 @@ void mshit(char *monster)
 
 void msmiss(char *monster)
 {
-  register int mh;
+  int mh;
 
   /* Arching in a dark room? */
   if (!cosmic && !blinded && targetmonster > 0 && streq (monster, "it"))
@@ -1159,7 +1159,7 @@ void countgold(char *amount)
 
 void summary(FILE *f, char sep)
 {
-  register int m;
+  int m;
   char s[1024];
 
   sprintf (s, "Monsters killed:%c%c", sep, sep);

@@ -39,9 +39,9 @@
 
 int findscore(char *rogue, char *roguename)
 {
-  register int score, best = -1;
+  int score, best = -1;
   char cmd[100], buffer[BUFSIZ];
-  register char *s, *tmpfname = TEMPFL;
+  char *s, *tmpfname = TEMPFL;
   FILE *tmpfil;
   char tmpbuffer[256];
   snprintf (tmpbuffer, 256, "%s", tmpfname);

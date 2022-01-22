@@ -47,7 +47,7 @@
 
 int havearmor(int k, int print, int rustproof)
 {
-  register int i, j, w, t, n=0;
+  int i, j, w, t, n=0;
   int armind[MAXINV], armval[MAXINV];
 
   /* Sort armor by armor class (best first) */
@@ -123,7 +123,7 @@ int armorclass(int i)
 
 int haveweapon(int k, int print)
 {
-  register int i, j, w, t, n=0;
+  int i, j, w, t, n=0;
   int weapind[MAXINV], weapval[MAXINV];
 
   for (i=0; i<invcount; ++i)
@@ -241,7 +241,7 @@ int weaponclass(int i)
 
 int havering(int k, int print)
 {
-  register int i, j, r, t, n=0;
+  int i, j, r, t, n=0;
   int ringind[MAXINV], ringval[MAXINV];
 
   for (i=0; i<invcount; ++i)
@@ -474,7 +474,7 @@ int ringclass(int i)
 
 int havebow(int k, int print)
 {
-  register int i, j, w, t, n=0;
+  int i, j, w, t, n=0;
   int bowind[MAXINV], bowval[MAXINV];
 
   for (i=0; i<invcount; ++i)
@@ -535,7 +535,7 @@ int bowclass(int i)
 
 int havemissile(void)
 {
-  register int i, fewest = 9999, obj = NONE;
+  int i, fewest = 9999, obj = NONE;
 
   if (wielding (thrower)) {	/* Wielding bow, use arrows */
     for (i=0; i<invcount; ++i)

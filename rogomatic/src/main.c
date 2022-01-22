@@ -373,7 +373,7 @@ int main(int argc, char *argv[])
 {
   char  ch, *s, *getenv(), *statusline(), msg[128];
   int startingup = 1;
-  register int  i;
+  int  i;
 
   debuglog_open ("debuglog.player");
 
@@ -456,7 +456,7 @@ int main(int argc, char *argv[])
   arglen = 0;
 
   for (i=0; i<argc; i++) {
-    register int len = strlen (argv[i]);
+    int len = strlen (argv[i]);
     arglen += len + 1;
 
     while (len >= 0) argv[i][len--] = ' ';

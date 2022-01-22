@@ -266,7 +266,7 @@ void quit(int code, char *fmt, ...)
 
 int stlmatch(char *big, char *small)
 {
-  register char *s, *b;
+  char *s, *b;
   s = small;
   b = big;
 
@@ -328,8 +328,8 @@ static int  moreenv ();		/* incr. size of env. */
 
 int rogo_putenv(char *name, char *value)
 {
-  register int  i, j;
-  register char *p;
+  int  i, j;
+  char *p;
 
   if (envsize < 0) {
     /* first time putenv called */
@@ -388,8 +388,8 @@ int rogo_putenv(char *name, char *value)
 
 static int findenv(char *name)
 {
-  register char *namechar, *envchar;
-  register int  i, found;
+  char *namechar, *envchar;
+  int  i, found;
 
   found = 0;
 
@@ -410,8 +410,8 @@ static int findenv(char *name)
 
 static int newenv(void)
 {
-  register char **env, *elem;
-  register int  i, esize;
+  char **env, *elem;
+  int  i, esize;
 
   for (i = 0; environ[i]; i++);
 
@@ -439,8 +439,8 @@ static int newenv(void)
 
 static int moreenv(void)
 {
-  register int  esize;
-  register char **env;
+  int  esize;
+  char **env;
 
   esize = envsize + EXTRASIZE;
   env = (char **) realloc (environ, esize * sizeof (*env));

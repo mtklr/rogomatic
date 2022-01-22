@@ -127,7 +127,7 @@ void dumpmonster(void)
 
 void sleepmonster(void)
 {
-  register int m;
+  int m;
 
   for (m = 0; m < mlistlen; ++m) {
     if (mlist[m].q == 0 && ! ADJACENT (m)) {
@@ -145,7 +145,7 @@ void sleepmonster(void)
 
 void holdmonsters(void)
 {
-  register int m;
+  int m;
 
   for (m = 0; m < mlistlen; ++m) {
     if (mlist[m].q == 0 &&
@@ -170,7 +170,7 @@ void holdmonsters(void)
 
 void wakemonster(int dir)
 {
-  register int m;
+  int m;
 
   for (m = 0; m < mlistlen; ++m) {
     if (mlist[m].q != AWAKE &&
@@ -193,7 +193,7 @@ void wakemonster(int dir)
 
 int seemonster(char *monster)
 {
-  register int m;
+  int m;
 
   for (m = 0; m < mlistlen; ++m)
     if (streq (monname (mlist[m].chr), monster))
@@ -209,7 +209,7 @@ int seemonster(char *monster)
 
 int seeawakemonster(char *monster)
 {
-  register int m;
+  int m;
 
   for (m = 0; m < mlistlen; ++m)
     if (streq (monname (mlist[m].chr), monster) && mlist[m].q == AWAKE)
@@ -242,8 +242,8 @@ int monsternum(char *monster)
 
 void newmonsterlevel(void)
 {
-  register int m;
-  register char *monster;
+  int m;
+  char *monster;
 
   for (m=0; m<mlistlen; m++) {
     monster = monname (mlist[m].chr);

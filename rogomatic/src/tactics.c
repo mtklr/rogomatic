@@ -253,7 +253,7 @@ int quaffpotion(void)
 
 int readscroll(void)
 {
-  register int obj, obj2;
+  int obj, obj2;
 
   /* Check the item specific identify scrolls first */
   if (((obj = havenamed (Scroll, "identify scroll")) != NONE &&
@@ -432,7 +432,7 @@ int findring(char *name)
 
 int grope(int turns)
 {
-  register int k, moves;
+  int k, moves;
 
   if (atrow < 2 || atcol < 1) {
     command (T_GROPING, "%ds", (turns > 0) ? turns : 1);
@@ -490,7 +490,7 @@ int findarrow(void)
 
 int checkcango(int dir, int turns)
 {
-  register int r, c, dr, dc;
+  int r, c, dr, dc;
 
   for (dr = deltr[dir], dc = deltc[dir], r=atrow+dr, c=atcol+dc;
        turns > 0 && onrc (CANGO | DOOR, r, c) == CANGO;
@@ -507,7 +507,7 @@ int checkcango(int dir, int turns)
 /* running; True ==> don't do anything fancy */
 int godownstairs(int running)
 {
-  register int p;
+  int p;
   int genericinit(), downvalue();
 
   /* We don't want to go down if we have just gotten an arrow, since */
@@ -646,7 +646,7 @@ static int gc = 0; /* Goal corner from 0..3 */
 
 int waitaround(void)
 {
-  register int i, j;
+  int i, j;
 
   if (gotowardsgoal ()) return (1);
 
@@ -736,7 +736,7 @@ int goupstairs(int running)
 
 int restup(void)
 {
-  register int obj, turns;
+  int obj, turns;
 
   /* If we are confused, sit still so we don't bump into anything bad */
   if (confused) { command (T_RESTING, "s"); return (1); }
@@ -845,7 +845,7 @@ int light(void)
 
 int shootindark(void)
 {
-  register int obj, bow;
+  int obj, bow;
 
   /* If no longer arching in the dark, fail */
   if (darkturns < 1 || darkdir == NONE || !darkroom ()) return (0);
@@ -888,7 +888,7 @@ int dinnertime(void)
 
 int trywand(void)
 {
-  register int obj, dir, r, c, count;
+  int obj, dir, r, c, count;
 
   /* If we aren't in a room, if there are monsters around,  */
   /* or we are in the dark, then we can't try this strategy */

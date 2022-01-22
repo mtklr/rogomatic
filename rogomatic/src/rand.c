@@ -72,7 +72,7 @@ static int seed1=872978, seed2=518652, seed3=226543, auxtab[AUXLEN];
 
 void rogo_srand(int seed)
 {
-  register int i;
+  int i;
 
   if (seed == 0) seed = time (0);
 
@@ -87,7 +87,7 @@ void rogo_srand(int seed)
 
 int rogo_rand(void)
 {
-  register int j, result;
+  int j, result;
 
   j = AUXLEN * Y / MOD1;	/* j random from 0..AUXLEN-1 */
   result = auxtab[j];
@@ -97,7 +97,7 @@ int rogo_rand(void)
 
 int rogo_randint(int max)
 {
-  register int j, result;
+  int j, result;
 
   j = AUXLEN * Y / MOD1;	/* j random from 0..AUXLEN-1 */
   result = auxtab[j];

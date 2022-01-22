@@ -146,7 +146,7 @@ void command(int tmode, char *f, ...)
 
 int commandcount(char *cmd)
 {
-  register int times = atoi (cmd);
+  int times = atoi (cmd);
 
   return (max (times, 1));
 }
@@ -157,7 +157,7 @@ int commandcount(char *cmd)
 
 char functionchar(char *cmd)
 {
-  register char *s = cmd;
+  char *s = cmd;
 
   while (ISDIGIT (*s) || *s == 'f') s++;
 
@@ -171,7 +171,7 @@ char functionchar(char *cmd)
 
 int functionesc(char *cmd)
 {
-  register char *s = cmd;
+  char *s = cmd;
 
   while (ISDIGIT (*s) || *s == 'f') s++;
 
@@ -185,7 +185,7 @@ int functionesc(char *cmd)
 
 char commandarg(char *cmd, int n)
 {
-  register char *s = cmd;
+  char *s = cmd;
 
   while (ISDIGIT (*s) || *s == 'f') s++;
 
@@ -334,7 +334,7 @@ void adjustpack(char *cmd)
 
 void bumpsearchcount(void)
 {
-  register int dr, dc;
+  int dr, dc;
 
   for (dr = -1; dr <= 1; dr++)
     for (dc = -1; dc <= 1; dc++)
@@ -361,8 +361,8 @@ int replaycommand(void)
 
 void showcommand(char *cmd)
 {
-  register char *s;
-  register int i = 72;
+  char *s;
+  int i = 72;
 
   at (23,72); standout (); printw (" ");
 

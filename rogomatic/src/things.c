@@ -327,7 +327,7 @@ void addstuff(char ch, int row, int col)
 
 void deletestuff(int row, int col)
 {
-  register int   i;
+  int   i;
   unsetrc (STUFF, row, col);
 
   for (i = 0; i < slistlen; ++i)
@@ -343,7 +343,7 @@ void deletestuff(int row, int col)
 
 void dumpstuff(void)
 {
-  register int   i;
+  int   i;
   at (1, 0);
 
   for (i = 0; i < slistlen; ++i)
@@ -384,7 +384,7 @@ char prepareident(int obj, int iscroll)
 
 int pickident(void)
 {
-  register int obj;
+  int obj;
 
   if      ((obj=unknown      (ring))   != NONE);
   else if ((obj=unidentified (wand))   != NONE);
@@ -404,7 +404,7 @@ int pickident(void)
 
 int unknown(stuff otype)
 {
-  register int i;
+  int i;
 
   for (i=0; i<invcount; ++i)
     if (inven[i].count &&
@@ -421,7 +421,7 @@ int unknown(stuff otype)
 
 int unidentified(stuff otype)
 {
-  register int i;
+  int i;
 
   for (i=0; i<invcount; ++i)
     if (inven[i].count &&
@@ -440,7 +440,7 @@ int unidentified(stuff otype)
 
 int haveother(stuff otype, int other)
 {
-  register int i;
+  int i;
 
   for (i=0; i<invcount; ++i)
     if (inven[i].count &&
@@ -458,7 +458,7 @@ int haveother(stuff otype, int other)
 
 int have(stuff otype)
 {
-  register int i;
+  int i;
 
   for (i=0; i<invcount; ++i)
     if (inven[i].count &&
@@ -474,7 +474,7 @@ int have(stuff otype)
 
 int havenamed(stuff otype, char *name)
 {
-  register int i;
+  int i;
 
   for (i=0; i<invcount; ++i)
     if (inven[i].count &&
@@ -492,7 +492,7 @@ int havenamed(stuff otype, char *name)
 
 int havewand(char *name)
 {
-  register int i;
+  int i;
 
   /* Find one with positive charges */
   for (i=0; i<invcount; ++i)
@@ -519,7 +519,7 @@ int havewand(char *name)
 
 int wearing(char *name)
 {
-  register int result = NONE;
+  int result = NONE;
 
   if (leftring != NONE && itemis (leftring, INUSE) &&
       streq (inven[leftring].str, name))
@@ -540,7 +540,7 @@ int wearing(char *name)
 
 int havemult(stuff otype, char *name, int count)
 {
-  register int i, num=count;
+  int i, num=count;
 
   for (i=0; i<invcount; ++i)
     if (inven[i].count &&
@@ -559,7 +559,7 @@ int havemult(stuff otype, char *name, int count)
 
 int haveminus(void)
 {
-  register int i;
+  int i;
 
   for (i=0; i<invcount; ++i)
     if (inven[i].count &&
@@ -589,7 +589,7 @@ int haveminus(void)
 
 int haveuseless(void)
 {
-  register int i;
+  int i;
 
   for (i=0; i<invcount; ++i) {
     if (inven[i].count > 0) {

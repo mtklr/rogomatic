@@ -181,7 +181,7 @@ void dumpflags(int r, int c)
 
 void timehistory(FILE *f, char sep)
 {
-  register int i, j;
+  int i, j;
   char s[2048];
 
   timespent[0].timestamp = 0;

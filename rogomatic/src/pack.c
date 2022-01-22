@@ -56,7 +56,7 @@ static char *stuffmess [] = {
 char *itemstr(int i)
 {
   static char ispace[128];
-  register char *item = ispace;
+  char *item = ispace;
 
   memset (ispace, '\0', 128);
 
@@ -99,7 +99,7 @@ char *itemstr(int i)
 
 void dumpinv(FILE *f)
 {
-  register int i;
+  int i;
 
   if (f == NULL)
     at (1,0);
@@ -187,8 +187,8 @@ void clearpack(int pos)
 
 void rollpackup(int pos)
 {
-  register char *savebuf;
-  register int i;
+  char *savebuf;
+  int i;
 
   if (version >= RV53A) return;
 
@@ -221,8 +221,8 @@ void rollpackup(int pos)
 
 void rollpackdown(int pos)
 {
-  register char *savebuf;
-  register int i;
+  char *savebuf;
+  int i;
 
   if (version >= RV53A) {
     return;
@@ -300,7 +300,7 @@ void doresetinv(void)
 
 int inventory(char *msgstart, char *msgend)
 {
-  register char *p, *q, *mess = msgstart, *mend = msgend;
+  char *p, *q, *mess = msgstart, *mend = msgend;
   char objname[100];
   char dbname[NAMSIZ];
   char codename[NAMSIZ];
@@ -640,7 +640,7 @@ int inventory(char *msgstart, char *msgend)
 
 void countpack(void)
 {
-  register int i, cnt;
+  int i, cnt;
 
   for (objcount=0, larder=0, ammo=0, i=0; i<invcount; i++) {
     if (! (cnt = inven[i].count))	; /* No object here */
