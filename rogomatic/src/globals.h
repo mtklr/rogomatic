@@ -27,6 +27,9 @@
  * Global variables
  */
 
+#ifndef GLOBALS_H_
+#define GLOBALS_H_
+
 /* global files */
 extern FILE *trogue;	/* From Rogue, To Rogue */
 extern FILE *logfile;		/* Rogomatic score file */
@@ -214,3 +217,5 @@ extern int k_exper;		/* Level on which to experiment with items */
 extern int k_run;		/* Propensity for retreating */
 extern int k_wake;		/* Propensity for waking things up */
 extern int k_food;		/* Propensity for hoarding food (rings) */
+
+#endif

@@ -28,6 +28,9 @@
  * This version of Rog-O-Matic runs with Rogue version 5.4.4
  */
 
+#ifndef INSTALL_H_
+#define INSTALL_H_
+
 /*
  * Rog-O-Matic's best score against Rogue 5.3  (UTexas, Feb 1984)
  * Printed when no score file is available in dumpscore()
@@ -164,4 +167,6 @@
 
 #ifndef SNAPSHOT
 #define SNAPSHOT "snapshot.rgm"
+#endif
+
 #endif
