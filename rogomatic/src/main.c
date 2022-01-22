@@ -774,7 +774,7 @@ int main(int argc, char *argv[])
   clrtoeol ();
 //  clear ();
   refresh ();
-  endwin (); nocrmode (); noraw (); echo ();
+  endwin ();
 
   if (emacs) {
     if (*sumline) fprintf (realstdout, " %s", sumline);
