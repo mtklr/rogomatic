@@ -51,8 +51,13 @@
 
 int havearmor(int k, int print, int rustproof)
 {
-  int i, j, w, t, n=0;
-  int armind[MAXINV], armval[MAXINV];
+  int i;
+  int j;
+  int w;
+  int t;
+  int n = 0;
+  int armind[MAXINV];
+  int armval[MAXINV];
 
   /* Sort armor by armor class (best first) */
   for (i=0; i<invcount; ++i) {
@@ -127,8 +132,13 @@ int armorclass(int i)
 
 int haveweapon(int k, int print)
 {
-  int i, j, w, t, n=0;
-  int weapind[MAXINV], weapval[MAXINV];
+  int i;
+  int j;
+  int w;
+  int t;
+  int n = 0;
+  int weapind[MAXINV];
+  int weapval[MAXINV];
 
   for (i=0; i<invcount; ++i)
     if (inven[i].count && (w = weaponclass (i)) > 0) {
@@ -178,7 +188,9 @@ int haveweapon(int k, int print)
 
 int weaponclass(int i)
 {
-  int class, hitplus = 0, damplus = 0;
+  int class;
+  int hitplus = 0;
+  int damplus = 0;
 
   /* Swords and maces are always valid weapons */
   if (inven[i].type == hitter)
@@ -245,8 +257,13 @@ int weaponclass(int i)
 
 int havering(int k, int print)
 {
-  int i, j, r, t, n=0;
-  int ringind[MAXINV], ringval[MAXINV];
+  int i;
+  int j;
+  int r;
+  int t;
+  int n = 0;
+  int ringind[MAXINV];
+  int ringval[MAXINV];
 
   for (i=0; i<invcount; ++i)
     if (inven[i].count && (r = ringclass (i)) > 0) {
@@ -292,7 +309,8 @@ int havering(int k, int print)
 
 int ringclass(int i)
 {
-  int class = 0, magicplus = 0;
+  int class = 0;
+  int magicplus = 0;
 
   if (inven[i].type != ring)
     return (0);
@@ -428,7 +446,9 @@ int ringclass(int i)
 
   /* A ring of maintain armor */
   else if (stlmatch (inven[i].str, "maintain armor")) {
-    int bestarm, nextarm, armdiff;
+    int bestarm;
+    int nextarm;
+    int armdiff;
 
     /* No rust monsters yet or cursed armor */
     if (Level < 9 || cursedarmor) return (900);
@@ -478,8 +498,13 @@ int ringclass(int i)
 
 int havebow(int k, int print)
 {
-  int i, j, w, t, n=0;
-  int bowind[MAXINV], bowval[MAXINV];
+  int i;
+  int j;
+  int w;
+  int t;
+  int n = 0;
+  int bowind[MAXINV];
+  int bowval[MAXINV];
 
   for (i=0; i<invcount; ++i)
     if (inven[i].count && (w = bowclass (i)) > 0) {
@@ -512,7 +537,9 @@ int havebow(int k, int print)
 
 int bowclass(int i)
 {
-  int class, hitplus = 0, damplus = 0;
+  int class;
+  int hitplus = 0;
+  int damplus = 0;
 
   if (inven[i].type == thrower &&
       stlmatch (inven[i].str, "short bow") &&
@@ -539,7 +566,9 @@ int bowclass(int i)
 
 int havemissile(void)
 {
-  int i, fewest = 9999, obj = NONE;
+  int i;
+  int fewest = 9999;
+  int obj = NONE;
 
   if (wielding (thrower)) {	/* Wielding bow, use arrows */
     for (i=0; i<invcount; ++i)

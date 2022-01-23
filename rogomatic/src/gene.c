@@ -56,7 +56,11 @@ char genepool[100];
 
 int main(int argc, char *argv[])
 {
-  int m=10, init=0, seed=0, version=RV54A, full=0;
+  int m=10;
+  int init=0;
+  int seed=0;
+  int version=RV54A;
+  int full=0;
 
   /* Get the options */
   while (--argc > 0 && (*++argv)[0] == '-') {

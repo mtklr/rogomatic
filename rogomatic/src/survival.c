@@ -74,8 +74,18 @@
 int markcycles(print)
 {
   short mark[1920];
-  struct {short where,door,dirs;} st[1000];
-  int sp,newsquare; int *Scr; int whichdir; int D;
+
+  struct {
+    short where;
+    short door;
+    short dirs;
+  } st[1000];
+
+  int sp;
+  int newsquare;
+  int *Scr;
+  int whichdir;
+  int D;
 
   if (!new_mark) return (0);
 
@@ -89,7 +99,8 @@ int markcycles(print)
   for (D = 0; D < 8; D += 2) {
     if ((Scr[newsquare = (st[1].where+deltrc[D^4])]) & CANGO) {
       if (mark[newsquare]) {
-        int stop, i;
+        int stop;
+	int i;
 
         if (mark[newsquare] < sp)
           for (stop = st[mark[newsquare]].door,
@@ -114,7 +125,8 @@ int markcycles(print)
         /* whichdir is 6,2, or 4. */
         if ((Scr[newsquare= (st[sp].where+deltrc[(whichdir+D)&7])])&CANGO) {
           if (mark[newsquare]) {
-            int stop,i;
+            int stop;
+	    int i;
 
             if (mark[newsquare]<sp) {
               for (stop=st[mark[newsquare]].door,
@@ -159,12 +171,14 @@ int markcycles(print)
 
 void markchokepts(void)
 {
-  int *Scr, *ScrEnd;
+  int *Scr;
+  int *ScrEnd;
 
   for (Scr = scrmap[0], ScrEnd = &Scr[1920]; Scr<ScrEnd; Scr++) {
     if (*Scr & DOOR) *Scr |= CHOKE;
     else if (*Scr & HALL) {
-      int nbrs = 0, k;
+      int nbrs = 0;
+      int k;
 
       for (k=0; k<8; k++)
         { if (Scr[deltrc[k]] & CANGO) nbrs++; }
@@ -215,8 +229,12 @@ int runaway(void)
 
 int canrun(void)
 {
-  int result, oldcomp = compression;
-  int runinit(), runvalue(), expruninit(), exprunvalue();
+  int result;
+  int oldcomp = compression;
+  int runinit();
+  int runvalue();
+  int expruninit();
+  int exprunvalue();
 
   if (on (STAIRS)) return (1);		/* Can run down stairs */
 
@@ -273,8 +291,12 @@ int unpin(void)
 
 int backtodoor(int dist)
 {
-  int rundoorinit(), rundoorvalue();
-  static int lastcall= -10, stillcount=0, notmoving=0, closest=99;
+  int rundoorinit();
+  int rundoorvalue();
+  static int lastcall= -10;
+  static int stillcount=0;
+  static int notmoving=0;
+  static int closest=99;
 
   /*
    * Keep track of the opponents distance.  If they stop advancing on us,

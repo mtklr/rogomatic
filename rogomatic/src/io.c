@@ -80,8 +80,9 @@ static char screen00 = ' ';
 
 /* The command queue */
 
-char  queue[SENDQ];             /* To Rogue */
-int   head = 0, tail = 0;
+char queue[SENDQ];             /* To Rogue */
+int head = 0;
+int tail = 0;
 
 int s_row1 = -100;  /* start scroll regions way out of bounds */
 int s_row2 = 100;   /* start scroll regions way out of bounds */
@@ -126,7 +127,9 @@ void scrolldown(void)
 
 void printscreen(void)
 {
-  int i, j;
+  int i;
+  int j;
+
   debuglog ("-- cursor  [%2d, %2d] [%c] [%3d] -------------------------------------------------\n", row, col, screen[row][col], screen[row][col]);
   debuglog ("             1111111111222222222233333333334444444444555555555566666666667777777777\n");
   debuglog ("   01234567890123456789012345678901234567890123456789012345678901234567890123456789\n");
@@ -173,9 +176,19 @@ void printscreen(void)
 
 void getrogue(char *waitstr, int onat)
 {
-  int   botprinted = 0, wasmapped = didreadmap, r, c, pending ();
-  int i, j;
-  char  ch, *s, *m, *q, *d, *call;
+  int botprinted = 0;
+  int wasmapped = didreadmap;
+  int r;
+  int c;
+  int pending ();
+  int i;
+  int j;
+  char ch;
+  char *s;
+  char *m;
+  char *q;
+  char *d;
+  char *call;
   int *doors;
   static int moved = 0;
 
@@ -503,10 +516,17 @@ void getrogue(char *waitstr, int onat)
 
 void terpbot(void)
 {
-  char sstr[30], modeline[256];
-  int oldlev = Level, oldgold = Gold, oldhp = Hp, Str18 = 0;
+  char sstr[30];
+  char modeline[256];
+  int oldlev = Level;
+  int oldgold = Gold;
+  int oldhp = Hp;
+  int Str18 = 0;
   extern int geneid;
-  int i, oldstr = Str, oldAc = Ac, oldExp = Explev;
+  int i;
+  int oldstr = Str;
+  int oldAc = Ac;
+  int oldExp = Explev;
 
   /* Since we use scanf to read this field, it must not be left blank */
   if (screen[23][78] == ' ') screen[23][78] = 'X';
@@ -597,7 +617,9 @@ void terpbot(void)
 
 void dumpwalls(void)
 {
-  int   r, c, S;
+  int r;
+  int c;
+  int S;
   char ch;
 
   printexplored ();
@@ -773,8 +795,9 @@ void at(int r, int c)
 
 void deadrogue(void)
 {
-  int    mh;
-  char  *killer, *killend;
+  int mh;
+  char *killer;
+  char *killend;
 
   printw ("\n\nOops...");
   refresh ();
@@ -809,9 +832,11 @@ void deadrogue(void)
 
 void quitrogue(char *reason, int gld, int terminationtype)
 {
-  struct tm *localtime(), *ts;
+  struct tm *localtime();
+  struct tm *ts;
   long clock;
-  char  *k, *r;
+  char *k;
+  char *r;
 
   /* Save the killer and score */
   for (k=ourkiller, r=reason; *r && *r != ' '; ++k, ++r) *k = *r;
@@ -904,7 +929,8 @@ void waitfor(char *mess)
 /* VARARGS1 */
 void say(char *f, va_list ap)
 {
-  char buf[BUFSIZ], *b;
+  char buf[BUFSIZ];
+  char *b;
 
   if (!emacs && !terse) {
     memset (buf, '\0', BUFSIZ);
@@ -1013,8 +1039,10 @@ void pauserogue(void)
 
 void getrogver(void)
 {
-  char *vstr = versionstr, *m = VERMSG;
-  int cnt = 2000, ch;
+  char *vstr = versionstr;
+  char *m = VERMSG;
+  int cnt = 2000;
+  int ch;
 
   if (replaying) {		/* Look for version string in log */
     while (cnt-- > 0 && *m)
@@ -1074,7 +1102,8 @@ int charsavail(void)
 
 void redrawscreen(void)
 {
-  int i, j;
+  int i;
+  int j;
   char ch;
 
   clear ();
@@ -1156,8 +1185,11 @@ void putn(char c, FILE *f, int n)
 
 void printsnap(FILE *f)
 {
-  int i, j, length;
-  struct tm *localtime(), *ts;
+  int i;
+  int j;
+  int length;
+  struct tm *localtime();
+  struct tm *ts;
   char *statusline();
   long clock;
 
@@ -1218,7 +1250,8 @@ void dosnapshot(void)
 
 void clearscreen(void)
 {
-  int i, j;
+  int i;
+  int j;
 
   row = col = 0;
   clear ();

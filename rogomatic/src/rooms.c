@@ -57,7 +57,8 @@ int levelmap[9];
 
 void newlevel(void)
 {
-  int   i, j;
+  int i;
+  int j;
 
   initstufflist ();			/* Delete the list of items */
   diddrop = 0;				/* Clear dropped item flag */
@@ -132,7 +133,9 @@ static struct {int top,bot,left,right;} bounds[9]=
 
 void markmissingrooms(void)
 {
-  int rm,i,j;
+  int rm;
+  int i;
+  int j;
 
   for (rm=0; rm<9; ++rm) {
     room[rm]=0;
@@ -174,7 +177,11 @@ int whichroom(int r, int c)
 
 void nametrap(int traptype, int standingonit)
 {
-  int i, r, c, tdir = NONE, monsteradj = 0;
+  int i;
+  int r;
+  int c;
+  int tdir = NONE;
+  int monsteradj = 0;
 
   if (standingonit)
     { r=atrow; c=atcol; }
@@ -230,7 +237,8 @@ void nametrap(int traptype, int standingonit)
 
 void findstairs(int notr, int notc)
 {
-  int r, c;
+  int r;
+  int c;
 
   stairrow = staircol = NONE;
 
@@ -247,7 +255,8 @@ void findstairs(int notr, int notc)
 
 int downright(int *drow, int *dcol)
 {
-  int i=atrow, j=atcol;
+  int i=atrow;
+  int j=atcol;
 
   while (i < 23 && j < 79) {
     if (onrc (CANGO, i, j+1)) j++;
@@ -287,7 +296,10 @@ int lightroom(void)
 
 int darkroom(void)
 {
-  int dir, dir2, drow, dcol;
+  int dir;
+  int dir2;
+  int drow;
+  int dcol;
 
   if (!on (DOOR | ROOM))
     return (0);
@@ -312,11 +324,17 @@ int darkroom(void)
 # define fL 4
 # define fR 8
 
-static int curt, curb, curl, curr;
+static int curt;
+static int curb;
+static int curl;
+static int curr;
 
 void currentrectangle(void)
 {
-  int   flags = fT + fB + fL + fR, r, c, any = 1;
+  int flags = fT + fB + fL + fR;
+  int r;
+  int c;
+  int any = 1;
 
   /*
    * DEFINITION: curt is the current top of the room.  This is the
@@ -453,9 +471,14 @@ void clearcurrect(void)
 
 void updateat(void)
 {
-  int dr = atrow - atrow0, dc = atcol - atcol0;
-  int i, r, c;
-  int   dist, newzone, sum;
+  int dr = atrow - atrow0;
+  int dc = atcol - atcol0;
+  int i;
+  int r;
+  int c;
+  int dist;
+  int newzone;
+  int sum;
 
   /*
    * Record passage from one zone to the next
@@ -501,8 +524,11 @@ void updateat(void)
   /* Mark surrounding area according to what we see */
 
   if (!on (HALL | DOOR | ROOM) && !blinded) {
-    int rr, cc;
-    int halls = 0, rooms = 0, rm;
+    int rr;
+    int cc;
+    int halls = 0;
+    int rooms = 0;
+    int rm;
     char *terrain = "nothing";
 
     for (i=0; i<8; i += 2) {
@@ -540,7 +566,9 @@ void updateat(void)
 
 void updatepos(char ch, int row, int col)
 {
-  char  oldch = screen[row][col], *monster, functionchar();
+  char  oldch = screen[row][col];
+  char  *monster;
+  char  functionchar();
   int   seenbefore = onrc (EVERCLR, row, col);
   int   couldgo = onrc (CANGO, row, col);
   int   unseen = !onrc (SEEN, row, col);
@@ -746,7 +774,8 @@ void updatepos(char ch, int row, int col)
 
 void teleport(void)
 {
-  int r = atrow0, c = atcol0;
+  int r = atrow0;
+  int c = atcol0;
 
   goalr = goalc = NONE; setnewgoal ();
 
@@ -781,7 +810,9 @@ void teleport(void)
 
 void mapinfer(void)
 {
-  int r, c, inroom;
+  int r;
+  int c;
+  int inroom;
 
   dwait (D_CONTROL, "Map read: inferring rooms.");
 
@@ -843,7 +874,8 @@ int isexplored(int row, int col)
 
 int haveexplored(int n)
 {
-  int rm, count = 0;
+  int rm;
+  int count = 0;
 
   for (rm = 0; rm < 9; rm++)
     if (levelmap[rm] & EXPLORED)
@@ -889,9 +921,17 @@ void printexplored(void)
 
 void inferhall(int r, int c)
 {
-  int i, j, k;
+  int i;
+  int j;
+  int k;
 
-  int inc, rm, end1, end2, end, dropout = 0, dir = NONE;
+  int inc;
+  int rm;
+  int end1;
+  int end2;
+  int end;
+  int dropout = 0;
+  int dir = NONE;
 
   char dirch = ' ';
 
@@ -991,8 +1031,10 @@ void inferhall(int r, int c)
 
 void connectdoors(int r1, int c1, int r2, int c2)
 {
-  int r, c;
-  int endr = max (r1, r2), endc = max (c1, c2);
+  int r;
+  int c;
+  int endr = max (r1, r2);
+  int endc = max (c1, c2);
 
   dwait (D_INFORM, "Inferring hall (%d,%d) to (%d,%d)", r1, c1, r2, c2);
 
@@ -1015,7 +1057,12 @@ void connectdoors(int r1, int c1, int r2, int c2)
 
 int canbedoor(int deadr, int deadc)
 {
-  int r, c, dr, dc, k, count;
+  int r;
+  int c;
+  int dr;
+  int dc;
+  int k;
+  int count;
 
   /* Check all orthogonal directions around the square */
   for (k=0; k < 8; k+=2) {
@@ -1039,7 +1086,12 @@ int canbedoor(int deadr, int deadc)
 
 int mazedoor(int row, int col)
 {
-  int r=row, c=col, dr, dc, k=0, dir = NONE;
+  int r=row;
+  int c=col;
+  int dr;
+  int dc;
+  int k=0;
+  int dir = NONE;
 
   if (onrc (HALL,r,c+1)) {dir=0; k++; dr=0;   dc=1;}
 
@@ -1113,7 +1165,8 @@ int nexttowall(int r, int c)
 
 void dumpmazedoor(void)
 {
-  int r, c;
+  int r;
+  int c;
 
   for (r=2; r<22; r++) {
     for (c=1; c<79; c++) {

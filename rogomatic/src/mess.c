@@ -58,10 +58,20 @@ static int monkilled[] = {
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
-static int totalkilled=0, timeshit=0, timesmissed=0, hits=0, misses=0;
-static int sumgold=0, sumsqgold=0, numgold=0;
 
-static int mhit=0, mmiss=0, mtarget= NONE;
+static int totalkilled=0;
+static int timeshit=0;
+static int timesmissed=0;
+static int hits=0;
+static int misses=0;
+
+static int sumgold=0;
+static int sumsqgold=0;
+static int numgold=0;
+
+static int mhit=0;
+static int mmiss=0;
+static int mtarget= NONE;
 
 /* Other local data */
 int identifying = 0;		/* Next message is from identify scroll */
@@ -70,7 +80,11 @@ static int gushed = 0;		/* True ==> water on the head msg recently */
 static int echoit;		/* True ==> echo this message to the user */
 
 /* Results from star matcher */
-static char res1[NAMSIZ], res2[NAMSIZ], res3[NAMSIZ], res4[NAMSIZ], res5[NAMSIZ];
+static char res1[NAMSIZ];
+static char res2[NAMSIZ];
+static char res3[NAMSIZ];
+static char res4[NAMSIZ];
+static char res5[NAMSIZ];
 static char *result[] = { res1, res2, res3, res4, res5 };
 
 /*
@@ -87,8 +101,12 @@ static char *result[] = { res1, res2, res3, res4, res5 };
 
 void terpmes(void)
 {
-  char mess[128]; char topline[128];
-  char *m, *mend, *s, *t;
+  char mess[128];
+  char topline[128];
+  char *m;
+  char *mend;
+  char *s;
+  char *t;
 
   s=&screen[0][0];
   memset (topline, '\0', 128);
@@ -721,7 +739,9 @@ void parsemsg(char *mess, char *mend)
 
 int smatch(char *dat, char *pat, char **res)
 {
-  char *star = 0, *starend, *resp;
+  char *star = 0;
+  char *starend;
+  char *resp;
   int nres = 0;
 
   while (1) {
@@ -956,7 +976,8 @@ void infer(char *objname, stuff item_type)
 
 void killed(char *monster)
 {
-  int m = 0, mh = 0;
+  int m = 0;
+  int mh = 0;
 
   /* Find out what we really killed */
   if (!cosmic && !blinded && targetmonster>0 && streq (monster, "it"))
@@ -1012,7 +1033,8 @@ void killed(char *monster)
 
 void washit(char *monster)
 {
-  int mh = 0, m = 0;
+  int mh = 0;
+  int m = 0;
 
   /* Find out what really hit us */
   if ((mh = getmonhist (monster, 1)) != NONE)
@@ -1040,7 +1062,8 @@ void washit(char *monster)
 
 void wasmissed(char *monster)
 {
-  int mh = 0, m = 0;
+  int mh = 0;
+  int m = 0;
 
   /* Find out what really missed us */
   if ((mh = getmonhist (monster, 1)) != NONE)

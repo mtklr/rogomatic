@@ -89,7 +89,8 @@ void mmove(int d, int mode)
 void command(int tmode, char *f, ...)
 {
   int times;
-  char cmd[128], functionchar ();
+  char cmd[128];
+  char functionchar();
 
   /* Build the command */
   va_list ap;
@@ -201,8 +202,10 @@ char commandarg(char *cmd, int n)
 
 void adjustpack(char *cmd)
 {
-  char functionchar(), commandarg();
-  int neww, obj;
+  char functionchar();
+  char commandarg();
+  int neww;
+  int obj;
 
   switch (functionchar (cmd)) {
     case 'd':	if (!diddrop) {
@@ -337,7 +340,8 @@ void adjustpack(char *cmd)
 
 void bumpsearchcount(void)
 {
-  int dr, dc;
+  int dr;
+  int dc;
 
   for (dr = -1; dr <= 1; dr++)
     for (dc = -1; dc <= 1; dc++)

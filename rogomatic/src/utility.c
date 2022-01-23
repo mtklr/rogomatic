@@ -48,7 +48,7 @@
 #include "utility.h"
 
 #ifdef ROGO_PUTENV
-int rogo_putenv(char *name, char *value);
+static int rogo_putenv(char *name, char *value);
 static int findenv(char *name);
 static int newenv(void);
 static int moreenv(void);
@@ -327,9 +327,10 @@ static int  findenv ();		/* look for a name in the env. */
 static int  newenv ();		/* copy env. from stack to heap */
 static int  moreenv ();		/* incr. size of env. */
 
-int rogo_putenv(char *name, char *value)
+static int rogo_putenv(char *name, char *value)
 {
-  int  i, j;
+  int i;
+  int j;
   char *p;
 
   if (envsize < 0) {
@@ -389,8 +390,10 @@ int rogo_putenv(char *name, char *value)
 
 static int findenv(char *name)
 {
-  char *namechar, *envchar;
-  int  i, found;
+  char *namechar;
+  char *envchar;
+  int i;
+  int found;
 
   found = 0;
 
@@ -411,8 +414,10 @@ static int findenv(char *name)
 
 static int newenv(void)
 {
-  char **env, *elem;
-  int  i, esize;
+  char **env;
+  char *elem;
+  int i;
+  int esize;
 
   for (i = 0; environ[i]; i++);
 

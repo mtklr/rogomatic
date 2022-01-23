@@ -47,16 +47,31 @@
 
 # define ROGUETERM "rg|rterm:am:bs:ce=^[^S:cl=^L:cm=^[a%+ %+ :co#80:li#24:so=^[D:se=^[d:pt:ta=^I:up=^[;:db:xn:"
 
-int   frogue, trogue;
+int frogue;
+int trogue;
 
 int main(int argc, char *argv[])
 {
-  int   ptc[2], ctp[2];
-  int   child, score = 0, oldgame = 0;
-  int   cheat = 0, noterm = 1, echo = 0, nohalf = 0, replay = 0;
-  int   emacs = 0, rf = 0, terse = 0, user = 0, quitat = 2147483647;
-  char  *rfile = "", *rfilearg = "", options[32];
-  char  ropts[128], roguename[128];
+  int ptc[2];
+  int ctp[2];
+  int child;
+  int score = 0;
+  int oldgame = 0;
+  int cheat = 0;
+  int noterm = 1;
+  int echo = 0;
+  int nohalf = 0;
+  int replay = 0;
+  int emacs = 0;
+  int rf = 0;
+  int terse = 0;
+  int user = 0;
+  int quitat = 2147483647;
+  char *rfile = "";
+  char *rfilearg = "";
+  char options[32];
+  char ropts[128];
+  char roguename[128];
 
   while (--argc > 0 && (*++argv)[0] == '-') {
     while (*++(*argv)) {

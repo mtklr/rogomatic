@@ -51,7 +51,8 @@
 		(timestosearch - k_door / 5 + 5)) :		\
 	    timestosearch)
 
-static int expDor, expavoidval;
+static int expDor;
+static int expavoidval;
 static int avdmonsters[24][80];
 
 int rogo_connect[9][4] = {
@@ -118,11 +119,13 @@ static int secretcont[16] =  { 0, 16, 15, 14,
  * gotowards: Move toward a square.
  */
 
-int gotorow = NONE, gotocol = NONE;
+int gotorow = NONE;
+int gotocol = NONE;
 
 int gotowards (int r, int c, int running)
 {
-  int gotoinit(), gotovalue();
+  int gotoinit();
+  int gotovalue();
 
   gotorow = r; gotocol = c;
   return (makemove (running ? RUNAWAY:GOTOMOVE, gotoinit, gotovalue, REUSE));
@@ -233,7 +236,11 @@ int wallkind(int r, int c)
 
 int setpsd(int print)
 {
-  int i, j, k, whereto, numberpsd=0;
+  int i;
+  int j;
+  int k;
+  int whereto;
+  int numberpsd=0;
 
   if (!print && reusepsd > 0) return (reusepsd-1);
 
@@ -592,8 +599,15 @@ int expvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
   (void) depth; /* unused */
 
-  int k, nr, nc, l;
-  int a, v = 0, nunseenb = 0, nseenb = 0, nearb = 0;
+  int k;
+  int nr;
+  int nc;
+  int l;
+  int a;
+  int v = 0;
+  int nunseenb = 0;
+  int nseenb = 0;
+  int nearb = 0;
 
   a = onrc (SAFE|DOOR|STAIRS|HALL, r, c) ? 0 :
       onrc (ARROW, r, c)   ? 50 :
@@ -701,7 +715,12 @@ int zigzagvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
   (void) depth; /* unused */
 
-  int k, nr, nc, a, v = 0, nunseenb = 0;
+  int k;
+  int nr;
+  int nc;
+  int a;
+  int v = 0;
+  int nunseenb = 0;
 
   a = onrc (SAFE|DOOR|STAIRS|HALL, r, c) ? 0 :
       onrc (ARROW, r, c)   ? 50 :
@@ -772,7 +791,9 @@ int secretvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 {
   (void) depth; /* unused */
 
-  int v, a, k;
+  int v;
+  int a;
+  int k;
 
   *val=0;
   v = 0;	/* establish value of square */
@@ -836,7 +857,10 @@ int secretvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 
 void avoidmonsters(void)
 {
-  int i, r, c, wearingstealth;
+  int i;
+  int r;
+  int c;
+  int wearingstealth;
 
   /* Clear old avoid monster values */
   for (i = 24*80; i--; ) avdmonsters[0][i] = 0;
@@ -854,7 +878,11 @@ void avoidmonsters(void)
 
     /* If not a wimp and awake, avoid him all together */
     else if (mlist[i].q == AWAKE) {
-      int d, dr, dc, mr = mlist[i].mrow, mc = mlist[i].mcol;
+      int d;
+      int dr;
+      int dc;
+      int mr = mlist[i].mrow;
+      int mc = mlist[i].mcol;
       d = direc (searchstartr-mr,searchstartc-mc);
       dr = (searchstartr-mr)/2+mr; dc=(searchstartc-mc)/2+mc;
 
@@ -923,7 +951,11 @@ void pinavoid(void)
   /* Avoid each monster in turn */
   for (i=0; i<mlistlen; i++) {
     if (mlist[i].q == AWAKE) {
-      int d, dr, dc, mr = mlist[i].mrow, mc = mlist[i].mcol;
+      int d;
+      int dr;
+      int dc;
+      int mr = mlist[i].mrow;
+      int mc = mlist[i].mcol;
       d = direc (searchstartr-mr,searchstartc-mc);
       dr = (searchstartr-mr)/2+mr - deltr[d];		/* MLM */
       dc=(searchstartc-mc)/2+mc - deltc[d];		/* MLM */
@@ -952,7 +984,8 @@ void pinavoid(void)
 
 int secret(void)
 {
-  int secretinit(), secretvalue();
+  int secretinit();
+  int secretvalue();
 
   /* Secret passage adjacent to door? */
   if (version >= RV53A && on (DOOR) && !blinded &&
@@ -1006,7 +1039,9 @@ int secret(void)
 
 int findroom(void)
 {
-  int expinit(), expvalue();    /* LGCH */
+  /* LGCH */
+  int expinit();
+  int expvalue();
 
   if (new_findroom) {
     if (!on (ROOM) && secret ())			return (1);
@@ -1025,7 +1060,9 @@ int findroom(void)
 
 int exploreroom(void)
 {
-  int roominit(), expvalue();    /* LGCH */
+  /* LGCH */
+  int roominit();
+  int expvalue();
 
   if (!on (ROOM) || isexplored (atrow, atcol)) return (0);
 
@@ -1044,7 +1081,8 @@ int exploreroom(void)
 int doorexplore(void)
 {
   static int searchcount = 0;
-  int secretinit(), secretvalue();
+  int secretinit();
+  int secretvalue();
 
   /* If no new squares or read map, dont bother */
   if (! new_search || Level == didreadmap)
@@ -1077,7 +1115,8 @@ int safevalue(int r, int c, int depth, int *val, int *avd, int *cont)
   (void) depth; /* unused */
   (void) cont;  /* unused */
 
-  int k, v;
+  int k;
+  int v;
 
   *avd = onrc (SAFE, r, c)    ? 0 :
          onrc (TRAPDOR | BEARTRP | GASTRAP, r, c) ? ROGINFINITY :
@@ -1129,14 +1168,19 @@ int avoid(void)
  * battlestations will handle firing at him.
  */
 
-static int archrow = NONE, archcol = NONE, archturns = NONE, archval[24][80];
+static int archrow = NONE;
+static int archcol = NONE;
+static int archturns = NONE;
+static int archval[24][80];
 
 /* m: Monster to attack */
 /* trns: Minimum number of arrows to make it worthwhile */
 int archmonster(int m, int trns)
 {
-  int archeryinit(), archeryvalue();
-  int mr, mc;
+  int archeryinit();
+  int archeryvalue();
+  int mr;
+  int mc;
 
   dwait (D_CONTROL | D_BATTLE, "archmonster: m=%d, turns=%d", m, trns);
 
@@ -1186,7 +1230,12 @@ int archmonster(int m, int trns)
 
 int archeryinit(void)
 {
-  int dir, r, c, dr, dc, dist;
+  int dir;
+  int r;
+  int c;
+  int dr;
+  int dc;
+  int dist;
 
   /* Clear the archery value array */
   for (r = 24*80; r--; ) archval[0][r] = 0;
@@ -1248,7 +1297,8 @@ int archeryvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 
 static int restinlight = 0;		/* True only in lit rooms */
 static int restinroom = 0;		/* True only in a room */
-static int restr = NONE, restc = NONE;	/* Square to rest on */
+static int restr = NONE;		/* Square to rest on */
+static int restc = NONE;		/* Square to rest on */
 
 /* Set new resting goal */
 void unrest(void)
@@ -1259,7 +1309,9 @@ void unrest(void)
 /* Move to a good square to rest up on */
 int movetorest(void)
 {
-  int restinit(), restvalue();    /* LGCH */
+  /* LGCH */
+  int restinit();
+  int restvalue();
 
   if (markcycles (NOPRINT))
     unrest ();
@@ -1295,8 +1347,13 @@ int restvalue (int r, int c, int depth, int *val, int *avd, int *cont)
 {
   (void) depth; /* unused */
 
-  int dr, dc, ar, ac;
-  int count, dir, rm;
+  int dr;
+  int dc;
+  int ar;
+  int ac;
+  int count;
+  int dir;
+  int rm;
 
   /* Find room number for diagonal selection */
   if ((rm = whichroom (r, c)) < 0) rm = 4;

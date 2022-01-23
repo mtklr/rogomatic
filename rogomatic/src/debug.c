@@ -61,7 +61,8 @@
 int dwait(int msgtype, char *f, ...)
 {
   char msg[128];
-  int r, c;
+  int r;
+  int c;
 
   /* Build the actual message */
   va_list ap;
@@ -144,7 +145,8 @@ int dwait(int msgtype, char *f, ...)
 
 void promptforflags(void)
 {
-  int r, c;
+  int r;
+  int c;
 
   if (getscrpos ("flags", &r, &c)) {
     mvprintw (0, 0, "Flags for %d,%d ", r, c);
@@ -170,7 +172,8 @@ char *fnames[] = {
 
 void dumpflags(int r, int c)
 {
-  char **f; int b;
+  char **f;
+  int b;
 
   printw (":");
 
@@ -185,7 +188,8 @@ void dumpflags(int r, int c)
 
 void timehistory(FILE *f, char sep)
 {
-  int i, j;
+  int i;
+  int j;
   char s[2048];
 
   timespent[0].timestamp = 0;

@@ -63,7 +63,8 @@ int   objval[] = {
 
 int worth(int obj)
 {
-  int value, w;
+  int value;
+  int w;
 
   /* Do we have an easy out? */
   if (useless (obj)) return (0);

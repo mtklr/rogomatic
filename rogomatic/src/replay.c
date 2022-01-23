@@ -46,8 +46,17 @@
 
 struct levstruct {
   long pos;
-  int  level, gold, hp, hpmax, str, strmax, ac, explev, exp;
+  int level;
+  int gold;
+  int hp;
+  int hpmax;
+  int str;
+  int strmax;
+  int ac;
+  int explev;
+  int exp;
 } levpos[MAXNUMLEV];
+
 int numlev = 0;
 
 /*
@@ -211,7 +220,8 @@ void fillstruct(FILE *f, struct levstruct *lev)
 
 int findmatch(FILE *f, char *s)
 {
-  char *m = s, ch;
+  char *m = s;
+  char ch;
 
   while (*m && (int) (ch = fgetc (f)) != EOF)
     if (ch != *(m++)) m = s;

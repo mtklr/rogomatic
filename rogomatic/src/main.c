@@ -172,8 +172,10 @@ int   agoalr = NONE;		/* Goal square to arch from (row) */
 int   arglen = 0;		/* Length in bytes of argument space */
 int   ammo = 0;                 /* How many missiles? */
 int   arrowshot = 0;		/* True if an arrow shot us last turn */
-int   atrow, atcol;		/* Current position of the Rogue (@) */
-int   atrow0, atcol0;		/* Position at start of turn */
+int   atrow;			/* Current position of the Rogue (@) */
+int   atcol;			/* Current position of the Rogue (@) */
+int   atrow0;			/* Position at start of turn */
+int   atcol0;			/* Position at start of turn */
 int   attempt = 0;		/* Number times we searched whole level */
 int   badarrow = 0;		/* True if cursed/lousy arrow in hand */
 int   beingheld = 0;		/* True if a fungus has ahold of us */
@@ -250,11 +252,13 @@ int   revvideo = 0;		/* True if in rev. video mode */
 int   rightring = NONE;		/* Index of our right ring */
 int   rogpid = 0;		/* Pid of rogue process */
 int   room[9];			/* Flags for each room */
-int   row, col;			/* Current cursor position */
+int   row;			/* Current cursor position */
+int   col;			/* Current cursor position */
 int   scrmap[24][80];		/* Flags bits for level map */
 int   singlestep = 0;		/* True ==> go one turn */
 int   slowed = 0;		/* True ==> recently zapped w/slow monster */
-int   stairrow, staircol;	/* Position of stairs on this level */
+int   stairrow;			/* Position of stairs on this level */
+int   staircol;			/* Position of stairs on this level */
 int   startecho = 0;		/* True ==> turn on echoing on startup */
 int   teleported = 0;		/* # times teleported this level */
 int   terse = 0;		/* True ==> terse mode */
@@ -309,16 +313,34 @@ char *knob_name[MAXKNOB] = {
   "hoarding food:    "
 };
 /* Door search map */
-char timessearched[24][80], timestosearch;
-int  searchstartr = NONE, searchstartc = NONE, reusepsd=0;
-int  new_mark=1, new_findroom=1, new_search=1, new_stairs=1, new_arch=1;
+char timessearched[24][80];
+char timestosearch;
+int  searchstartr = NONE;
+int  searchstartc = NONE;
+int  reusepsd=0;
+int  new_mark=1;
+int  new_findroom=1;
+int  new_search=1;
+int  new_stairs=1;
+int  new_arch=1;
 
 /* Results of last call to makemove() */
-int  ontarget= 0, targetrow= NONE, targetcol= NONE;
+int  ontarget= 0;
+int  targetrow= NONE;
+int  targetcol= NONE;
 
 /* Rog-O-Matics model of his stats */
-int   Level = 0, MaxLevel = 0, Gold = 0, Hp = 12, Hpmax = 12;
-int   Str = 16, Strmax = 16, Ac = 6, Exp = 0, Explev = 1, turns = 0;
+int   Level = 0;
+int   MaxLevel = 0;
+int   Gold = 0;
+int   Hp = 12;
+int   Hpmax = 12;
+int   Str = 16;
+int   Strmax = 16;
+int   Ac = 6;
+int   Exp = 0;
+int   Explev = 1;
+int   turns = 0;
 char  Ms[30];	/* The message about his state of hunger */
 
 /* Miscellaneous movement tables */
@@ -368,7 +390,11 @@ jmp_buf  commandtop;
 
 int main(int argc, char *argv[])
 {
-  char  ch, *s, *getenv(), *statusline(), msg[128];
+  char ch;
+  char *s;
+  char *getenv();
+  char *statusline();
+  char msg[128];
   int startingup = 1;
   int  i;
 

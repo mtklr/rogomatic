@@ -229,7 +229,8 @@ int seeawakemonster(char *monster)
 
 int monsternum(char *monster)
 {
-  int m, mh;
+  int m;
+  int mh;
 
   if ((mh = findmonster (monster)) != NONE)
     for (m=0; m<=26; m++)

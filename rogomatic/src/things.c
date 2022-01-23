@@ -543,7 +543,8 @@ int wearing(char *name)
 
 int havemult(stuff otype, char *name, int count)
 {
-  int i, num=count;
+  int i;
+  int num=count;
 
   for (i=0; i<invcount; ++i)
     if (inven[i].count &&
@@ -693,7 +694,9 @@ int fainting(void)
 
 int havefood(int n)
 {
-  int remaining, foodest, desired;
+  int remaining;
+  int foodest;
+  int desired;
 
   if (hungry () || weak () || fainting ())
     return (0);

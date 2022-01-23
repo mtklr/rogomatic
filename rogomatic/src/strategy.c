@@ -256,10 +256,21 @@ int callitpending(void)
 
 int fightmonster(void)
 {
-  int i, rr, cc, mdir = NONE, mbad  = NONE, danger = 0;
-  int  melee = 0, adjacent = 0, alertmonster = 0;
-  int  wanddir = NONE, m = NONE, howmean;
-  char mon, monc = ':', *monster;
+  int i;
+  int rr;
+  int cc;
+  int mdir = NONE;
+  int mbad  = NONE;
+  int danger = 0;
+  int melee = 0;
+  int adjacent = 0;
+  int alertmonster = 0;
+  int wanddir = NONE;
+  int m = NONE;
+  int howmean;
+  char mon;
+  char monc = ':';
+  char *monster;
 
   /* Check for adjacent monsters */
   for (i = 0; i < mlistlen; i++) {
@@ -383,9 +394,20 @@ int fightmonster(void)
 
 int tomonster(void)
 {
-  int i, dist, rr, cc, mdir = NONE, mbad = NONE;
-  int   closest, which, danger = 0, adj = 0, alert = 0;
-  char  monc = ':', monchar = ':', *monster;
+  int i;
+  int dist;
+  int rr;
+  int cc;
+  int mdir = NONE;
+  int mbad = NONE;
+  int closest;
+  int which;
+  int danger = 0;
+  int adj = 0;
+  int alert = 0;
+  char monc = ':';
+  char monchar = ':';
+  char *monster;
 
   /* If no monsters, fail */
   if (mlistlen==0)
@@ -551,7 +573,8 @@ int aftermelee(void)
  */
 int battlestations(int m, char *monster, int mbad, int danger, int mdir, int mdist, int alert, int adj)
 {
-  int obj, turns;
+  int obj;
+  int turns;
   static int stepback = 0;
 
   /* Ascertain whether we have a clear path to this monster */
@@ -1016,8 +1039,15 @@ int battlestations(int m, char *monster, int mbad, int danger, int mdir, int mdi
 
 int tostuff(void)
 {
-  int i, closest, dist, w, worst, worstval;
-  int   which, wrow, wcol;
+  int i;
+  int closest;
+  int dist;
+  int w;
+  int worst;
+  int worstval;
+  int which;
+  int wrow;
+  int wcol;
   stuff what;
 
   /* If we don't see anything (or don't care), return failure */
@@ -1093,7 +1123,11 @@ int tostuff(void)
 
 int fightinvisible(void)
 {
-  char cmd[20]; int dir, liberties = 0, lastdir, obj;
+  char cmd[20];
+  int dir;
+  int liberties = 0;
+  int lastdir;
+  int obj;
 
   /* Count down the time since we were last hit by a stalker */
   if (--beingstalked < 0)
@@ -1184,7 +1218,8 @@ int fightinvisible(void)
 
 int archery(void)
 {
-  int m, mtk;
+  int m;
+  int mtk;
   char *monster;
 
   for (m=0; m < mlistlen; m++) {	/* Find a sleeping monster */

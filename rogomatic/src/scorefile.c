@@ -110,9 +110,14 @@ void add_score(char *new_line, char *vers, int ntrm)
 
 void dumpscore(char *vers)
 {
-  char  ch, scrfil[100], delfil[100], newfil[100], allfil[100], cmd[1024];
+  char ch;
+  char scrfil[100];
+  char delfil[100];
+  char newfil[100];
+  char allfil[100];
+  char cmd[1024];
   FILE *scoref, *deltaf;
-  int   oldmask;
+  int  oldmask;
   void intrupscore (void);
 
   sprintf (lokfil, "%s %s", LOCKFILE, vers);

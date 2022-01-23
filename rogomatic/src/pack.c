@@ -302,14 +302,28 @@ void doresetinv(void)
 
 int inventory(char *msgstart, char *msgend)
 {
-  char *p, *q, *mess = msgstart, *mend = msgend;
+  char *p;
+  char *q;
+  char *mess = msgstart;
+  char *mend = msgend;
   char objname[100];
   char dbname[NAMSIZ];
   char codename[NAMSIZ];
-  int  n, ipos, xknow = 0, newitem = 0, inuse = 0, printed = 0, len = 0;
-  int  plushit = UNKNOWN, plusdam = UNKNOWN, charges = UNKNOWN;
+  int n;
+  int ipos;
+  int xknow = 0;
+  int newitem = 0;
+  int inuse = 0;
+  int printed = 0;
+  int len = 0;
+  int plushit = UNKNOWN;
+  int plusdam = UNKNOWN;
+  int charges = UNKNOWN;
   stuff what;
-  char *xbeg, *xend, *codenamebeg, *codenameend;
+  char *xbeg;
+  char *xend;
+  char *codenamebeg;
+  char *codenameend;
 
   xbeg = xend = codenamebeg = codenameend = "";
   dwait (D_PACK, "inv: message %s", mess);
@@ -642,7 +656,8 @@ int inventory(char *msgstart, char *msgend)
 
 void countpack(void)
 {
-  int i, cnt;
+  int i;
+  int cnt;
 
   for (objcount=0, larder=0, ammo=0, i=0; i<invcount; i++) {
     if (! (cnt = inven[i].count))	; /* No object here */

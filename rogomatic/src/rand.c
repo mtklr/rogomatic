@@ -69,7 +69,11 @@
 # define X    ((RAND2<<13 ^ RAND3>>3) & 017777777777)
 
 # define AUXLEN 97
-static int seed1=872978, seed2=518652, seed3=226543, auxtab[AUXLEN];
+
+static int seed1=872978;
+static int seed2=518652;
+static int seed3=226543;
+static int auxtab[AUXLEN];
 
 void rogo_srand(int seed)
 {
@@ -88,7 +92,8 @@ void rogo_srand(int seed)
 
 int rogo_rand(void)
 {
-  int j, result;
+  int j;
+  int result;
 
   j = AUXLEN * Y / MOD1;	/* j random from 0..AUXLEN-1 */
   result = auxtab[j];
@@ -98,7 +103,8 @@ int rogo_rand(void)
 
 int rogo_randint(int max)
 {
-  int j, result;
+  int j;
+  int result;
 
   j = AUXLEN * Y / MOD1;	/* j random from 0..AUXLEN-1 */
   result = auxtab[j];

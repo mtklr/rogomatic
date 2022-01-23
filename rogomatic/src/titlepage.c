@@ -98,7 +98,10 @@ static char *titlepage[]= {
 void animate(char *movie[])
 {
   int baud;
-  int r, c, count = 0, delaychars;
+  int r;
+  int c;
+  int count = 0;
+  int delaychars;
   char *cbf = "";
 
   if (emacs || terse) return;		/* No screen ==> no movie */

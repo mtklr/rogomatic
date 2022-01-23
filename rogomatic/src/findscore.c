@@ -42,11 +42,15 @@
 
 int findscore(char *rogue, char *roguename)
 {
-  int score, best = -1;
-  char cmd[100], buffer[BUFSIZ];
-  char *s, *tmpfname = TEMPFL;
+  int score;
+  int best = -1;
+  char cmd[100];
+  char buffer[BUFSIZ];
+  char *s;
+  char *tmpfname = TEMPFL;
   FILE *tmpfil;
   char tmpbuffer[256];
+
   snprintf (tmpbuffer, 256, "%s", tmpfname);
 
   /* Run 'rogue -s', and put the scores into a temp file */

@@ -48,8 +48,10 @@
 # define NOTTRIED     (11)
 # define TARGET       (10)
 
-static int moveavd[24][80], moveval[24][80], movecont[24][80],
-       movedepth[24][80];
+static int moveavd[24][80];
+static int moveval[24][80];
+static int movecont[24][80];
+static int movedepth[24][80];
 static char mvdir[24][80];
 static int mvtype=0;
 static int didinit=0;
@@ -121,10 +123,18 @@ int findmove(int movetype, int (*evalinit)(), int (*evaluate)(), int reevaluate)
 
 int followmap(int movetype)
 {
-  int dir, dr, dc, r, c;
-  int timemode, searchit, count=1;
+  int dir;
+  int dr;
+  int dc;
+  int r;
+  int c;
+  int timemode;
+  int searchit;
+  int count=1;
 
-  dir=mvdir[atrow][atcol]-FROM; dr=deltr[dir]; dc=deltc[dir];
+  dir=mvdir[atrow][atcol]-FROM;
+  dr=deltr[dir];
+  dc=deltc[dir];
 
   if (dir > 7 || dir < 0) {
     if (dir < 0) {
@@ -204,8 +214,13 @@ int followmap(int movetype)
 
 int validatemap(int movetype, int (*evalinit)(), int (*evaluate)())
 {
-  int thedir, dir, r, c;
-  int val, avd, cont;
+  int thedir;
+  int dir;
+  int r;
+  int c;
+  int val;
+  int avd;
+  int cont;
 
   dwait (D_CONTROL | D_SEARCH, "Validatemap: type %d", movetype);
 
@@ -299,7 +314,10 @@ void setnewgoal(void)
 
 int searchfrom(int row, int col, int (*evaluate)(), char dir[24][80], int *trow, int *tcol)
 {
-  int r, c, sdir, tempdir;
+  int r;
+  int c;
+  int sdir;
+  int tempdir;
 
   if (!searchto (row, col, evaluate, dir, trow, tcol)) {
     return (0);
@@ -350,15 +368,27 @@ int searchfrom(int row, int col, int (*evaluate)(), char dir[24][80], int *trow,
 
 int searchto(int row, int col, int (*evaluate)(), char dir[24][80], int *trow, int *tcol)
 {
-  int searchcontinue = 10000000, type, havetarget=0, depth=0;
-  int r, c, nr, nc;
+  int searchcontinue = 10000000;
+  int type;
+  int havetarget=0;
+  int depth=0;
+  int r;
+  int c;
+  int nr;
+  int nc;
   int k;
-  char begin[QSIZE], *end, *head, *tail;
-  int saveavd[24][80], val, avd, cont;
+  char begin[QSIZE];
+  char *end;
+  char *head;
+  char *tail;
+  int saveavd[24][80];
+  int val;
+  int avd;
+  int cont;
   int any;
-  static int sdirect[8] = {4, 6, 0, 2, 5, 7, 1, 3},
-             sdeltr[8]  = {0,-1, 0, 1,-1,-1, 1, 1},
-             sdeltc[8]  = {1, 0,-1, 0, 1,-1,-1, 1};
+  static int sdirect[8] = {4, 6, 0, 2, 5, 7, 1, 3};
+  static int sdeltr[8]  = {0,-1, 0, 1,-1,-1, 1, 1};
+  static int sdeltc[8]  = {1, 0,-1, 0, 1,-1,-1, 1};
 
   head = tail = begin;
   end = begin + QSIZE;

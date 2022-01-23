@@ -150,7 +150,8 @@ int handleweapon(void)
 
 int quaffpotion(void)
 {
-  int obj = NONE, obj2 = NONE;
+  int obj = NONE;
+  int obj2 = NONE;
 
   /* Take advantage of double haste bug -- assures permanent haste */
   if (!doublehasted && version < RV52A &&
@@ -256,7 +257,8 @@ int quaffpotion(void)
 
 int readscroll(void)
 {
-  int obj, obj2;
+  int obj;
+  int obj2;
 
   /* Check the item specific identify scrolls first */
   if (((obj = havenamed (Scroll, "identify scroll")) != NONE &&
@@ -360,7 +362,8 @@ int readscroll(void)
 
 int handlering(void)
 {
-  int ring1, ring2;
+  int ring1;
+  int ring2;
 
   if (!newring && !beingstalked) return (0);
 
@@ -435,7 +438,8 @@ int findring(char *name)
 
 int grope(int turns)
 {
-  int k, moves;
+  int k;
+  int moves;
 
   if (atrow < 2 || atcol < 1) {
     command (T_GROPING, "%ds", (turns > 0) ? turns : 1);
@@ -493,7 +497,10 @@ int findarrow(void)
 
 int checkcango(int dir, int turns)
 {
-  int r, c, dr, dc;
+  int r;
+  int c;
+  int dr;
+  int dc;
 
   for (dr = deltr[dir], dc = deltc[dir], r=atrow+dr, c=atcol+dc;
        turns > 0 && onrc (CANGO | DOOR, r, c) == CANGO;
@@ -511,7 +518,8 @@ int checkcango(int dir, int turns)
 int godownstairs(int running)
 {
   int p;
-  int genericinit(), downvalue();
+  int genericinit();
+  int downvalue();
 
   /* We don't want to go down if we have just gotten an arrow, since */
   /* It is probably bad, and we will want to go back to the trap;   */
@@ -649,7 +657,8 @@ static int gc = 0; /* Goal corner from 0..3 */
 
 int waitaround(void)
 {
-  int i, j;
+  int i;
+  int j;
 
   if (gotowardsgoal ()) return (1);
 
@@ -739,7 +748,8 @@ int goupstairs(int running)
 
 int restup(void)
 {
-  int obj, turns;
+  int obj;
+  int turns;
 
   /* If we are confused, sit still so we don't bump into anything bad */
   if (confused) { command (T_RESTING, "s"); return (1); }
@@ -819,7 +829,8 @@ int gotowardsgoal(void)
 
 int gotocorner(void)
 {
-  int r, c;
+  int r;
+  int c;
 
   if (!downright (&r, &c)) return (0);
 
@@ -848,7 +859,8 @@ int light(void)
 
 int shootindark(void)
 {
-  int obj, bow;
+  int obj;
+  int bow;
 
   /* If no longer arching in the dark, fail */
   if (darkturns < 1 || darkdir == NONE || !darkroom ()) return (0);
@@ -891,7 +903,11 @@ int dinnertime(void)
 
 int trywand(void)
 {
-  int obj, dir, r, c, count;
+  int obj;
+  int dir;
+  int r;
+  int c;
+  int count;
 
   /* If we aren't in a room, if there are monsters around,  */
   /* or we are in the dark, then we can't try this strategy */

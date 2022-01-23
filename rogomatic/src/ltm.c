@@ -307,9 +307,15 @@ void dumpmonstertable(void)
 
 void analyzeltm(void)
 {
-  int m, i;
-  double avg_dam = 0.6*Level+3, max_dam = 7.0+Level, avg_arr = 4.0;
-  double phit, mean_dam, stdev_dam, three_dev;
+  int m;
+  int i;
+  double avg_dam = 0.6*Level+3;
+  double max_dam = 7.0+Level;
+  double avg_arr = 4.0;
+  double phit;
+  double mean_dam;
+  double stdev_dam;
+  double three_dev;
 
   /* Loop through each monster in this game (not whole ltm file) */
   for (i=0; i<26; i++) {

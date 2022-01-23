@@ -46,14 +46,32 @@ char *month[] = {
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
 };
 
-int doavg = 0, cheat = 0, min = -1;
+int doavg = 0;
+int cheat = 0;
+int min = -1;
 
 int main(int argc, char *argv[])
 {
-  int mm, dd, yy, score = 0, lastday = -1, lastmon = -1, lastyy = -1, h;
-  int sumscores = 0, numscores = 0, i;
-  int sum[AVLEN], num[AVLEN], rsum, rnum, davg, ravg;
-  char player[100], plot[128], cheated;
+  int mm;
+  int dd;
+  int yy;
+  int score = 0;
+  int lastday = -1;
+  int lastmon = -1;
+  int lastyy = -1;
+  int h;
+  int sumscores = 0;
+  int numscores = 0;
+  int i;
+  int sum[AVLEN];
+  int num[AVLEN];
+  int rsum;
+  int rnum;
+  int davg;
+  int ravg;
+  char player[100];
+  char plot[128];
+  char cheated;
 
   /* Clear out the rolling average statistics */
   for (i = 0; i < AVLEN; i++)
@@ -153,7 +171,8 @@ int main(int argc, char *argv[])
 
 int getlin(char *s)
 {
-  int ch, i;
+  int ch;
+  int i;
   static int endfile = 0;
 
   if (endfile) return (EOF);
@@ -174,7 +193,8 @@ int getlin(char *s)
 
 int getscore(int *mm, int *dd, int *yy, char *player, int *score, char *cheated)
 {
-  char line[128], reason[32];
+  char line[128];
+  char reason[32];
 
   while (getlin (line) != EOF) {
     sscanf (line, "%d %d, %d %10s%d%c%17s",

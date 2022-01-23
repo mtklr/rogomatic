@@ -68,13 +68,19 @@ extern int knob[];
 extern FILE *wopen();
 
 time_t inittime;
-static int trialno=0, lastid=0;
-static int crosses=0, shifts=0, mutations=0;
+static int trialno=0;
+static int lastid=0;
+static int crosses=0;
+static int shifts=0;
+static int mutations=0;
 static statistic g_score = ZEROSTAT;
 static statistic g_level = ZEROSTAT;
 static genotype *genes[MAXM];
 static int length = 0;
-static int mindiff = 10, pmutate = 4, pshift = 2, mintrials = 1;
+static int mindiff = 10;
+static int pmutate = 4;
+static int pshift = 2;
+static int mintrials = 1;
 static double step = 0.33; /* standard deviations from the mean */
 static FILE *glog=NULL;
 
@@ -150,7 +156,8 @@ void analyzepool(int full)
 
 void setknobs(int *newid, int *knb, int *best, int *avg)
 {
-  int i, g;
+  int i;
+  int g;
 
   ++trialno;
 
@@ -221,7 +228,10 @@ void rogo_closelog(void)
 
 int pickgenotype(void)
 {
-  int youth, father, mother, new;
+  int youth;
+  int father;
+  int mother;
+  int new;
 
   /* Find genotype with fewer trials than needed to measure its performance */
   youth = untested ();
@@ -502,7 +512,8 @@ static void printdna(FILE *f, genotype *gene)
 
 static void cross(int father, int mother, int new)
 {
-  int cpoint, i;
+  int cpoint;
+  int i;
 
   /* Set the new genotypes info */
   genes[new]->id = ++lastid;
@@ -578,7 +589,8 @@ static void mutate(int father, int new)
 
 static void shift(int father, int new)
 {
-  int i, offset;
+  int i;
+  int offset;
 
   /* Set the new genotypes info */
   genes[new]->id = ++lastid;
@@ -612,7 +624,8 @@ static void shift(int father, int new)
 
 static void randompool(int m)
 {
-  int i, g;
+  int i;
+  int g;
 
   for (g=0; g<m; g++) {
     if (g >= length) {
@@ -672,7 +685,10 @@ static int selectgene(int e1, int e2)
 
 static int unique(int new)
 {
-  int g, i, delta, sumsquares;
+  int g;
+  int i;
+  int delta;
+  int sumsquares;
 
   for (g=0; g<length; g++) {
     if (g != new) {
@@ -698,7 +714,11 @@ static int unique(int new)
 
 static int untested(void)
 {
-  int g, y= -1, trials=1e9, newtrials, count=length;
+  int g;
+  int y= -1;
+  int trials=1e9;
+  int newtrials;
+  int count=length;
 
   for (g = rogo_randint (length); count-- > 0; g = (g+1) % length) {
     if (TRIALS (genes[g]) >= trials) continue;
@@ -718,7 +738,11 @@ static int untested(void)
 
 static int youngest(void)
 {
-  int g, y=0, trials=1e9, newtrials, count=length;
+  int g;
+  int y=0;
+  int trials=1e9;
+  int newtrials;
+  int count=length;
 
   for (g = rogo_randint (length); count-- > 0; g = (g+1) % length) {
     newtrials = TRIALS (genes[g]);
@@ -767,8 +791,14 @@ static int triangle(int n)
 
 static int badgene(int e1, int e2)
 {
-  int g, worst, trials;
-  double worstval, bestval, avg, dev, value;
+  int g;
+  int worst;
+  int trials;
+  double worstval;
+  double bestval;
+  double avg;
+  double dev;
+  double value;
 
   worst = -1; worstval = 1.0e9;
   bestval = -1.0e9;

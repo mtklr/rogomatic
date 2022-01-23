@@ -48,11 +48,22 @@ int cheat = 0;
 
 int main (int argc, char *argv[])
 {
-  int score = 0, maxfreq = 0, lowscore = 0, min = 200, killnum = 0;
-  int bucket[NUMBUK], killed[NUMBUK][NOMON], level = 0, dolev = 0;
+  int score = 0;
+  int maxfreq = 0;
+  int lowscore = 0;
+  int min = 200;
+  int killnum = 0;
+  int bucket[NUMBUK];
+  int killed[NUMBUK][NOMON];
+  int level = 0;
+  int dolev = 0;
   int total[NOMON];
-  int i, j, h, f;
-  char killer[100], plot[128];
+  int i;
+  int j;
+  int h;
+  int f;
+  char killer[100];
+  char plot[128];
 
   /* Zero the buckets */
   for (i = NUMBUK; i--; ) {
@@ -186,8 +197,12 @@ int main (int argc, char *argv[])
 
 int getscore(int *score, char *killer, int *level)
 {
-  int dd, yy;
-  char line[128], mmstr[8], player[16], cheated=' ';
+  int dd;
+  int yy;
+  char line[128];
+  char mmstr[8];
+  char player[16];
+  char cheated=' ';
 
   while (fgets (line, 128, stdin)) {
     dd = yy = *score = 0;

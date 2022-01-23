@@ -369,7 +369,8 @@ static int match5(char ch1, char ch2, char ch3, char ch4, char ch5)
  */
 char getroguetoken(void)
 {
-  char ch, ch2;
+  char ch;
+  char ch2;
 
   if (replaying)
     return (getlogtoken());
@@ -594,7 +595,9 @@ char getroguetoken(void)
 void getoldcommand(char *s)
 {
   int charcount = 0;
-  char ch = ' ', term = '"', *startpat = "\nC: ";
+  char ch = ' ';
+  char term = '"';
+  char *startpat = "\nC: ";
 
   while (*startpat && (int) ch != EOF)
     { if ((ch = GETLOGCHAR) != *(startpat++)) startpat = "\nC: "; }
@@ -620,7 +623,9 @@ int getlogtoken(void)
 {
   int acceptline;
   int ch = GETLOGCHAR;
-  int ch1, ch2, dig;
+  int ch1;
+  int ch2;
+  int dig;
 
   while (ch == NEWLINE) {
     acceptline = 0;
