@@ -37,7 +37,6 @@
 
 #include "utility.h"
 
-# define TEMPFL "/tmp/RscoreXXXXXX"
 # define ISDIGIT(c) ((c) >= '0' && (c) <= '9')
 
 int findscore(char *rogue, char *roguename)
@@ -47,7 +46,7 @@ int findscore(char *rogue, char *roguename)
   char cmd[100];
   char buffer[BUFSIZ];
   char *s;
-  char *tmpfname = TEMPFL;
+  char *tmpfname = TMPFILE;
   FILE *tmpfil;
   char tmpbuffer[256];
 

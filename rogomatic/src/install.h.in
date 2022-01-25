@@ -169,4 +169,10 @@
 #define SNAPSHOT "snapshot.rgm"
 #endif
 
+/* score temp file */
+
+#ifndef TMPFILE
+#define TMPFILE "/tmp/RscoreXXXXXX"
+#endif
+
 #endif
