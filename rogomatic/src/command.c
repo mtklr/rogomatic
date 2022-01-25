@@ -90,7 +90,6 @@ void command(int tmode, char *f, ...)
 {
   int times;
   char cmd[128];
-  char functionchar();
 
   /* Build the command */
   va_list ap;
@@ -202,8 +201,6 @@ char commandarg(char *cmd, int n)
 
 void adjustpack(char *cmd)
 {
-  char functionchar();
-  char commandarg();
   int neww;
   int obj;
 

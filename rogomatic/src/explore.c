@@ -124,9 +124,6 @@ int gotocol = NONE;
 
 int gotowards (int r, int c, int running)
 {
-  int gotoinit();
-  int gotovalue();
-
   gotorow = r; gotocol = c;
   return (makemove (running ? RUNAWAY:GOTOMOVE, gotoinit, gotovalue, REUSE));
 }
@@ -984,9 +981,6 @@ void pinavoid(void)
 
 int secret(void)
 {
-  int secretinit();
-  int secretvalue();
-
   /* Secret passage adjacent to door? */
   if (version >= RV53A && on (DOOR) && !blinded &&
       (seerc (' ',atrow+1,atcol) || seerc (' ',atrow-1,atcol) ||
@@ -1039,10 +1033,6 @@ int secret(void)
 
 int findroom(void)
 {
-  /* LGCH */
-  int expinit();
-  int expvalue();
-
   if (new_findroom) {
     if (!on (ROOM) && secret ())			return (1);
 
@@ -1060,10 +1050,6 @@ int findroom(void)
 
 int exploreroom(void)
 {
-  /* LGCH */
-  int roominit();
-  int expvalue();
-
   if (!on (ROOM) || isexplored (atrow, atcol)) return (0);
 
   if (makemove (EXPLOREROOM, roominit, expvalue, REUSE)) return (1);
@@ -1081,8 +1067,6 @@ int exploreroom(void)
 int doorexplore(void)
 {
   static int searchcount = 0;
-  int secretinit();
-  int secretvalue();
 
   /* If no new squares or read map, dont bother */
   if (! new_search || Level == didreadmap)
@@ -1177,8 +1161,6 @@ static int archval[24][80];
 /* trns: Minimum number of arrows to make it worthwhile */
 int archmonster(int m, int trns)
 {
-  int archeryinit();
-  int archeryvalue();
   int mr;
   int mc;
 
@@ -1309,10 +1291,6 @@ void unrest(void)
 /* Move to a good square to rest up on */
 int movetorest(void)
 {
-  /* LGCH */
-  int restinit();
-  int restvalue();
-
   if (markcycles (NOPRINT))
     unrest ();
 

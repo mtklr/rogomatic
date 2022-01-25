@@ -518,8 +518,6 @@ int checkcango(int dir, int turns)
 int godownstairs(int running)
 {
   int p;
-  int genericinit();
-  int downvalue();
 
   /* We don't want to go down if we have just gotten an arrow, since */
   /* It is probably bad, and we will want to go back to the trap;   */

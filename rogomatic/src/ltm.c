@@ -232,7 +232,6 @@ void readltm(void)
 void parsemonster(char *monster)
 {
   char *attrs;
-  char *index();
   int m;
 
   /* Separate the monster name from the attributes */

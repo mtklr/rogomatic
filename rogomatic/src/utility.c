@@ -191,9 +191,7 @@ int lock_file(const char *lokfil, int maxtime)
 {
 
   int try;
-
   struct stat statbuf;
-  time_t time ();
 
 start:
 

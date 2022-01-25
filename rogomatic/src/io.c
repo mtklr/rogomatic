@@ -180,7 +180,6 @@ void getrogue(char *waitstr, int onat)
   int wasmapped = didreadmap;
   int r;
   int c;
-  int pending ();
   int i;
   int j;
   char ch;
@@ -832,7 +831,6 @@ void deadrogue(void)
 
 void quitrogue(char *reason, int gld, int terminationtype)
 {
-  struct tm *localtime();
   struct tm *ts;
   long clock;
   char *k;
@@ -1188,9 +1186,7 @@ void printsnap(FILE *f)
   int i;
   int j;
   int length;
-  struct tm *localtime();
   struct tm *ts;
-  char *statusline();
   long clock;
 
   /* Now get the current time, so we can date the snapshot */
