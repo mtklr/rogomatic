@@ -64,9 +64,6 @@ static int badgene(int e1, int e2);
 # define ALLELE		100
 # define ZEROSTAT	{0, 0, 0, 0, 0}
 
-extern int knob[];
-extern FILE *wopen();
-
 time_t inittime;
 static int trialno=0;
 static int lastid=0;

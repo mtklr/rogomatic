@@ -35,7 +35,6 @@ extern FILE *trogue;		/* From Rogue, To Rogue */
 extern FILE *logfile;		/* Rogomatic score file */
 extern FILE *realstdout;	/* Real stdout when in terse or emacs mode */
 extern FILE *snapshot;		/* File for snapshot command */
-FILE *wopen();			/* Open a file for world access */
 
 /* global characters and strings */
 extern char afterid;		/* Index of object after identify */
@@ -48,7 +47,6 @@ extern char ourkiller[];	/* What was listed on the tombstone */
 extern char *parmstr;		/* Pointer to argument space */
 extern char pending_call_letter;	/* Pack object we know a name for */
 extern char pending_call_name[];	/* Pack object name for letter */
-extern char queue[];		/* stuff to be sent to Rogue */
 extern char *roguename;		/* Name we are playing under */
 extern char screen[24][80];	/* characters drawn by Rogue */
 extern char sumline[];		/* Summation line */
