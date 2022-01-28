@@ -807,9 +807,9 @@ int main(int argc, char *argv[])
     fprintf (realstdout, "%s %s est.\n", gamename, termination);
   }
   else {
-    if (*sumline) printf ("%s\n",sumline);
+    if (*sumline) printf ("%s\r\n",sumline);
 
-    printf ("%s %s est.\n", gamename, termination);
+    printf ("%s %s est.\r\n", gamename, termination);
   }
 
   /*
