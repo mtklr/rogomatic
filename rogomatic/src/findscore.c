@@ -61,12 +61,17 @@ int findscore(char *rogue, char *roguename)
     return (best);
 
   /* Skip to the line starting with 'Rank...'. */
-  while (fgets (buffer, BUFSIZ, tmpfil) != NULL)
-    if (stlmatch (buffer, "Rank")) break;
+  /* or "   Score" for version 5.4 */
+  while (fgets (buffer, BUFSIZ, tmpfil) != NULL) {
+      if (stlmatch (buffer, "Rank")) break;
+      if (stlmatch (buffer, "   Score")) break;
+  }
 
   if (! feof (tmpfil)) {
     while (fgets (buffer, BUFSIZ, tmpfil) != NULL) {
       s = buffer;				/* point s at buffer */
+
+      while (*s == ' ' || *s == '\t') s++;	/* Skip to rank */
 
       while (ISDIGIT (*s)) s++;			/* Skip over rank */
 
