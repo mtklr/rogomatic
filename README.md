@@ -1,5 +1,7 @@
 # Rogomatic
 
+* NOTE: this dev branch will most likely have forced pushes applied to it, and generally be a mess at times. - mk
+
   A version of Rog-O-Matic along with a version of Rogue that I have used for testing and my debugging scripts and vt terminal testing programs.
 
 
