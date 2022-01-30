@@ -79,7 +79,7 @@ void rogo_srand(int seed)
 {
   int i;
 
-  if (seed == 0) seed = time (0);
+  if (seed == 0) seed = time (NULL);
 
   /* Set the three random number seeds */
   seed1 = (seed1+seed) % MOD1;

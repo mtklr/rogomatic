@@ -87,7 +87,7 @@ static FILE *glog=NULL;
 
 void initpool(int k, int m)
 {
-  inittime = time (0);
+  inittime = time (NULL);
 
   if (glog) fprintf (glog, "Gene pool initalized, k %d, m %d, %s",
                        k, m, ctime (&inittime));

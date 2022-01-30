@@ -182,7 +182,7 @@ void restoreltm(void)
       dwait (D_CONTROL | D_SAY,
              "Starting long term memory file '%s'...", ltmnam);
       ltm.gamecnt = ltm.gamesum = ltm.timeswritten = 0;
-      ltm.inittime = time (0);
+      ltm.inittime = time (NULL);
     }
 
     unlock_file (getLockFile ());

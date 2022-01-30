@@ -128,7 +128,7 @@ void animate(char *movie[])
       refresh ();				/* Write out screen */
 
       for (; count < delaychars; count++)	/* Pad with nulls */
-        putchar (0);
+        putchar ((int) NULL);
 
       count = 0;				/* Reset char count */
     }
