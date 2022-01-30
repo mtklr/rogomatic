@@ -233,6 +233,7 @@ int   maxobj = 22;              /* How much can we carry */
 int   missedstairs = 0;         /* True if we searched everywhere */
 int   morecount = 0;            /* Number of messages since last command */
 int   msgonscreen = 0;		/* Set implies message at top */
+int   napdelay = NAPDELAY;
 int   newarmor = 1;             /* Change in armor status? */
 int  *newdoors = NULL;		/* New doors on screen */
 int   newring = 1;              /* Change in ring status? */
@@ -390,7 +391,7 @@ jmp_buf  commandtop;
 
 int main(int argc, char *argv[])
 {
-  char ch;
+  int ch;
   char *s;
   char msg[128];
   int startingup = 1;
@@ -494,6 +495,9 @@ int main(int argc, char *argv[])
   }
 
   initscr (); crmode (); noecho ();	/* Initialize the Curses package */
+  nonl();
+  nodelay(stdscr, TRUE);
+  keypad(stdscr, TRUE);
 
   if (startecho) toggleecho ();		/* Start logging? */
 
@@ -584,6 +588,7 @@ int main(int argc, char *argv[])
   if (transparent) noterm = 0;
 
   while (playing) {
+    napms(napdelay);
     refresh ();
 
     /* If we have any commands to send, send them */
@@ -616,6 +621,18 @@ int main(int argc, char *argv[])
       ch = (noterm) ? ROGQUIT : getch ();
 
       switch (ch) {
+        case KEY_PPAGE: /* page down, decrease delay */
+          if (napdelay < MAXNAPDELAY) {
+            napdelay += 5;
+          }
+          break;
+
+        case KEY_NPAGE: /* page down, increase delay */
+          if (napdelay > 0) {
+            napdelay -= 5;
+          }
+          break;
+
         case '?': givehelp (); break;
 
         case '\n': if (terse)

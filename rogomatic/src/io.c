@@ -692,7 +692,7 @@ void sendcnow(char c)
 
      if you want to run full blast, make sure the USLEEP global
      constant is 0. */
-
+#ifdef ROGO_USLEEP
   if ((USLEEP) && (!noterm)) {
     if (Level > 20) {
 	    usleep (USLEEP+(Level * 8000));
@@ -704,7 +704,7 @@ void sendcnow(char c)
 	    usleep (USLEEP);
     }
   }
-
+#endif
   rogue_log_write_command (c);
 
   fprintf (trogue, "%c", c);

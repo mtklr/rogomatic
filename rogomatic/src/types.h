@@ -66,6 +66,8 @@ own preferences.
 if you want to adjust the specific values see io.c (yay source code! :) ) */
 
 #define USLEEP		14000
+#define NAPDELAY	15
+#define MAXNAPDELAY	200
 
 /*
  * Magic numbers for Invisible stalker strategies
