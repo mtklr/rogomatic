@@ -347,7 +347,7 @@ void deletestuff(int row, int col)
 void dumpstuff(void)
 {
   int   i;
-  at (1, 0);
+  move(1, 0);
 
   for (i = 0; i < slistlen; ++i)
     printw ("%d at %d,%d (%c)\n",
@@ -355,7 +355,7 @@ void dumpstuff(void)
             screen[slist[i].srow][slist[i].scol]);
 
   printw ("You are at %d,%d.", atrow, atcol);
-  at (row, col);
+  move(row, col);
 }
 
 /*

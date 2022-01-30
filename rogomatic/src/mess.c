@@ -153,7 +153,7 @@ void terpmes(void)
     if debug(D_MESSAGE) {
       mvprintw (24, 0, ">%-79.79s",screen);
       mvprintw (25, 0, ">%-79.79s",topline);
-      at (26,0);
+      move(26,0);
       clrtoeol ();
       printw (">%-79.79s",mess);
       refresh ();
@@ -167,7 +167,7 @@ void terpmes(void)
     if debug(D_MESSAGE) {
       mvprintw (24, 0, "<%-79.79s",screen);
       mvprintw (25, 0, "<%-79.79s",topline);
-      at (26,0);
+      move(26,0);
       clrtoeol ();
       printw ("<%-79.79s",mess);
       refresh ();
@@ -787,10 +787,10 @@ void readident(char *name)
 
   infer (name, Scroll);		/* Record what kind of scroll this is */
 
-  at (0,0);
+  move(0,0);
   clrtoeol ();
   memset (screen,' ', 80);
-  at (row, col);
+  move(row, col);
   refresh ();
 
   if (version < RV53A) {	/* Rogue 3.6, Rogue 5.2 */

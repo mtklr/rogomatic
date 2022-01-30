@@ -204,13 +204,13 @@ void getrogue(char *waitstr, int onat)
 
   /* debugging info */
   if debug(D_MESSAGE) {
-    at (28,0);
+    move(28,0);
     clrtoeol ();
-    at (27,0);
+    move(27,0);
     clrtoeol ();
     printw("getrogue: waitstr ->%s<-  onat %d.",
            waitstr, onat);
-    at (row, col);
+    move(row, col);
     refresh ();
   }
 
@@ -222,7 +222,7 @@ void getrogue(char *waitstr, int onat)
 
     if debug(D_MESSAGE) {
       mvprintw (28, col, "%s", unctrl(ch));
-      at (row, col);
+      move(row, col);
       refresh ();
     }
 
@@ -300,7 +300,7 @@ void getrogue(char *waitstr, int onat)
           for (i = col; i < 80; i++)
             screen[row][i] = ' ';
 
-        if (row) { at (row, col); clrtoeol (); }
+        if (row) { move(row, col); clrtoeol (); }
         else if (col == 0) screen00 = ' ';
 
         debuglog ("CE_TOK      [%2d, %2d] [%c]\n", row, col, screen[row][col]);
@@ -431,7 +431,7 @@ void getrogue(char *waitstr, int onat)
           waitforspace ();
         }
         else if (row) {
-          at (row, col);
+          move(row, col);
 
           if (!emacs && !terse) addch (ch);
 
@@ -498,7 +498,7 @@ void getrogue(char *waitstr, int onat)
           setnewgoal ();		         /* invalidate the map.    */
         }
 
-  at (row, col);
+  move(row, col);
 
   if (!emacs && !terse) refresh ();
 
@@ -652,7 +652,7 @@ void dumpwalls(void)
     }
   }
 
-  at (row, col);
+  move(row, col);
 }
 
 /*
@@ -772,15 +772,6 @@ int pending(void)
 }
 
 /*
- * at: move the cursor. Now just a call to move();
- */
-
-void at(int r, int c)
-{
-  move (r, c);
-}
-
-/*
  * deadrogue: Called when we have been killed, it reads the tombstone
  * to see how much we had when we died and who killed us. It then
  * calls quitrogue to handle the termination handshaking and log the
@@ -863,7 +854,7 @@ void quitrogue(char *reason, int gld, int terminationtype)
            sumline, Ac, Explev, Exp, ltm.gamecnt);
 
   /* Now write the summary line to the log file */
-  at (23, 0); clrtoeol (); refresh ();
+  move(23, 0); clrtoeol (); refresh ();
 
   /* 22 is index of score in sumline */
   if (!replaying)
@@ -933,12 +924,12 @@ void say(char *f, va_list ap)
     memset (buf, '\0', BUFSIZ);
     vsnprintf(buf, sizeof(buf), f, ap);
 
-    at (0,0);
+    move(0,0);
 
     for (b=buf; *b; b++) printw ("%s", unctrl (*b));
 
     clrtoeol ();
-    at (row, col);
+    move(row, col);
   }
 }
 
@@ -974,7 +965,7 @@ void waitforspace(void)
     while ((ch = fgetc (stdin)) != ' ')
       if (ch == '/') dosnapshot ();
 
-  at (row, col);
+  move(row, col);
 }
 
 /*
@@ -1107,7 +1098,7 @@ void redrawscreen(void)
   for (i = 1; i < 24; i++) for (j = 0; j < 80; j++)
       if ((ch = screen[i][j]) > ' ') mvaddch(i, j, ch);
 
-  at (row, col);
+  move(row, col);
 
   refresh ();
 }
@@ -1141,7 +1132,7 @@ void toggleecho(void)
   }
 
   if (playing)
-    { at (row, col); refresh (); }
+    { move(row, col); refresh (); }
 }
 
 /*

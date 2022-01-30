@@ -107,7 +107,7 @@ void deletemonster(int r, int c)
 void dumpmonster(void)
 {
   int   i;
-  at (1, 0);
+  move(1, 0);
 
   for (i = 0; i < mlistlen; ++i)
     printw ("%s at %d,%d(%c) \n",
@@ -118,7 +118,7 @@ void dumpmonster(void)
             mlist[i].chr);
 
   printw ("You are at %d,%d.", atrow, atcol);
-  at (row, col);
+  move(row, col);
 }
 
 /*

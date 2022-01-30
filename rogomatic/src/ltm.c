@@ -283,8 +283,8 @@ void dumpmonstertable(void)
   analyzeltm ();
 
   for (m=0, monc='A';  m<26;  m++, monc++) {
-    if (m < 13) at (m+2, 0);
-    else        at (m-11, 40);
+    if (m < 13) move(m+2, 0);
+    else        move(m-11, 40);
 
     printw ("%c: %s", monc, monname (monc));
 

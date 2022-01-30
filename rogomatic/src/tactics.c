@@ -833,7 +833,7 @@ int gotocorner(void)
   if (!downright (&r, &c)) return (0);
 
   if (debug (D_SCREEN))
-    { saynow ("Gotocorner called:"); mvaddch (r, c, 'T'); at (row, col); }
+    { saynow ("Gotocorner called:"); mvaddch (r, c, 'T'); move(row, col); }
 
   if (gotowards (r, c, 0)) { goalr=r; goalc=c; return (1); }
 

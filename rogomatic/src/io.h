@@ -15,7 +15,6 @@ void sendcnow(char c);
 void rogo_send(char *f, ...);
 int resend(void);
 int pending(void);
-void at(int r, int c);
 void deadrogue(void);
 void quitrogue(char *reason, int gld, int terminationtype);
 void waitfor(char *mess);

@@ -850,7 +850,7 @@ int secretvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 
 # define AVOID(r,c,ch) \
   { avdmonsters[r][c] = ROGINFINITY; \
-    if (debug (D_SCREEN)) { mvaddch(r, c, ch); at(row,col); }}
+    if (debug (D_SCREEN)) { mvaddch(r, c, ch); move(row,col); }}
 
 void avoidmonsters(void)
 {
@@ -1232,7 +1232,7 @@ int archeryinit(void)
       if (dist > archturns && !onrc (TRAP, r, c)) {
         archval[r][c] = dist - 1; /* number of arrows we get to shoot */
 
-        if (debug (D_SCREEN)) { mvaddch (r, c, '=');  at (row, col); }
+        if (debug (D_SCREEN)) { mvaddch (r, c, '=');  move(row, col); }
       }
   }
 

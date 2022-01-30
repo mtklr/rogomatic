@@ -75,7 +75,7 @@ int strategize(void)
   if (replaying) return (replaycommand ());
 
   /* Clear any messages we printed last turn */
-  if (msgonscreen) { at (0,0); clrtoeol (); msgonscreen = 0; at (row,col); }
+  if (msgonscreen) { move(0,0); clrtoeol (); msgonscreen = 0; move(row,col); }
 
 
   /* ----------------------- Production Rules --------------------------- */

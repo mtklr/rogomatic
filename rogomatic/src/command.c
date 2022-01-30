@@ -377,13 +377,13 @@ void showcommand(char *cmd)
     i += strlen (unctrl(*s));
   }
 
-  printw (" "); standend (); clrtoeol (); at (row, col); refresh ();
+  printw (" "); standend (); clrtoeol (); move(row, col); refresh ();
   cmdonscreen = 1;
 }
 
 void clearcommand(void)
 {
-  at (23,72); clrtoeol (); at (row, col);
+  move(23,72); clrtoeol (); move(row, col);
   cmdonscreen = 0;
 }
 /*

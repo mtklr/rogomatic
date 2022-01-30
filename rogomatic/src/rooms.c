@@ -901,7 +901,7 @@ void printexplored(void)
   }
 
   clrtoeol ();
-  at (row, col);
+  move(row, col);
   refresh ();
 }
 
@@ -1175,7 +1175,7 @@ void dumpmazedoor(void)
     }
   }
 
-  at (row, col);
+  move(row, col);
 }
 
 /*

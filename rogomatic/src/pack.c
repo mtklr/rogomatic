@@ -326,10 +326,10 @@ int inventory(char *msgstart, char *msgend)
   dwait (D_PACK, "inv: message %s", mess);
 
   if (debug(D_MESSAGE)) {
-    at (30,0);
+    move(30,0);
     clrtoeol ();
     printw(">%-79.79s",mess);
-    at (row, col);
+    move(row, col);
     refresh ();
   }
 
@@ -516,7 +516,7 @@ int inventory(char *msgstart, char *msgend)
       xknow = KNOWN;
 
       if (newitem) {
-        at (0,0);
+        move(0,0);
 
         if (n == 1) printw ("a ");
         else printw ("%d ", n);
@@ -531,7 +531,7 @@ int inventory(char *msgstart, char *msgend)
                 LETTER(ipos));
 
         clrtoeol ();
-        at (row, col);
+        move(row, col);
         refresh ();
         printed++;
       }
@@ -623,13 +623,13 @@ int inventory(char *msgstart, char *msgend)
   if (cursedweapon && ipos == currentweapon) remember (ipos, CURSED);
 
   if (debug(D_MESSAGE)) {
-    at (30,0);
+    move(30,0);
     clrtoeol ();
     printw("<%-79.79s",mess);
-    at (31,0);
+    move(31,0);
     clrtoeol ();
     printw("<%-79.79s",objname);
-    at (row, col);
+    move(row, col);
     refresh ();
   }
 

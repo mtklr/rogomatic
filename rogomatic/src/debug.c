@@ -117,7 +117,7 @@ int dwait(int msgtype, char *f, ...)
       case '?':
         saynow ("i=inv, d=debug !=stf, @=mon, #=wls, $=id, ^=flg, &=chr");
         break;
-      case 'i': at (1,0); dumpinv ((FILE *) NULL); at (row, col); break;
+      case 'i': move(1,0); dumpinv ((FILE *) NULL); move(row, col); break;
       case 'd': toggledebug (); 	break;
       case 't': transparent = 1;        break;
       case '!': dumpstuff ();           break;
@@ -130,11 +130,11 @@ int dwait(int msgtype, char *f, ...)
           saynow ("Char at %d,%d '%c'", r, c, screen[r][c]);
 
         break;
-      case '(': dumpdatabase (); at (row, col); break;
-      case ')': new_mark++; markcycles (DOPRINT); at (row, col); break;
+      case '(': dumpdatabase (); move(row, col); break;
+      case ')': new_mark++; markcycles (DOPRINT); move(row, col); break;
       case '~': saynow ("Version %d, quit at %d", version, quitat); break;
       case '/': dosnapshot (); break;
-      default: at (row, col); return (1);
+      default: move(row, col); return (1);
     }
   }
 }
@@ -152,7 +152,7 @@ void promptforflags(void)
     mvprintw (0, 0, "Flags for %d,%d ", r, c);
     dumpflags (r, c);
     clrtoeol ();
-    at (row, col);
+    move(row, col);
   }
 }
 
@@ -281,6 +281,6 @@ int getscrpos(char *msg, int *r, int *c)
       saynow ("%d,%d is not on the screen!", *r, *c);
   }
 
-  at (row, col);
+  move(row, col);
   return (0);
 }

@@ -678,9 +678,9 @@ int main(int argc, char *argv[])
 
         case 't': transparent = !transparent; break;
 
-        case ')': new_mark++; markcycles (DOPRINT); at (row, col); break;
+        case ')': new_mark++; markcycles (DOPRINT); move(row, col); break;
 
-        case '+': setpsd (DOPRINT); at (row, col); break;
+        case '+': setpsd (DOPRINT); move(row, col); break;
 
         case 'A': attempt = (attempt+1) % 5;
           saynow ("Attempt %d", attempt); break;
@@ -689,7 +689,7 @@ int main(int argc, char *argv[])
                               "%d: Sr %d Dr %d Re %d Ar %d Ex %d Rn %d Wk %d Fd %d, %d/%d",
                               geneid, k_srch, k_door, k_rest, k_arch,
                               k_exper, k_run, k_wake, k_food, genebest, geneavg);
-          clrtoeol (); at (row, col); refresh (); break;
+          clrtoeol (); move(row, col); refresh (); break;
 
         case ':': chicken = !chicken;
           saynow (chicken ? "chicken" : "aggressive");
@@ -710,7 +710,7 @@ int main(int argc, char *argv[])
                   "usingarrow", usingarrow,
                   "goodarrow", goodarrow);
           clrtoeol ();
-          at (row, col);
+          move(row, col);
           refresh ();
           break;
 
@@ -808,7 +808,7 @@ int main(int argc, char *argv[])
   }
 
   /* Print termination messages */
-  at (23, 0);
+  move(23, 0);
   clrtoeol ();
 //  clear ();
   refresh ();
