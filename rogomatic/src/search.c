@@ -476,7 +476,7 @@ int searchto(int row, int col, int (*evaluate)(), char dir[24][80], int *trow, i
        */
 
       if (debug (D_SCREEN | D_SEARCH | D_INFORM)) {
-        mvprintw (r, c, "=");
+        mvaddch (r, c, '=');
         dwait (D_SEARCH, "Searchto: target value %d.", moveval[r][c]);
       }
 

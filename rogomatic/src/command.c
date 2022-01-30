@@ -368,7 +368,7 @@ void showcommand(char *cmd)
   char *s;
   int i = 72;
 
-  standout (); mvprintw (23, 72, " ");
+  standout (); mvaddch(23, 72, ' ');
 
   for (s=cmd; *s; s++) {
     if ((i + strlen (unctrl(*s))) < 78) {
@@ -377,7 +377,7 @@ void showcommand(char *cmd)
     i += strlen (unctrl(*s));
   }
 
-  printw (" "); standend (); clrtoeol (); move(row, col); refresh ();
+  addch(' '); standend (); clrtoeol (); move(row, col); refresh ();
   cmdonscreen = 1;
 }
 

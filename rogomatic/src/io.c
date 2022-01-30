@@ -788,7 +788,7 @@ void deadrogue(void)
   char *killer;
   char *killend;
 
-  printw ("\n\nOops...");
+  addstr ("\n\nOops...");
   refresh ();
 
   sscanf (&screen[GOLDROW][TOMBCOL], "%18d", &Gold);

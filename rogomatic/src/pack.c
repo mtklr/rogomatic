@@ -518,7 +518,7 @@ int inventory(char *msgstart, char *msgend)
       if (newitem) {
         move(0,0);
 
-        if (n == 1) printw ("a ");
+        if (n == 1) addstr ("a ");
         else printw ("%d ", n);
 
         printw ("%s%s of %s (%c)",

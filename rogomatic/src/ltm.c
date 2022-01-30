@@ -279,7 +279,7 @@ void dumpmonstertable(void)
   int m;
   char monc;
 
-  clear (); mvprintw (0,0,"Monster table:");
+  clear (); mvaddstr(0, 0, "Monster table:");
   analyzeltm ();
 
   for (m=0, monc='A';  m<26;  m++, monc++) {

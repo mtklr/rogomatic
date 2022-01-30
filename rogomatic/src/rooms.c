@@ -892,7 +892,7 @@ void printexplored(void)
 {
   int rm;
 
-  mvprintw (0, 0, "Rooms explored: ");
+  mvaddstr (0, 0, "Rooms explored: ");
 
   for (rm = 0; rm < 9; rm++) {
     if (levelmap[rm] & EXPLORED) {

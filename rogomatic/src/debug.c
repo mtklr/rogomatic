@@ -175,7 +175,7 @@ void dumpflags(int r, int c)
   char **f;
   int b;
 
-  printw (":");
+  addch(':');
 
   for (f=fnames, b=1;   b<=EVERCLR;   b = b * 2, f++)
     if (scrmap[r][c] & b)
