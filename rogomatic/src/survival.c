@@ -55,9 +55,8 @@
 
 # define highlight(rowcol,stand)		\
   if (print || debug (D_SCREEN))		\
-  { at((rowcol)/80,(rowcol)%80);		\
-    if (stand) standout ();			\
-    printw("%c",screen[0][rowcol]);		\
+  { if (stand) standout ();			\
+    mvprintw(rowcol / 80, rowcol % 80, "%c", screen[0][rowcol]); \
     if (stand) standend ();			\
     refresh (); }
 

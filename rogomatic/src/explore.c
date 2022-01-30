@@ -331,7 +331,7 @@ int setpsd(int print)
 
   if (print || debug (D_SCREEN))
     for (i=0; i<24; i++) for (j=0; j<80; j++)
-        if (onrc (PSD,i,j)) { at (i,j); addch ('P'); }
+        if (onrc (PSD,i,j)) { mvaddch (i, j, 'P'); }
 
   reusepsd = numberpsd+1;
   return (numberpsd);
@@ -850,7 +850,7 @@ int secretvalue(int r, int c, int depth, int *val, int *avd, int *cont)
 
 # define AVOID(r,c,ch) \
   { avdmonsters[r][c] = ROGINFINITY; \
-    if (debug (D_SCREEN)) { at((r),(c)); addch(ch); at(row,col); }}
+    if (debug (D_SCREEN)) { mvaddch(r, c, ch); at(row,col); }}
 
 void avoidmonsters(void)
 {
@@ -1232,7 +1232,7 @@ int archeryinit(void)
       if (dist > archturns && !onrc (TRAP, r, c)) {
         archval[r][c] = dist - 1; /* number of arrows we get to shoot */
 
-        if (debug (D_SCREEN)) { at (r, c); addch ('=');  at (row, col); }
+        if (debug (D_SCREEN)) { mvaddch (r, c, '=');  at (row, col); }
       }
   }
 

@@ -254,9 +254,9 @@ void dumpdatabase(void)
   int i;
 
   for (i = 0; i < datalen; i++) {
-    at (i+1, 0);
-    printw ("%02d %c|%01d|%01d %-32s %02d '%s'", 
-      i, (dbase[i].pack_index != -1) ? LETTER(dbase[i].pack_index) : ' ', dbase[i].item_type, dbase[i].used, 
+    mvprintw (i + 1, 0, "%02d %c|%01d|%01d %-32s %02d '%s'",
+      i, (dbase[i].pack_index != -1) ? LETTER(dbase[i].pack_index) : ' ',
+      dbase[i].item_type, dbase[i].used,
       dbase[i].realname, i, dbase[i].fakename);
   }
 }

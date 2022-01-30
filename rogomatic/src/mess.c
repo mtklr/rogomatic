@@ -151,10 +151,8 @@ void terpmes(void)
 
     /* :ANT: for debugging screen now has to be at least 31x80 */
     if debug(D_MESSAGE) {
-      at (24,0);
-      printw (">%-79.79s",screen);
-      at (25,0);
-      printw (">%-79.79s",topline);
+      mvprintw (24, 0, ">%-79.79s",screen);
+      mvprintw (25, 0, ">%-79.79s",topline);
       at (26,0);
       clrtoeol ();
       printw (">%-79.79s",mess);
@@ -167,10 +165,8 @@ void terpmes(void)
 
     /* :ANT: for debugging */
     if debug(D_MESSAGE) {
-      at (24,0);
-      printw ("<%-79.79s",screen);
-      at (25,0);
-      printw ("<%-79.79s",topline);
+      mvprintw (24, 0, "<%-79.79s",screen);
+      mvprintw (25, 0, "<%-79.79s",topline);
       at (26,0);
       clrtoeol ();
       printw ("<%-79.79s",mess);

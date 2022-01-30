@@ -368,7 +368,7 @@ void showcommand(char *cmd)
   char *s;
   int i = 72;
 
-  at (23,72); standout (); printw (" ");
+  standout (); mvprintw (23, 72, " ");
 
   for (s=cmd; *s; s++) {
     if ((i + strlen (unctrl(*s))) < 78) {

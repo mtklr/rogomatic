@@ -103,16 +103,13 @@ void dumpinv(FILE *f)
 {
   int i;
 
-  if (f == NULL)
-    at (1,0);
-
   for (i=0; i<MAXINV; i++) {
     if (inven[i].count == 0)			/* No item here */
       ;
     else if (f != NULL)				/* Write to a file */
       { fprintf (f, "%s\n", itemstr (i)); }
-    else {				/* Dump on the screen */
-      printw ("%s\n", itemstr (i));
+    else {					/* Dump on the screen */
+      mvprintw (1, 0, "%s\n", itemstr (i));
     }
   }
 }

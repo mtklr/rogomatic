@@ -328,7 +328,7 @@ int searchfrom(int row, int col, int (*evaluate)(), char dir[24][80], int *trow,
     dir[r][c] = sdir;
 
     if (debug (D_SCREEN | D_INFORM | D_SEARCH))
-      { at (r, c);  printw ("%c", ">/^\\</v\\  ~"[sdir-FROM]);}
+      { mvprintw (r, c, "%c", ">/^\\</v\\  ~"[sdir-FROM]);}
 
     sdir = (tempdir + 4) % 8 + FROM;  /* reverse direction and offset */
 
@@ -506,7 +506,7 @@ int searchto(int row, int col, int (*evaluate)(), char dir[24][80], int *trow, i
           dir[nr][nc] = sdirect[k];  /* direction we used to get here */
 
           if (debug (D_SCREEN | D_SEARCH | D_INFORM))
-            { at (nr, nc); printw ("%c", ">/^\\</v\\  ~"[(int) dir[nr][nc]]);}
+            { mvprintw (nr, nc, "%c", ">/^\\</v\\  ~"[(int) dir[nr][nc]]);}
         }
       }
 

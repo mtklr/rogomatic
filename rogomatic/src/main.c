@@ -704,8 +704,7 @@ int main(int argc, char *argv[])
 
           break;
 
-        case '[': at (0,0);
-          printw ("%s = %d, %s = %d, %s = %d, %s = %d.",
+        case '[': mvprintw (0, 0, "%s = %d, %s = %d, %s = %d, %s = %d.",
                   "hitstokill", hitstokill,
                   "goodweapon", goodweapon,
                   "usingarrow", usingarrow,

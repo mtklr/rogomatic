@@ -221,8 +221,7 @@ void getrogue(char *waitstr, int onat)
     ch = getroguetoken ();
 
     if debug(D_MESSAGE) {
-      at (28,col);
-      printw ("%s", unctrl(ch));
+      mvprintw (28, col, "%s", unctrl(ch));
       at (row, col);
       refresh ();
     }
@@ -1013,8 +1012,7 @@ void givehelp(void)
 
 void pauserogue(void)
 {
-  at (23, 0);
-  addstr ("--press space to continue--");
+  mvaddstr (23, 0, "--press space to continue--");
   clrtoeol ();
   refresh ();
 
