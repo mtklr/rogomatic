@@ -832,7 +832,7 @@ void deadrogue(void)
 void quitrogue(char *reason, int gld, int terminationtype)
 {
   struct tm *ts;
-  long clock;
+  time_t clock;
   char *k;
   char *r;
 
@@ -1187,7 +1187,7 @@ void printsnap(FILE *f)
   int j;
   int length;
   struct tm *ts;
-  long clock;
+  time_t clock;
 
   /* Now get the current time, so we can date the snapshot */
   clock = time(&clock);
