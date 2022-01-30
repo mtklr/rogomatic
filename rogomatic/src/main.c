@@ -802,9 +802,9 @@ int main(int argc, char *argv[])
     if (*sumline) fprintf (realstdout, " %s", sumline);
   }
   else if (terse) {
-    if (*sumline) fprintf (realstdout, "%s\n",sumline);
+    if (*sumline) fprintf (realstdout, "%s\r\n",sumline);
 
-    fprintf (realstdout, "%s %s est.\n", gamename, termination);
+    fprintf (realstdout, "%s %s est.\r\n", gamename, termination);
   }
   else {
     if (*sumline) printf ("%s\r\n",sumline);
