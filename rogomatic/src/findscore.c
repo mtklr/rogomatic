@@ -63,8 +63,8 @@ int findscore(char *rogue, char *roguename)
   /* Skip to the line starting with 'Rank...'. */
   /* or "   Score" for version 5.4 */
   while (fgets (buffer, BUFSIZ, tmpfil) != NULL) {
-      if (stlmatch (buffer, "Rank")) break;
-      if (stlmatch (buffer, "   Score")) break;
+      if (stlmatch (buffer, "Rank") ||
+          stlmatch (buffer, "   Score")) break;
   }
 
   if (! feof (tmpfil)) {
