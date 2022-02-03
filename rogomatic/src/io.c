@@ -40,6 +40,8 @@
 # include "termtokens.h"
 # include "getroguetoken.h"
 
+saynow(char *f, ...);
+
 # define READ	0
 
 /*
@@ -877,15 +879,12 @@ char *mess;
  */
 
 /* VARARGS1 */
-say (f, a1, a2, a3, a4, a5, a6, a7, a8)
-char *f;
-int a1, a2, a3, a4, a5, a6, a7, a8;
+say(char *f, va_list args)
 {
   char buf[BUFSIZ], *b;
 
   if (!emacs && !terse) {
-    memset (buf, '\0', BUFSIZ);
-    sprintf (buf, f, a1, a2, a3, a4, a5, a6, a7, a8);
+    vsprintf(buf, f, args);
     at (0,0);
 
     for (b=buf; *b; b++) printw ("%s", unctrl (*b));
@@ -901,12 +900,13 @@ int a1, a2, a3, a4, a5, a6, a7, a8;
  */
 
 /* VARARGS1 */
-saynow (f, a1, a2, a3, a4, a5, a6, a7, a8)
-char *f;
-int a1, a2, a3, a4, a5, a6, a7, a8;
+saynow(char *f, ...)
 {
   if (!emacs && !terse) {
-    say (f, a1, a2, a3, a4, a5, a6, a7, a8);
+    va_list args;
+    va_start(args, f);
+    say(f, args);
+    va_end(args);
     refresh ();
   }
 }

@@ -33,6 +33,9 @@
 # include <unistd.h>
 # include "install.h"
 
+char *getname();
+int findscore();
+
 # define READ    0
 # define WRITE   1
 
@@ -141,11 +144,11 @@ char *argv[];
       fprintf (stderr, "can't setenv (\"ROGUEOPTS\", \"%s\", 1)\n",ropts);
     }
 
-    if (oldgame)  execl (rfile, rfile, "-r", 0);
+    if (oldgame)  execl(rfile, rfile, "-r", (char *) NULL);
 
-    if (argc)     execl (rfile, rfile, argv[0], 0);
+    if (argc)     execl(rfile, rfile, argv[0], (char *) NULL);
 
-    execl (rfile, rfile, 0);
+    execl(rfile, rfile, (char *) NULL);
     _exit (1);
   }
 
@@ -163,9 +166,9 @@ char *argv[];
 
     if (!author ()) nice (4);
 
-    execl ("player", "player", ft, rp, options, roguename, 0);
+    execl("player", "player", ft, rp, options, roguename, (char *) NULL);
 # ifdef PLAYER
-    execl (PLAYER, "player", ft, rp, options, roguename, 0);
+    execl(PLAYER, "player", ft, rp, options, roguename, (char *) NULL);
 # endif
     printf ("Rogomatic not available, 'player' binary missing.\n");
     kill (child, SIGKILL);
@@ -182,9 +185,9 @@ char *argv[];
 replaylog (fname, options)
 char *fname, *options;
 {
-  execl ("player", "player", "ZZ", "0", options, fname, 0);
+  execl("player", "player", "ZZ", "0", options, fname, (char *) NULL);
 # ifdef PLAYER
-  execl (PLAYER, "player", "ZZ", "0", options, fname, 0);
+  execl(PLAYER, "player", "ZZ", "0", options, fname, (char *) NULL);
 # endif
   printf ("Replay not available, 'player' binary missing.\n");
   exit (1);

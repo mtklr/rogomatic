@@ -35,6 +35,9 @@
 # include "globals.h"
 # include "install.h"
 
+const char *getRgmDir();
+const char *getLockFile();
+
 static int nosave = 0;		/* True ==> dont write ltm back out */
 static char ltmnam[100];	/* Long term memory file name */
 

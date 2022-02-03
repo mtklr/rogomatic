@@ -106,7 +106,6 @@
 # include "termtokens.h"
 # include "install.h"
 
-
 /* FIXME: get rid of this prototype in the correct way */
 FILE *rogo_openlog (char *genelog);
 
@@ -246,6 +245,8 @@ int   zonemap[9][9];		/* Map of zones connections */
 void (*istat)(int);
 void onintr (int sig);
 char getroguetoken (), *getname();
+const char *getRgmDir();
+const char *getLockFile();
 
 /* Stuff list, list of objects on this level */
 stuffrec slist[MAXSTUFF]; 	int slistlen=0;

@@ -39,6 +39,9 @@
 # include "globals.h"
 # include "install.h"
 
+const char *getRgmDir();
+const char *getLockFile();
+
 # define LINESIZE	2048
 # define SCORE(s,p)     (atoi (s+p))
 
