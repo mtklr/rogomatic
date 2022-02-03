@@ -941,11 +941,21 @@ void say(char *f, va_list ap)
 /* VARARGS1 */
 void saynow(char *f, ...)
 {
+  char buf[BUFSIZ];
+  char *b;
+
   if (!emacs && !terse) {
+    move(0,0);
+
     va_list ap;
     va_start(ap, f);
-    say (f, ap);
+    vsnprintf(buf, sizeof(buf), f, ap);
     va_end(ap);
+
+    for (b=buf; *b; b++) printw ("%s", unctrl (*b));
+    clrtoeol ();
+
+    move(row, col);
     refresh ();
   }
 }

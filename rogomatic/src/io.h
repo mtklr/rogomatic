@@ -18,7 +18,7 @@ int pending(void);
 void deadrogue(void);
 void quitrogue(char *reason, int gld, int terminationtype);
 void waitfor(char *mess);
-void say(char *f, va_list args);
+void say(char *f, va_list ap);
 void saynow(char *f, ...);
 void waitforspace(void);
 void givehelp(void);
