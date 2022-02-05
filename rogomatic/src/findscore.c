@@ -50,10 +50,16 @@ int findscore(char *rogue, char *roguename)
   FILE *tmpfil;
   char tmpbuffer[256];
 
-  snprintf (tmpbuffer, 256, "%s", tmpfname);
+  snprintf (tmpbuffer, sizeof(tmpbuffer), "%s", tmpfname);
+
+  int fd = mkstemp(tmpbuffer);
+
+  if (fd == -1) {
+    return (best);
+  }
 
   /* Run 'rogue -s', and put the scores into a temp file */
-  sprintf (cmd, "%s -s >%s", rogue, mktemp (tmpbuffer));
+  sprintf (cmd, "%s -s >%s", rogue, tmpbuffer);
   system (cmd);
 
   /* If no temp file created, return default score */
