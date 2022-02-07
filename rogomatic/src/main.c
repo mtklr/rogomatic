@@ -149,9 +149,9 @@ FILE  *trogue=NULL;		/* Pipe to Rogue process */
 /* Characters */
 char  logfilename[100];		/* Name of log file */
 char  afterid = '\0';           /* Letter of obj after identify */
-char  genelock[100];		/* Gene pool lock file */
-char  genelog[100];		/* Genetic learning log file */
-char  genepool[100];		/* Gene pool */
+char  *genelock;		/* Gene pool lock file */
+char  *genelog;			/* Genetic learning log file */
+char  *genepool;		/* Gene pool */
 char  *genocide;		/* List of monsters to be genocided */
 char  genocided[100];		/* List of monsters genocided */
 char  lastcmd[NAMSIZ];		/* Copy of last command sent to Rogue */
@@ -833,10 +833,10 @@ int main(int argc, char *argv[])
    */
 
   if (logging) {
-    char lognam[128];
+    char *lognam;
 
     /* Make up a new log file name */
-    sprintf (lognam, "%.4s.%d.%d", ourkiller, MaxLevel, ourscore);
+    asprintf (&lognam, "%.4s.%d.%d", ourkiller, MaxLevel, ourscore);
 
     /* Close the open file */
     toggleecho ();
@@ -848,6 +848,8 @@ int main(int argc, char *argv[])
     }
     else
       printf ("Log file left on %s\n", ROGUELOG);
+
+    free(lognam);
   }
 
   close_frogue_debuglog ();
@@ -885,9 +887,9 @@ void startlesson(void)
 {
   int tmpseed = 0;
 
-  sprintf (genelog, "%s/GeneLog%d", getRgmDir (), version);
-  sprintf (genepool, "%s/GenePool%d", getRgmDir (), version);
-  sprintf (genelock, "%s/GeneLock%d", getRgmDir (), version);
+  asprintf (&genelog, "%s/GeneLog%d", getRgmDir (), version);
+  asprintf (&genepool, "%s/GenePool%d", getRgmDir (), version);
+  asprintf (&genelock, "%s/GeneLock%d", getRgmDir (), version);
 
 
   /* set up random number generation */
@@ -956,6 +958,10 @@ void endlesson(void)
     }
     else
       fprintf (stderr, "Cannot lock gene pool to evaluate '%s'\n", genepool);
+
+    free(genelock);
+    free(genelog);
+    free(genepool);
 
     uncritical ();			/* Re-enable interrupts */
   }
