@@ -72,9 +72,10 @@ int dwait(int msgtype, char *f, ...)
 
   /* Log the message if the error is severe enough */
   if (!replaying && (msgtype & (D_FATAL | D_ERROR | D_WARNING))) {
-    char errfn[128]; FILE *errfil;
+    char *errfn;
+    FILE *errfil;
 
-    sprintf (errfn, "%s/error%s", getRgmDir (), versionstr);
+    asprintf (&errfn, "%s/error%s", getRgmDir (), versionstr);
 
     if ((errfil = wopen (errfn, "a")) != NULL) {
       fprintf (errfil, "User %s, error type %d:  %s\n\n",
@@ -88,6 +89,8 @@ int dwait(int msgtype, char *f, ...)
 
       fclose (errfil);
     }
+
+    free(errfn);
   }
 
   if (msgtype & D_FATAL) {
