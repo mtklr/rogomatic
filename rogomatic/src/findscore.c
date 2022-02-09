@@ -43,7 +43,7 @@ int findscore(char *rogue, char *roguename)
 {
   int score;
   int best = -1;
-  char cmd[100];
+  char *cmd;
   char buffer[BUFSIZ];
   char *s;
   char *tmpfname = TMPFILE;
@@ -59,12 +59,14 @@ int findscore(char *rogue, char *roguename)
   }
 
   /* Run 'rogue -s', and put the scores into a temp file */
-  sprintf (cmd, "%s -s >%s", rogue, tmpbuffer);
+  asprintf (&cmd, "%s -s >%s", rogue, tmpbuffer);
   system (cmd);
 
   /* If no temp file created, return default score */
-  if ((tmpfil = fopen (tmpbuffer, "r")) == NULL)
+  if ((tmpfil = fopen (tmpbuffer, "r")) == NULL) {
+    free(cmd);
     return (best);
+  }
 
   /* Skip to the line starting with 'Rank...'. */
   /* or "   Score" for version 5.4 */
@@ -105,6 +107,8 @@ int findscore(char *rogue, char *roguename)
 
   /* Don't quit for very small scores, it's not worth it */
   if (best < 2000) best = -1;
+
+  free(cmd);
 
   return (best);
 }
