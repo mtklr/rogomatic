@@ -50,9 +50,9 @@ char *knob_name[MAXKNOB] = {
   "hoarding food:    "
 };
 
-char genelock[100];
-char genelog[100];
-char genepool[100];
+char *genelock;
+char *genelog;
+char *genepool;
 
 int main(int argc, char *argv[])
 {
@@ -93,9 +93,9 @@ int main(int argc, char *argv[])
   }
 
   /* No file argument, assign the gene log and pool file names */
-  sprintf (genelock, "%s/GeneLock%d", getRgmDir (), version);
-  sprintf (genelog, "%s/GeneLog%d", getRgmDir (), version);
-  sprintf (genepool, "%s/GenePool%d", getRgmDir (), version);
+  asprintf (&genelock, "%s/GeneLock%d", getRgmDir (), version);
+  asprintf (&genelog, "%s/GeneLog%d", getRgmDir (), version);
+  asprintf (&genepool, "%s/GenePool%d", getRgmDir (), version);
 
   critical ();				/* Disable interrupts */
 
@@ -114,6 +114,10 @@ int main(int argc, char *argv[])
   }
   else
     quit (1, "Cannot access file '%s'\n", genepool);
+
+  free(genelock);
+  free(genelog);
+  free(genepool);
 
   uncritical ();			/* Re-enable interrupts */
   analyzepool (full);			/* Print a summary */
