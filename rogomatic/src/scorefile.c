@@ -49,7 +49,7 @@
 # define LINESIZE	2048
 # define SCORE(s,p)     (atoi (s+p))
 
-static char lokfil[100];
+static char *lokfil;
 
 /*
  * add_score: Write a new score line out to the correct rogomatic score
@@ -62,11 +62,11 @@ void add_score(char *new_line, char *vers, int ntrm)
 {
   int   wantscore = 1;
   char  ch;
-  char  newfil[100];
+  char  *newfil;
   FILE *newlog;
 
-  sprintf (lokfil, "%s %s", getLockFile (), vers);
-  sprintf (newfil, "%s/rgmdelta%s", getRgmDir (), vers);
+  asprintf (&lokfil, "%s %s", getLockFile (), vers);
+  asprintf (&newfil, "%s/rgmdelta%s", getRgmDir (), vers);
 
   /* Defer interrupts while mucking with the score file */
   critical ();
@@ -83,10 +83,14 @@ void add_score(char *new_line, char *vers, int ntrm)
 
       while ((ch = getchar ()) != 'y' && ch != 'n');
 
-      if (ch == 'y')
+      if (ch == 'y') {
         wantscore = 5;
-      else
-        { uncritical (); return; }
+      } else {
+        uncritical ();
+        free(lokfil);
+        free(newfil);
+        return;
+      }
     }
 
   /* Now create a temporary to copy into */
@@ -101,6 +105,7 @@ void add_score(char *new_line, char *vers, int ntrm)
 
   /* Now close the file, relinquish control of scorefile, and exit */
   unlock_file (lokfil);
+  free(lokfil);
   uncritical ();
 }
 
@@ -111,26 +116,33 @@ void add_score(char *new_line, char *vers, int ntrm)
 void dumpscore(char *vers)
 {
   char ch;
-  char scrfil[100];
-  char delfil[100];
-  char newfil[100];
-  char allfil[100];
-  char cmd[1024];
+  char *scrfil;
+  char *delfil;
+  char *newfil;
+  char *allfil;
+  char *cmd;
   FILE *scoref, *deltaf;
   int  oldmask;
   void intrupscore (void);
 
-  sprintf (lokfil, "%s %s", LOCKFILE, vers);
-  sprintf (scrfil, "%s/rgmscore%s", getRgmDir (), vers);
-  sprintf (delfil, "%s/rgmdelta%s", getRgmDir (), vers);
-  sprintf (newfil, "%s/NewScore%s", getRgmDir (), vers);
-  sprintf (allfil, "%s/AllScore%s", getRgmDir (), vers);
+  asprintf (&lokfil, "%s %s", LOCKFILE, vers);
+  asprintf (&scrfil, "%s/rgmscore%s", getRgmDir (), vers);
+  asprintf (&delfil, "%s/rgmdelta%s", getRgmDir (), vers);
+  asprintf (&newfil, "%s/NewScore%s", getRgmDir (), vers);
+  asprintf (&allfil, "%s/AllScore%s", getRgmDir (), vers);
 
   /* On interrupts we must relinquish control of the score file */
   int_exit (intrupscore);
 
   if (lock_file (lokfil, MAXLOCK) == 0) {
     printf ("Score file busy.\n");
+
+    free(lokfil);
+    free(scrfil);
+    free(delfil);
+    free(newfil);
+    free(allfil);
+
     exit (1);
   }
 
@@ -150,14 +162,22 @@ void dumpscore(char *vers)
     /* If we have an old file and a delta file, merge them */
     if (scoref != NULL) {
       fclose (scoref);
-      sprintf (cmd, "sort +4nr -o %s %s; sort -m +4nr -o %s %s %s",
+      asprintf (&cmd, "sort +4nr -o %s %s; sort -m +4nr -o %s %s %s",
                newfil, delfil, allfil, newfil, scrfil);
       system (cmd);
+      free(cmd);
 
       if (filelength (allfil) != filelength (delfil) + filelength (scrfil)) {
         fprintf (stderr, "Error, new file is wrong length!\n");
         unlink (newfil); unlink (allfil);
         unlock_file (lokfil);
+
+        free(lokfil);
+        free(scrfil);
+        free(delfil);
+        free(newfil);
+        free(allfil);
+
         exit (1);
       }
       else {
@@ -171,8 +191,9 @@ void dumpscore(char *vers)
     else
       /* Only have delta file, sort into scorefile and unlink delta */
     {
-      sprintf (cmd, "sort +4nr -o %s %s", scrfil, delfil);
+      asprintf (&cmd, "sort +4nr -o %s %s", scrfil, delfil);
       system (cmd);
+      free(cmd);
       unlink (delfil);
       scoref = fopen (scrfil, "r");
     }
@@ -188,6 +209,13 @@ void dumpscore(char *vers)
   if (scoref == NULL) {
     printf ("Can't find %s\nBest score was %d.\n", scrfil, BEST);
     unlock_file (lokfil);
+
+    free(lokfil);
+    free(scrfil);
+    free(delfil);
+    free(newfil);
+    free(allfil);
+
     exit (1);
   }
 
@@ -201,6 +229,12 @@ void dumpscore(char *vers)
   fclose (scoref);
   unlock_file (lokfil);
 
+  free(lokfil);
+  free(scrfil);
+  free(delfil);
+  free(newfil);
+  free(allfil);
+
   exit (0);
 }
 
@@ -211,5 +245,6 @@ void dumpscore(char *vers)
 void intrupscore(void)
 {
   unlock_file (lokfil);
+  free(lokfil);
   exit (1);
 }
