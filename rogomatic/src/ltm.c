@@ -47,7 +47,7 @@
 #include "utility.h"
 
 static int nosave = 0;		/* True ==> dont write ltm back out */
-static char ltmnam[100];	/* Long term memory file name */
+static char *ltmnam;		/* Long term memory file name */
 
 /*
  * mapcharacter: Read a character help message
@@ -164,7 +164,7 @@ void saveltm(int score)
 
 void restoreltm(void)
 {
-  sprintf (ltmnam, "%s/ltm%d", getRgmDir (), version);
+  asprintf (&ltmnam, "%s/ltm%d", getRgmDir (), version);
   dwait (D_CONTROL, "Restoreltm called, reading file '%s'", ltmnam);
 
   clearltm (monhist);			/* Clear the original sums */
@@ -191,6 +191,8 @@ void restoreltm(void)
     saynow ("Warning: could not lock long term memory file!");
     nosave = 1;
   }
+
+  free(ltmnam);
 
   uncritical ();
 }
