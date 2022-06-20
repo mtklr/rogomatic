@@ -621,13 +621,13 @@ int main(int argc, char *argv[])
       ch = (noterm) ? ROGQUIT : getch ();
 
       switch (ch) {
-        case KEY_PPAGE: /* page down, decrease delay */
+        case KEY_PPAGE: /* page up, increase delay */
           if (napdelay < MAXNAPDELAY) {
             napdelay += 5;
           }
           break;
 
-        case KEY_NPAGE: /* page down, increase delay */
+        case KEY_NPAGE: /* page down, decrease delay */
           if (napdelay > 0) {
             napdelay -= 5;
           }
