@@ -494,8 +494,7 @@ int main(int argc, char *argv[])
     freopen ("/dev/null", "w", stdout);
   }
 
-  initscr (); crmode (); noecho ();	/* Initialize the Curses package */
-  nonl();
+  initscr (); cbreak(); noecho ();	/* Initialize the Curses package */
   nodelay(stdscr, TRUE);
   keypad(stdscr, TRUE);
 
