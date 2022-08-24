@@ -112,7 +112,6 @@
 #include "database.h"
 #include "debug.h"
 #include "debuglog.h"
-#include "debuglog.h"
 #include "explore.h"
 #include "getroguetoken.h"
 #include "io.h"

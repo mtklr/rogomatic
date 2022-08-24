@@ -41,7 +41,6 @@
 #include "worth.h"
 
 #include "arms.h"
-#include "arms.h"
 #include "things.h"
 #include "utility.h"
 
