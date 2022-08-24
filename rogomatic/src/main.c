@@ -396,6 +396,8 @@ int main(int argc, char *argv[])
   int startingup = 1;
   int  i;
 
+  savetty();
+
   debuglog_open ("debuglog.player");
 
   /*
@@ -806,10 +808,8 @@ int main(int argc, char *argv[])
   }
 
   /* Print termination messages */
-  move(23, 0);
-  clrtoeol ();
-//  clear ();
   refresh ();
+  resetty();
   endwin ();
 
   if (emacs) {
