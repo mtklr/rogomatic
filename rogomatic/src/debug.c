@@ -32,6 +32,7 @@
 
 #include <curses.h>
 #include <setjmp.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "types.h"
