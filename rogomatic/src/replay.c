@@ -29,8 +29,9 @@
  */
 
 #include <ctype.h>
-#include <curses.h>
+#include <stdio.h>
 #include <string.h>
+#include <curses.h>
 
 #include "types.h"
 #include "globals.h"

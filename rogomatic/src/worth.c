@@ -33,7 +33,7 @@
  * which is the "worst" object in the pack.
  */
 
-#include <curses.h>
+#include <stdio.h>
 
 #include "types.h"
 #include "globals.h"
