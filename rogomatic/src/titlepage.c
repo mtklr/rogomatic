@@ -103,6 +103,7 @@ void animate(char *movie[])
   int count = 0;
   int delaychars;
   char *cbf = "";
+  extern int napdelay;
 
   if (emacs || terse) return;		/* No screen ==> no movie */
 
@@ -126,6 +127,7 @@ void animate(char *movie[])
     /* Update the screen and delay until one timestep is gone */
     else if (r == '~') {
       refresh ();				/* Write out screen */
+      napms(napdelay);
 
       for (; count < delaychars; count++)	/* Pad with nulls */
         putchar ((int) NULL);
