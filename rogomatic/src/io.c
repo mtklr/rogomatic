@@ -790,7 +790,7 @@ void deadrogue(void)
 
   addstr ("\n\nOops...");
   refresh ();
-
+  sleep(2);
   sscanf (&screen[GOLDROW][TOMBCOL], "%18d", &Gold);
 
   killer = &screen[KILLROW][TOMBCOL];
