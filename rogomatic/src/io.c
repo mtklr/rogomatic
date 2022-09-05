@@ -629,7 +629,7 @@ void dumpwalls(void)
            (TELTRAP&S)                 ? 't' :
            (TRAPDOR&S)                 ? 'v' :
            (GASTRAP&S)                 ? 'g' :
-           (BEARTRP&S)                 ? 'b' :
+           (BEARTRP&S)                 ? 'e' :
            (DARTRAP&S)                 ? 's' :
            (WATERAP&S)                 ? 'w' :
            (TRAP&S)                    ? '^' :
