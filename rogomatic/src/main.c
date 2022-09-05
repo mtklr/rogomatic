@@ -521,7 +521,7 @@ int main(int argc, char *argv[])
              roguename, versionstr, geneid, quitat);
 
   if (emacs)
-    { fprintf (realstdout, "%s  (%%b)", msg); fflush (realstdout); }
+    { fprintf (realstdout, "%s  (%%b)\r", msg); fflush (realstdout); }
   else if (terse)
     { fprintf (realstdout, "%s\r\n", msg); fflush (realstdout); }
   else
@@ -813,7 +813,7 @@ int main(int argc, char *argv[])
   endwin ();
 
   if (emacs) {
-    if (*sumline) fprintf (realstdout, " %s", sumline);
+    if (*sumline) fprintf (realstdout, " %s\r\n", sumline);
   }
   else if (terse) {
     if (*sumline) fprintf (realstdout, "%s\r\n",sumline);

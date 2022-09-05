@@ -598,7 +598,7 @@ void terpbot(void)
 
         if (strlen (modeline) > 72) sprintf (modeline, " %s", screen[23]);
 
-        fprintf (realstdout, "%s", modeline);
+        fprintf (realstdout, "%-79s\r", modeline);
         fflush (realstdout);
       }
       else if (terse && oldlev != Level) {
