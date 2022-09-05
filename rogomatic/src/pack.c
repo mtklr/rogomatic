@@ -109,7 +109,7 @@ void dumpinv(FILE *f)
     else if (f != NULL)				/* Write to a file */
       { fprintf (f, "%s\n", itemstr (i)); }
     else {					/* Dump on the screen */
-      mvprintw (1, 0, "%s\n", itemstr (i));
+      mvprintw (i+1, 0, "%s\n", itemstr (i));
     }
   }
 }
