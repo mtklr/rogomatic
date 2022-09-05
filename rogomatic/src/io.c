@@ -1193,33 +1193,33 @@ void printsnap(FILE *f)
   ts = localtime(&clock);
 
   /* Print snapshot timestamp */
-  fprintf (f, "\nSnapshot taken on %s %d, %d at %02d:%02d:%02d:\n\n",
+  fprintf (f, "\nSnapshot taken on %s %d, %d at %02d:%02d:%02d:\r\n\n",
            month[ts -> tm_mon], ts -> tm_mday, 1900 + ts -> tm_year,
            ts -> tm_hour, ts -> tm_min, ts -> tm_sec);
 
   /* Print the current map */
   putn ('-', f, 79);
-  fprintf (f, "\n");
+  fprintf (f, "\r\n");
 
   for (i = 0; i < 24; i++) {
     for (length = 79; length >= 0 && charonscreen(i,length) == ' '; length--);
 
     for (j=0; j <= length; j++) fprintf (f, "%c", charonscreen(i,j));
 
-    fprintf (f, "\n");
+    fprintf (f, "\r\n");
   }
 
   putn ('-', f, 79);
 
   /* Print status variables */
-  fprintf (f, "\n\n%s\n\n", statusline ());
+  fprintf (f, "\r\n\n%s\r\n\n", statusline ());
 
   /* Print the inventory */
 
   dumpinv (f);
-  fprintf (f, "\n");
+  fprintf (f, "\r\n");
   putn ('-', f, 79);
-  fprintf (f, "\n");
+  fprintf (f, "\r\n");
 }
 
 /*

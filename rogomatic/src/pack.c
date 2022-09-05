@@ -107,7 +107,7 @@ void dumpinv(FILE *f)
     if (inven[i].count == 0)			/* No item here */
       ;
     else if (f != NULL)				/* Write to a file */
-      { fprintf (f, "%s\n", itemstr (i)); }
+      { fprintf (f, "%s\r\n", itemstr (i)); }
     else {					/* Dump on the screen */
       mvprintw (i+1, 0, "%s\n", itemstr (i));
     }
