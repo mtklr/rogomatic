@@ -648,11 +648,18 @@ void dumpwalls(void)
            (WALL&S)                    ? 'W' :
            (S)                         ? 'X' : '\0';
 
-      if (ch) mvaddch (r, c, ch);
+      if (ch) {
+	if (terse) {
+          fprintf (realstdout, "\e[%dC%c\r", c, ch);
+	} else {
+          mvaddch (r, c, ch);
+	}
+      }
     }
+    if (terse) fprintf (realstdout, "\r\n");
   }
 
-  move(row, col);
+  if (!terse) move(row, col);
 }
 
 /*
@@ -1200,13 +1207,16 @@ void printsnap(FILE *f)
   /* Print the current map */
   putn ('-', f, 79);
   fprintf (f, "\r\n");
+  if (terse) {
+    dumpwalls();
+  } else {
+    for (i = 0; i < 24; i++) {
+      for (length = 79; length >= 0 && charonscreen(i,length) == ' '; length--);
 
-  for (i = 0; i < 24; i++) {
-    for (length = 79; length >= 0 && charonscreen(i,length) == ' '; length--);
+      for (j=0; j <= length; j++) fprintf (f, "%c", charonscreen(i,j));
 
-    for (j=0; j <= length; j++) fprintf (f, "%c", charonscreen(i,j));
-
-    fprintf (f, "\r\n");
+      fprintf (f, "\r\n");
+    }
   }
 
   putn ('-', f, 79);

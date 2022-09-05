@@ -892,17 +892,29 @@ void printexplored(void)
 {
   int rm;
 
-  mvaddstr (0, 0, "Rooms explored: ");
+  if (terse) {
+    fprintf (realstdout, "Rooms explored: ");
+  } else {
+    mvaddstr (0, 0, "Rooms explored: ");
+  }
 
   for (rm = 0; rm < 9; rm++) {
     if (levelmap[rm] & EXPLORED) {
-      printw (" %d", rm);
+      if (terse) {
+        fprintf (realstdout, " %d", rm);
+      } else {
+        printw (" %d", rm);
+      }
     }
   }
 
-  clrtoeol ();
-  move(row, col);
-  refresh ();
+  if (terse) {
+    fprintf (realstdout, "\r\n");
+  } else {
+    clrtoeol ();
+    move(row, col);
+    refresh ();
+  }
 }
 
 /*
