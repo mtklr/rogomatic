@@ -193,8 +193,6 @@ void restoreltm(void)
     nosave = 1;
   }
 
-  free(ltmnam);
-
   uncritical ();
 }
 
