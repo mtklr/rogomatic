@@ -127,7 +127,7 @@ void animate(char *movie[])
     /* Update the screen and delay until one timestep is gone */
     else if (r == '~') {
       refresh ();				/* Write out screen */
-      napms(napdelay);
+      napms(NAPDELAY);
 
       for (; count < delaychars; count++)	/* Pad with nulls */
         putchar ((int) NULL);
