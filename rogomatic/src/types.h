@@ -187,7 +187,7 @@ if you want to adjust the specific values see io.c (yay source code! :) ) */
 
 /* Bit value for debugging types (for debugging function dwait and
    screen message debugging).  If D_MESSAGE is set the screen must
-   be at least 31x80 information displayed to fit.  */
+   be at least 32x80 information displayed to fit.  */
 
 #define D_FATAL		00001
 #define D_ERROR		00002

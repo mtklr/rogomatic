@@ -149,7 +149,7 @@ void terpmes(void)
 
     mend = m;
 
-    /* :ANT: for debugging screen now has to be at least 31x80 */
+    /* :ANT: for debugging screen now has to be at least 32x80 */
     if debug(D_MESSAGE) {
       mvprintw (24, 0, ">%-79.79s",screen);
       mvprintw (25, 0, ">%-79.79s",topline);
