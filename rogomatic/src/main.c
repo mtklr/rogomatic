@@ -499,6 +499,13 @@ int main(int argc, char *argv[])
   nodelay(stdscr, TRUE);
   keypad(stdscr, TRUE);
 
+  if (LINES < NUMLINES || COLS < NUMCOLS) {
+    endwin();
+    fprintf(stderr, "Minimum terminal size is 80x24, or 80x32 for debug output\n");
+    exit(1);
+  }
+
+
   if (startecho) toggleecho ();		/* Start logging? */
 
   clear ();				/* Clear the screen */

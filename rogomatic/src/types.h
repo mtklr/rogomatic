@@ -50,6 +50,11 @@
 #define SUCCESS		1
 #define FAILURE		0
 
+/* minimum screen size, 32x80 with debugging (see below) */
+
+#define NUMLINES	24
+#define NUMCOLS		80
+
 /* set to 0 for full blast.  not using the "-w" option also skips these delays.
 
 i'm using 14000 here because that slows things down enough that i can watch.
