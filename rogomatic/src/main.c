@@ -685,6 +685,8 @@ int main(int argc, char *argv[])
 
         case 't': transparent = !transparent; break;
 
+        case 'w': noterm = 1; transparent = 0; break;
+
         case ')': new_mark++; markcycles (DOPRINT); move(row, col); break;
 
         case '+': setpsd (DOPRINT); move(row, col); break;
