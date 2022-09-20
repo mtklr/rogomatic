@@ -140,6 +140,26 @@ int main(int argc, char *argv[])
 
   if (replay) { replaylog (argc==1 ? argv[0] : ROGUELOG, options); exit (0); }
 
+  if (oldgame) {
+    char *savefile = "rogue.save";
+
+    if (argc) {
+      savefile = argv[0];
+    }
+
+    if (access (savefile, R_OK) != 0) {
+      perror (savefile);
+      exit (1);
+    }
+  }
+
+  if (argc) {
+    if (access (argv[0], R_OK) != 0) {
+      perror (argv[0]);
+      exit (1);
+    }
+  }
+
   if ((pipe (ptc) < 0) || (pipe (ctp) < 0)) {
     fprintf (stderr, "Cannot get pipes!\n");
     exit (1);
