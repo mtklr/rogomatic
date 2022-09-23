@@ -797,7 +797,7 @@ void deadrogue(void)
 
   addstr ("\n\nOops...");
   refresh ();
-  sleep(2);
+  if (!noterm) sleep(2);
   sscanf (&screen[GOLDROW][TOMBCOL], "%18d", &Gold);
 
   killer = &screen[KILLROW][TOMBCOL];
@@ -1087,10 +1087,10 @@ void getrogver(void)
 
 int charsavail(void)
 {
-  long n;
+  long n = 0;
   int retc;
 
-  if ((retc = ioctl (READ, FIONREAD, &n))) {
+  if ((retc = ioctl (0, FIONREAD, &n))) {
     saynow ("Ioctl returns %d, n=%ld.\n", retc, n);
     n=0;
   }

@@ -238,7 +238,7 @@ int  *newdoors = NULL;		/* New doors on screen */
 int   newring = 1;              /* Change in ring status? */
 int   newweapon = 1;            /* Change in weapon status? */
 int   nohalf = 0;		/* True ==> no halftime show */
-int   noterm = 0;		/* True ==> no user watching */
+int   noterm = 1;		/* True ==> no user watching */
 int   objcount = 0;             /* Number of objects */
 int   ourscore = 0;		/* Final score when killed */
 int   playing = 1;		/* True if still playing game */
@@ -588,8 +588,8 @@ int main(int argc, char *argv[])
   if (transparent) noterm = 0;
 
   while (playing) {
-    napms(napdelay);
     refresh ();
+    if (!noterm) napms(napdelay);
 
     /* If we have any commands to send, send them */
     while (resend ()) {
