@@ -507,7 +507,6 @@ int main(int argc, char *argv[])
   }
 
   initscr (); cbreak(); noecho ();	/* Initialize the Curses package */
-  nodelay(stdscr, TRUE);
   keypad(stdscr, TRUE);
 
   if (LINES < NUMLINES || COLS < NUMCOLS) {

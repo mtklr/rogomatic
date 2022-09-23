@@ -272,19 +272,28 @@ void toggledebug(void)
 
 int getscrpos(char *msg, int *r, int *c)
 {
-  char buf[256];
+  char buf[6];
+  int xpos = 35;
 
   saynow ("At %d,%d: enter 'row,col' for %s: ", atrow, atcol, msg);
 
-  if (fgets (buf, 256, stdin)) {
+  if (atrow > 9) xpos++;
+  if (atcol > 9) xpos++;
+
+  echo();
+
+  if (mvgetnstr (0, xpos, buf, 5) == OK) {
     sscanf (buf, "%d,%d", r, c);
 
-    if (*r>=1 && *r<23 && *c>=0 && *c<=79)
+    if (*r>=1 && *r<23 && *c>=0 && *c<=79) {
+      noecho();
       return (1);
-    else
+    } else {
       saynow ("%d,%d is not on the screen!", *r, *c);
+    }
   }
 
   move(row, col);
+  noecho();
   return (0);
 }
