@@ -175,4 +175,14 @@
 #define TMPFILE "/tmp/RscoreXXXXXX"
 #endif
 
+/* debug logs */
+
+#ifndef DEBUGLOG_PLAYER
+#define DEBUGLOG_PLAYER "debuglog.player"
+#endif
+
+#ifndef DEBUGLOG_FROGUE
+#define DEBUGLOG_FROGUE "debuglog.frogue"
+#endif
+
 #endif

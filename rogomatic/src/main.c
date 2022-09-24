@@ -396,7 +396,7 @@ int main(int argc, char *argv[])
   int startingup = 1;
   int  i;
 
-  debuglog_open ("debuglog.player");
+  debuglog_open (DEBUGLOG_PLAYER);
 
   /*
    * Initialize some storage
@@ -456,7 +456,7 @@ int main(int argc, char *argv[])
     int frogue_fd = argv[1][0] - 'a';
     int trogue_fd = argv[1][1] - 'a';
     open_frogue_fd (frogue_fd);
-    open_frogue_debuglog ("debuglog.frogue");
+    open_frogue_debuglog (DEBUGLOG_FROGUE);
     trogue = fdopen (trogue_fd, "w");
     setbuf (trogue, NULL);
   }
