@@ -158,6 +158,7 @@ void halftimeshow(int level)
   if (!nohalf && level >= nextshow) {
     if (nextshow == 1) { 
       nextshow = 9999; animate (titlepage);
+      clear();
     }
   }
 }
