@@ -202,8 +202,6 @@ int main(int argc, char *argv[])
     /* Pass the process ID of the Rogue process as an ASCII string */
     sprintf (rp, "%d", child);
 
-    if (!author ()) nice (4);
-
     execl ("player", "player", ft, rp, options, roguename, (char *) NULL);
 # ifdef PLAYER
     execl (PLAYER, "player", ft, rp, options, roguename, (char *) NULL);
