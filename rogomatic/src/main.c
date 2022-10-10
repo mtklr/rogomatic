@@ -195,6 +195,7 @@ int   cursedweapon = 0;		/* True if we are wielding cursed weapon */
 int   darkdir = NONE;		/* Direction of monster being arched */
 int   darkturns = 0;		/* Distance to monster being arched */
 int   debugging = D_NORMAL;	/* Debugging options in effect */
+int   debugsave = 0;		/* Save debug log file */
 int   didreadmap = 0;		/* Last level we read a map on */
 int   doorlist[40];		/* List of doors on this level */
 int   doublehasted = 0; 	/* True if double hasted (Rogue 3.6) */
@@ -396,8 +397,6 @@ int main(int argc, char *argv[])
   int startingup = 1;
   int  i;
 
-  debuglog_open (DEBUGLOG_PLAYER);
-
   /*
    * Initialize some storage
    */
@@ -456,7 +455,6 @@ int main(int argc, char *argv[])
     int frogue_fd = argv[1][0] - 'a';
     int trogue_fd = argv[1][1] - 'a';
     open_frogue_fd (frogue_fd);
-    open_frogue_debuglog (DEBUGLOG_FROGUE);
     trogue = fdopen (trogue_fd, "w");
     setbuf (trogue, NULL);
   }
@@ -465,9 +463,9 @@ int main(int argc, char *argv[])
   if (argc > 2) rogpid = atoi (argv[2]);
 
   /* The third argument is an option list */
-  if (argc > 3) sscanf (argv[3], "%d,%d,%d,%d,%d,%d,%d,%d",
+  if (argc > 3) sscanf (argv[3], "%d,%d,%d,%d,%d,%d,%d,%d,%d",
                           &cheat, &noterm, &startecho, &nohalf,
-                          &emacs, &terse, &transparent, &quitat);
+                          &emacs, &terse, &transparent, &quitat, &debugsave);
 
   /* The fourth argument is the Rogue name */
   if (argc > 4)	strcpy (roguename, argv[4]);
@@ -486,6 +484,21 @@ int main(int argc, char *argv[])
   parmstr = argv[0];	arglen--;
   parmstr[arglen] = '\0';/* I don't like this business with muck with ps, but
                             I think the lack of a null is a problem - NYM */
+
+  if (debugsave) {
+    if (argv[1][0] != 'Z') {
+      open_frogue_debuglog (DEBUGLOG_FROGUE);
+    }
+
+    debuglog_open (DEBUGLOG_PLAYER);
+  } else {
+    if (argv[1][0] != 'Z') {
+      open_frogue_debuglog ("/dev/null");
+    }
+
+    debuglog_open ("/dev/null");
+  }
+
 
   /* If we are in one-line mode, then squirrel away stdout */
   if (emacs || terse) {

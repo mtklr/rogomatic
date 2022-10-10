@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
   int score = 0;
   int oldgame = 0;
   int cheat = 0;
+  int debugsave = 0;
   int noterm = 1;
   int echo = 0;
   int nohalf = 0;
@@ -77,6 +78,7 @@ int main(int argc, char *argv[])
     while (*++(*argv)) {
       switch (**argv) {
         case 'c': cheat++;        break; /* Will use trap arrows! */
+        case 'd': debugsave++;    break; /* Save debug log file */
         case 'e': echo++;         break; /* Echo file to roguelog */
         case 'f': rf++;           break; /* Next arg is the rogue file */
         case 'h': nohalf++;       break; /* No halftime show */
@@ -88,7 +90,7 @@ int main(int argc, char *argv[])
         case 'w': noterm = 0;     break; /* Watched mode */
         case 'E': emacs++;        break; /* Emacs mode */
         default:  printf
-          ("Usage: rogomatic [-cefhprstuwE] or rogomatic [file]\n");
+          ("Usage: rogomatic [-cdefhprstuwE] or rogomatic [file]\n");
           exit (1);
       }
     }
@@ -127,8 +129,8 @@ int main(int argc, char *argv[])
 
   if (!replay && !score) quitat = findscore (rfile, "Rog-O-Matic");
 
-  sprintf (options, "%d,%d,%d,%d,%d,%d,%d,%d",
-           cheat, noterm, echo, nohalf, emacs, terse, user,quitat);
+  sprintf (options, "%d,%d,%d,%d,%d,%d,%d,%d,%d",
+           cheat, noterm, echo, nohalf, emacs, terse, user, quitat, debugsave);
   sprintf (roguename, "Rog-O-Matic %s for %s", RGMVER, getname ());
   sprintf (ropts, "name=%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
            roguename, "fruit=apricot", "terse", "noflush", "noask",
