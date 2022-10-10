@@ -127,11 +127,11 @@ int main(int argc, char *argv[])
     exit (1);
   }
 
-  if (!replay && !score) quitat = findscore (rfile, "Rog-O-Matic");
+  if (!replay && !score) quitat = findscore (rfile, RGMNAME);
 
   sprintf (options, "%d,%d,%d,%d,%d,%d,%d,%d,%d",
            cheat, noterm, echo, nohalf, emacs, terse, user, quitat, debugsave);
-  sprintf (roguename, "Rog-O-Matic %s for %s", RGMVER, getname ());
+  sprintf (roguename, "%s %s for %s", RGMNAME, RGMVER, getname ());
   sprintf (ropts, "name=%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
            roguename, "fruit=apricot", "terse", "noflush", "noask",
            "jump", "step", "nopassgo", "inven=slow", "seefloor");

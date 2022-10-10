@@ -469,7 +469,7 @@ int main(int argc, char *argv[])
 
   /* The fourth argument is the Rogue name */
   if (argc > 4)	strcpy (roguename, argv[4]);
-  else		sprintf (roguename, "Rog-O-Matic %s", RGMVER);
+  else		sprintf (roguename, "%s %s", RGMNAME, RGMVER);
 
   /* Now count argument space and assign a global pointer to it */
   arglen = 0;

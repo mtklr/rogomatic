@@ -185,4 +185,9 @@
 #define DEBUGLOG_FROGUE "debuglog.frogue"
 #endif
 
+/* name for score file */
+#ifndef RGMNAME
+#define RGMNAME "Rog-O-Matic"
+#endif
+
 #endif
