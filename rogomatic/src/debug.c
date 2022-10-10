@@ -227,6 +227,11 @@ void toggledebug(void)
   char debugstr[100];
   int type = debugging & ~(D_FATAL | D_ERROR | D_WARNING);
 
+  if (LINES < DEBUGLINES) {
+    saynow("Minimum terminal size is 80x32 for debug output");
+    return;
+  }
+
   if (debugging == D_ALL)         debugging = D_NORMAL;
   else if (debugging == D_NORMAL) debugging = D_NORMAL | D_SEARCH;
   else if (type == D_SEARCH)      debugging = D_NORMAL | D_BATTLE;

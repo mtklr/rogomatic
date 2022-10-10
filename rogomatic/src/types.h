@@ -52,6 +52,7 @@
 
 /* minimum screen size, 32x80 with debugging (see below) */
 
+#define DEBUGLINES	32
 #define NUMLINES	24
 #define NUMCOLS		80
 
