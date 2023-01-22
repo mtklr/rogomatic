@@ -387,7 +387,7 @@ char prepareident(int obj, int iscroll)
 
 int pickident(void)
 {
-  int obj;
+  int obj = NONE;
 
   if      ((obj=unknown      (ring))   != NONE);
   else if ((obj=unidentified (wand))   != NONE);

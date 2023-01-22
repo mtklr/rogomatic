@@ -273,7 +273,7 @@ int downright(int *drow, int *dcol)
 
 int lightroom(void)
 {
-  int obj;
+  int obj = NONE;
 
   /* not in a room nor on door, blinded or room lit?? */
   if ((!on (DOOR | ROOM)) || blinded || !darkroom ())

@@ -202,7 +202,7 @@ char commandarg(char *cmd, int n)
 void adjustpack(char *cmd)
 {
   int neww;
-  int obj;
+  int obj = NONE;
 
   switch (functionchar (cmd)) {
     case 'd':	if (!diddrop) {

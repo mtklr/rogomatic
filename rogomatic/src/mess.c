@@ -775,7 +775,8 @@ int smatch(char *dat, char *pat, char **res)
 
 void readident(char *name)
 {
-  int obj; char id = '*';	/* Default is "* for list" */
+  int obj = NONE;
+  char id = '*';	/* Default is "* for list" */
   stuff item_type = none;
   char lookup_name[NAMSIZ];
 

@@ -64,7 +64,7 @@
 
 int handlearmor(void)
 {
-  int obj;
+  int obj = NONE;
 
   /* Only check when armor status is different */
   if (!newarmor || cursedarmor) return (0);
@@ -124,7 +124,7 @@ int handlearmor(void)
 
 int handleweapon(void)
 {
-  int obj;
+  int obj = NONE;
 
   if ((!newweapon || cursedweapon) && !wielding (thrower)) return (0);
 
@@ -257,8 +257,8 @@ int quaffpotion(void)
 
 int readscroll(void)
 {
-  int obj;
-  int obj2;
+  int obj = NONE;
+  int obj2 = NONE;
 
   /* Check the item specific identify scrolls first */
   if (((obj = havenamed (Scroll, "identify scroll")) != NONE &&
@@ -362,8 +362,8 @@ int readscroll(void)
 
 int handlering(void)
 {
-  int ring1;
-  int ring2;
+  int ring1 = NONE;
+  int ring2 = NONE;
 
   if (!newring && !beingstalked) return (0);
 
@@ -410,7 +410,7 @@ int handlering(void)
 
 int findring(char *name)
 {
-  int obj;
+  int obj = NONE;
 
   if ((obj = havenamed (ring, name)) == NONE ||
       wearing (name) != NONE)
@@ -682,7 +682,7 @@ int waitaround(void)
 
 int goupstairs(int running)
 {
-  int obj;
+  int obj = NONE;
 
   /* Check for applicability of this rule */
   if (stairrow == NONE || have(amulet) == NONE ||
@@ -746,7 +746,7 @@ int goupstairs(int running)
 
 int restup(void)
 {
-  int obj;
+  int obj = NONE;
   int turns;
 
   /* If we are confused, sit still so we don't bump into anything bad */
@@ -857,8 +857,8 @@ int light(void)
 
 int shootindark(void)
 {
-  int obj;
-  int bow;
+  int obj = NONE;
+  int bow = NONE;
 
   /* If no longer arching in the dark, fail */
   if (darkturns < 1 || darkdir == NONE || !darkroom ()) return (0);
@@ -901,7 +901,7 @@ int dinnertime(void)
 
 int trywand(void)
 {
-  int obj;
+  int obj = NONE;
   int dir;
   int r;
   int c;
@@ -940,7 +940,7 @@ int trywand(void)
 
 int eat(void)
 {
-  int obj;
+  int obj = NONE;
 
   if ((obj = have (food)) != NONE) {
     command (T_HANDLING, "e%c", LETTER (obj));

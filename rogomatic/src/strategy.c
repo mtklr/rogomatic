@@ -573,7 +573,7 @@ int aftermelee(void)
  */
 int battlestations(int m, char *monster, int mbad, int danger, int mdir, int mdist, int alert, int adj)
 {
-  int obj;
+  int obj = NONE;
   int turns;
   static int stepback = 0;
 
@@ -1127,7 +1127,7 @@ int fightinvisible(void)
   int dir;
   int liberties = 0;
   int lastdir;
-  int obj;
+  int obj = NONE;
 
   /* Count down the time since we were last hit by a stalker */
   if (--beingstalked < 0)
@@ -1294,7 +1294,7 @@ int pickupafter(void)
 
 int dropjunk(void)
 {
-  int obj;
+  int obj = NONE;
 
   if ((obj = haveuseless ()) != NONE && (gotocorner () || throw (obj, 7)))
     return (1);
